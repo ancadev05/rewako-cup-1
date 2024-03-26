@@ -41,7 +41,7 @@ class SesiController extends Controller
                 return redirect('/admin-kejurnas');
             }
         } else {
-            return redirect('/rewako-cup')->withErrors('username dan password tidak sesuai')->withInput();
+            return redirect('/login')->withErrors('username dan password tidak sesuai')->withInput();
         }
     }
 
@@ -49,6 +49,6 @@ class SesiController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/rewako-cup');
+        return redirect('/login');
     }
 }
