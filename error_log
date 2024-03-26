@@ -1,0 +1,55 @@
+[20-Mar-2024 21:37:56 UTC] PHP Warning:  require_once(/home/lsvrcdun/public_html/public/index.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/server.php on line 13
+[20-Mar-2024 21:37:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/public/index.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/server.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/lsvrcdun/public_html/server.php on line 13
+[20-Mar-2024 21:37:57 UTC] PHP Warning:  require_once(/home/lsvrcdun/public_html/public/index.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/server.php on line 13
+[20-Mar-2024 21:37:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/public/index.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/server.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/lsvrcdun/public_html/server.php on line 13
+[20-Mar-2024 23:06:22 UTC] PHP Warning:  require(/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/lsvrcdun/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/lsvrcdun/public_html/vendor/autoload.php(25): ComposerAutoloaderInit9c491b8531eec05ba41a11d9276a5749::getLoader()
+#2 /home/lsvrcdun/public_html/public/index.php(34): require('/home/lsvrcdun/...')
+#3 /home/lsvrcdun/public_html/server.php(13): require_once('/home/lsvrcdun/...')
+#4 {main}
+  thrown in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:25 UTC] PHP Warning:  require(/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/lsvrcdun/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/lsvrcdun/public_html/vendor/autoload.php(25): ComposerAutoloaderInit9c491b8531eec05ba41a11d9276a5749::getLoader()
+#2 /home/lsvrcdun/public_html/public/index.php(34): require('/home/lsvrcdun/...')
+#3 /home/lsvrcdun/public_html/server.php(13): require_once('/home/lsvrcdun/...')
+#4 {main}
+  thrown in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:26 UTC] PHP Warning:  require(/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:26 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/lsvrcdun/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/lsvrcdun/public_html/vendor/autoload.php(25): ComposerAutoloaderInit9c491b8531eec05ba41a11d9276a5749::getLoader()
+#2 /home/lsvrcdun/public_html/public/index.php(34): require('/home/lsvrcdun/...')
+#3 /home/lsvrcdun/public_html/server.php(13): require_once('/home/lsvrcdun/...')
+#4 {main}
+  thrown in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:44 UTC] PHP Warning:  require(/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:06:44 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/lsvrcdun/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/lsvrcdun/public_html/vendor/autoload.php(25): ComposerAutoloaderInit9c491b8531eec05ba41a11d9276a5749::getLoader()
+#2 /home/lsvrcdun/public_html/public/index.php(34): require('/home/lsvrcdun/...')
+#3 /home/lsvrcdun/public_html/server.php(13): require_once('/home/lsvrcdun/...')
+#4 {main}
+  thrown in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:09:19 UTC] PHP Warning:  require(/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php): Failed to open stream: No such file or directory in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
+[20-Mar-2024 23:09:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/lsvrcdun/public_html/vendor/composer/../../app/Http/helpers/helpers.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/lsvrcdun/public_html/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/lsvrcdun/public_html/vendor/autoload.php(25): ComposerAutoloaderInit9c491b8531eec05ba41a11d9276a5749::getLoader()
+#2 /home/lsvrcdun/public_html/public/index.php(34): require('/home/lsvrcdun/...')
+#3 /home/lsvrcdun/public_html/server.php(13): require_once('/home/lsvrcdun/...')
+#4 {main}
+  thrown in /home/lsvrcdun/public_html/vendor/composer/autoload_real.php on line 41
