@@ -19,6 +19,21 @@ class DummyUsersSeeder extends Seeder
                 'username' => 'admin',
                 'password' => bcrypt('admin'),
                 'level' => 'admin-kejurnas'
+            ], [
+                'name' => 'Official 1',
+                'username' => 'off1',
+                'password' => bcrypt('123'),
+                'level' => 'official'
+            ], [
+                'name' => 'Official 2',
+                'username' => 'off2',
+                'password' => bcrypt('123'),
+                'level' => 'official'
+            ], [
+                'name' => 'Official 3',
+                'username' => 'off3',
+                'password' => bcrypt('123'),
+                'level' => 'official'
             ]
         ];
 

@@ -18,7 +18,8 @@ return new class extends Migration
             // $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('level',['admin-kejurnas', 'official'])->default('official');
+            $table->enum('level', ['admin-kejurnas', 'official'])->default('official');
+            $table->string('foto_official')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
