@@ -47,7 +47,7 @@
                     </a>
                 @endif
                 {{-- /official --}}
-                <a class="nav-link" href="{{ url('/') }}">
+                <a class="nav-link" href="{{ url('/logout') }}">
                     <div class="sb-nav-link-icon">
                         <i class="fas fa-sign-out-alt"></i>
                     </div>

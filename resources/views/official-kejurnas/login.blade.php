@@ -42,18 +42,26 @@
               <div class="card pt-3">
 
                 <div class="card-body">
-
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                  <form class="row g-3 needs-validation" novalidate method="POST">
+                    @csrf
                     <div class="col-12">
                       <label for="username" class="form-label">Username</label>
-                      <input type="password" name="password" class="form-control" id="username" required>
+                      <input type="test" name="username" class="form-control" id="username" value="{{ old('username') }}">
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" class="form-control" id="password" >
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
@@ -64,7 +72,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <a href="{{ url('official-kejurnas') }}" class="btn btn-warning w-100" type="submit">Login</a>
+                      <button class="btn btn-warning w-100" type="submit">Login</buttonhref=>
                     </div>
                   </form>
 

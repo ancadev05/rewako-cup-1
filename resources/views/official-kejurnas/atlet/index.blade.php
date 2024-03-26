@@ -53,7 +53,7 @@
                             <td>{{ $item->id_kontingen }}</td>
                             <td>{{ $item->nama_atlet }}</td>
                             <td class="text-center">{{ $item->jk }}</td>
-                            <td>Usia Dini</td>
+                            <td>{{ $item->id_golongan }}</td>
                             <td class="text-center">{{ $item->id_kelas_tanding }}</td>
                             <td>{{ $item->id_seni }}</td>
                             <td class="text-center"><i class="fas fa-check-circle text-success"></i></td>

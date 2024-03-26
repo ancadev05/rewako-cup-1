@@ -8,7 +8,7 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="mb-3">Dashboard</h3>
+    <h3 class="mb-3">Admin Kejurnas</h3>
 
 
 @endsection

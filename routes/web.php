@@ -5,6 +5,7 @@ use App\Http\Controllers\AtletController;
 use App\Http\Controllers\Coba;
 use App\Http\Controllers\DownloadBerkasController;
 use App\Http\Controllers\OfficialController;
+use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +20,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route Admin kejurnas
-Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->name('admin-kejurnas');
+// Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->name('admin-kejurnas');
 
-// Route Official
-Route::get('/official-kejurnas', [OfficialController::class, 'index'])->name('official-kejurnas');
-Route::resource('official-kejurnas/atlet', AtletController::class);
+// // Route Official
+// Route::get('/official-kejurnas', [OfficialController::class, 'index'])->name('official-kejurnas');
+// Route::resource('official-kejurnas/atlet', AtletController::class);
+
+// #############################
+// route sebelum login - guest
+Route::middleware(['guest'])->group(function () {
+    // route saat mau login ke aplikasi pendaftaran
+    Route::get('/rewako-cup', [SesiController::class, 'index'])->name('login');
+    Route::post('/rewako-cup', [SesiController::class, 'login']);
+});
+// route jika ada yang sudah login namun coba mengakses halaman login
+// Route::get('/home', function(){
+//     return redirect('/admin');
+// });
+
+
+// halaman yang bisa diakses setelah login
+Route::middleware(['auth'])->group(function () {
+    // halaman official
+    Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
+
+    // halaman admin kejurnas
+    Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->middleware('userAkses:admin-kejurnas');
+
+    // ketika user logout
+    Route::get('/logout', [SesiController::class, 'logout']);
+});
 
 
 
+
+// ##############################################
 // fitur coba
 Route::get('fitur', [Coba::class, 'index']);
 
@@ -34,6 +62,7 @@ Route::get('fitur', [Coba::class, 'index']);
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::get('/rewako-cup', function () {
     return view('official-kejurnas.login');
@@ -56,5 +85,3 @@ Route::controller(DownloadBerkasController::class)->group(function () {
     Route::get('download/idcard', 'idcard');
     Route::get('download/a-1', 'a1');
 });
-
-

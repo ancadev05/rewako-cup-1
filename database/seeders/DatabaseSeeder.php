@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             DummyGolongansSeeder::class,
             DummyKelasTandingsSeeder::class,
             DummyKontingensSeeder::class,
-            DummyOfficialsSeeder::class,
             DummySenisSeeder::class,
             DummyUsersSeeder::class
         ]);
