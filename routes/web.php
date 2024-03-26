@@ -6,6 +6,7 @@ use App\Http\Controllers\Coba;
 use App\Http\Controllers\DownloadBerkasController;
 use App\Http\Controllers\OfficialController;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,8 @@ Route::middleware(['auth'])->group(function () {
 
     // halaman admin kejurnas
     Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
+    Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
 
     // ketika user logout
     Route::get('/logout', [SesiController::class, 'logout']);

@@ -17,22 +17,26 @@ class DummyUsersSeeder extends Seeder
             [
                 'name' => 'Admin Kejurnas',
                 'username' => 'admin',
-                'password' => bcrypt('admin'),
+                'no_wa' => '08123456789',
+                'password' => 'admin',
                 'level' => 'admin-kejurnas'
             ], [
                 'name' => 'Official 1',
                 'username' => 'off1',
-                'password' => bcrypt('123'),
+                'no_wa' => '8123456789',
+                'password' => '123',
                 'level' => 'official'
             ], [
                 'name' => 'Official 2',
                 'username' => 'off2',
-                'password' => bcrypt('123'),
+                'no_wa' => '08123456789',
+                'password' => '123',
                 'level' => 'official'
             ], [
                 'name' => 'Official 3',
                 'username' => 'off3',
-                'password' => bcrypt('123'),
+                'no_wa' => '08123456789',
+                'password' => '123',
                 'level' => 'official'
             ]
         ];

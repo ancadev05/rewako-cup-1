@@ -4,20 +4,27 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 {{-- admin kejurnas --}}
-                @if ($username == 'admin')
-                    <a class="nav-link {{ Request::is('official-kejurnas') ? 'active' : '' }}"
-                        href="{{ url('official-kejurnas') }}">
+                @if (Auth::user()->level == 'admin-kejurnas')
+                    <a class="nav-link {{ Request::is('admin-kejurnas') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-home"></i>
                         </div>
                         Beranda
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/user') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/user') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        User
+                    </a>
                 @endif
                 {{-- /admin kejurnas --}}
+
                 {{-- official --}}
-                @if ($username == 'off1')
-                    <a class="nav-link {{ Request::is('official') ? 'active' : '' }}"
-                        href="{{ url('official') }}">
+                @if (Auth::user()->level == 'official')
+                    <a class="nav-link {{ Request::is('official') ? 'active' : '' }}" href="{{ url('official') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-home"></i>
                         </div>
@@ -47,6 +54,7 @@
                     </a>
                 @endif
                 {{-- /official --}}
+
                 <a class="nav-link" href="{{ url('/logout') }}">
                     <div class="sb-nav-link-icon">
                         <i class="fas fa-sign-out-alt"></i>
