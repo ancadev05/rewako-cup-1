@@ -16,23 +16,23 @@
                 {{-- /admin kejurnas --}}
                 {{-- official --}}
                 @if ($username == 'off1')
-                    <a class="nav-link {{ Request::is('official-kejurnas') ? 'active' : '' }}"
-                        href="{{ url('official-kejurnas') }}">
+                    <a class="nav-link {{ Request::is('official') ? 'active' : '' }}"
+                        href="{{ url('official') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-home"></i>
                         </div>
                         Beranda
                     </a>
-                    <a class="nav-link {{ Request::is('atlet') ? 'official-kejurnas/atlet' : '' }}"
-                        href="{{ url('official-kejurnas/atlet') }}">
+                    <a class="nav-link {{ Request::is('official/atlet') ? 'active' : '' }}"
+                        href="{{ url('official/atlet') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-running"></i>
                         </div>
                         Atlet
                     </a>
 
-                    <a class="nav-link {{ Request::is('download/berkas') ? 'active' : '' }}"
-                        href="{{ url('/download/berkas') }}">
+                    <a class="nav-link {{ Request::is('official/download') ? 'active' : '' }}"
+                        href="{{ url('official/download') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-download"></i>
                         </div>

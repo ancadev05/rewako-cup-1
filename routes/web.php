@@ -44,6 +44,8 @@ Route::get('/home', function(){
 Route::middleware(['auth'])->group(function () {
     // halaman official
     Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
+    Route::get('/official/atlet', [OfficialController::class, 'atlet'])->middleware('userAkses:official');
+    Route::get('/official/download', [OfficialController::class, 'download'])->middleware('userAkses:official');
 
     // halaman admin kejurnas
     Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->middleware('userAkses:admin-kejurnas');
@@ -79,10 +81,10 @@ Route::middleware(['auth'])->group(function () {
 
 // Download berkas
 // Route::get('download/berkas', [DownloadBerkasController::class, 'index']);
-// Group route download berkas
-Route::controller(DownloadBerkasController::class)->group(function () {
-    Route::get('download/berkas', 'index');
-    Route::get('download/kwitansi', 'kwitansi');
-    Route::get('download/idcard', 'idcard');
-    Route::get('download/a-1', 'a1');
-});
+// // Group route download berkas
+// Route::controller(DownloadBerkasController::class)->group(function () {
+//     Route::get('download/berkas', 'index');
+//     Route::get('download/kwitansi', 'kwitansi');
+//     Route::get('download/idcard', 'idcard');
+//     Route::get('download/a-1', 'a1');
+// });

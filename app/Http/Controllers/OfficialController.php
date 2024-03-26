@@ -94,4 +94,13 @@ class OfficialController extends Controller
 
         return view('official-kejurnas.dashboard')->with('data', $data);
     }
+
+    public function atlet(){
+        $atlet = Atlet::get();
+        return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
+    }
+
+    public function download(){
+        return view('official-kejurnas.download-berkas.index');
+    }
 }
