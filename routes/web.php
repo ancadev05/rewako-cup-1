@@ -28,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('official-kejurnas/atlet', AtletController::class);
 
 // #############################
+// Route::get('/', function(){
+//     return redirect()
+// });
+
 // route sebelum login - guest
 Route::middleware(['guest'])->group(function () {
     // route saat mau login ke aplikasi pendaftaran
@@ -35,10 +39,10 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [SesiController::class, 'login']);
 });
 // route jika ada yang sudah login namun coba mengakses halaman login
-Route::get('/home', function(){
+// Route::get('/home', function(){
 
-    return redirect('/admin');
-});
+//     return redirect('/admin');
+// });
 
 
 // halaman yang bisa diakses setelah login
