@@ -81,7 +81,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="container position-relative bg-primary" data-aos="fade-in">
-          <img src="{{ asset('tema-landing-page/assets/img/Untitled-1.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100" width="100%">
+          <img src="{{ asset('storage/img-web/Untitled-1.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100" width="100%">
     </div>
   </section>
   <!-- End Hero Section -->
