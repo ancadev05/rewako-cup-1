@@ -10,8 +10,9 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('tema-landing-page/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('tema-landing-page/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link rel="shortcut icon" href="{{ asset('storage/img-web/ts.png') }}" type="image/x-icon">
+  {{-- <link href="{{ asset('tema-landing-page/assets/img/favicon.png')}}" rel="icon">
+  <link href="{{ asset('tema-landing-page/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> --}}
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('tema-landing-page/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -79,13 +80,32 @@
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero">
-    <div class="container position-relative bg-primary" data-aos="fade-in">
-          <img src="{{ asset('storage/img-web/kejurda.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100" width="100%">
+  <section id="hero" class="hero bg-success">
+    <div class="container position-relative" data-aos="fade-in">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="{{ asset('storage/img-web/kejurda.png')}}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="{{ asset('storage/img-web/ukt-limbung.png')}}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </section>
   <!-- End Hero Section -->
-
+  {{-- <img src="{{ asset('storage/img-web/kejurda.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100" width="100%"> --}}
+  
+  {{-- main --}}
   <main id="main">
     <section class="sections-bg d-flex flex-column justify-content-center align-items-center">
       <h5 class="d-block text-center">Silahkan registrasi untuk mendapatkan username dan password!</h4>

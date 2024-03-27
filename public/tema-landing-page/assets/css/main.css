@@ -38,7 +38,6 @@
 body {
   font-family: var(--font-default);
   color: var(--color-default);
-  background-color: var(--color-body);
 }
 
 a {
@@ -501,7 +500,7 @@ section {
     inset: 0;
     padding: 50px 0 10px 0;
     margin: 0;
-    background: rgba(0, 131, 116, 0.9);
+    background: var(--color-secondary);
     overflow-y: auto;
     transition: 0.3s;
     z-index: 9998;
@@ -1871,9 +1870,9 @@ section {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  position: relative;
+  /* position: relative; */
   background: var(--color-primary);
-  padding: 60px 0 0 0;
+  padding: 10px;
 }
 
 @media (min-width: 1365px) {
