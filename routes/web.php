@@ -32,6 +32,9 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+// route registrasi
+Route::post('/', [UserController::class, 'registrasi']);
+
 // route sebelum login - guest
 Route::middleware(['guest'])->group(function () {
     // route saat mau login ke aplikasi pendaftaran

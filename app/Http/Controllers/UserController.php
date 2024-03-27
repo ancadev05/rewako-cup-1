@@ -22,7 +22,8 @@ class UserController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required'
+                'name' => 'required',
+                'no_wa' => 'required'
             ]
         );
 
@@ -39,5 +40,31 @@ class UserController extends Controller
         User::create($user);
 
         return redirect()->to('admin-kejurnas/user')->with('success', 'Data berhasil ditambahkan');
+    }
+
+    public function registrasi(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'no_wa' => 'required'
+            ]
+        );
+
+        $user = [
+            'name' => $request->name,
+            'no_wa' => $request->no_wa,
+            'alamat' => $request->alamat,
+            'kontingen' => $request->kontingen,
+            'level' => 'official',
+            'username' => 'rwk-' . date('ndhis'),
+            'password' => 'rwk-' . date('ndhis'),
+        ];
+
+        User::create($user);
+
+        dd('oko');
+
+        // return redirect()->to('/login');
     }
 }
