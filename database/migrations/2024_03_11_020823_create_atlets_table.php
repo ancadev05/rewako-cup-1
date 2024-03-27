@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tgl_lahir');
             $table->string('jk');
             // $table->string('angka');
+            $table->string('id_username_official');
             $table->string('id_golongan');
             $table->string('id_kontingen');
             $table->string('id_kelas_tanding');

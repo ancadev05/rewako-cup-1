@@ -21,6 +21,7 @@ class AtletFactory extends Factory
             'tempat_lahir' => $this->faker->address(),
             'tgl_lahir' => $this->faker->date(),
             'jk' => $this->faker->randomElement(['PA', 'PI']),
+            'id_username_official' => $this->faker->randomElement(['off1','off2','off3']),
             'id_golongan' => $this->faker->randomElement(['Pra Usia Dini', 'Usia Dini', 'Pra Remaja', 'Remaja', 'Dewasa', 'Master']),
             'id_kontingen' => $this->faker->randomElement(['Gowa A', 'Gowa B', 'Takalar']),
             'id_kelas_tanding' => $this->faker->randomElement(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']),

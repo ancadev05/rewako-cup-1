@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atlet;
+use App\Models\Kontingen;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\ViewController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OfficialController extends Controller
@@ -96,7 +99,13 @@ class OfficialController extends Controller
     }
 
     public function atlet(){
-        $atlet = Atlet::get();
+
+        $username = Auth::user()->username; // nama user sesuai username yang login
+        $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
+        // $atlet = DB::table('atlets')->where('id_kontingen', $kontingen)->get();
+        // dd($atlet);
+
+
         return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
     }
 

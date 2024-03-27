@@ -28,9 +28,9 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('official-kejurnas/atlet', AtletController::class);
 
 // #############################
-// Route::get('/', function(){
-//     return redirect()
-// });
+Route::get('/', function(){
+    return view('welcome');
+});
 
 // route sebelum login - guest
 Route::middleware(['guest'])->group(function () {
