@@ -314,10 +314,10 @@ section {
 }
 
 .header .logo h1 {
-  font-size: 30px;
+  /* font-size: 30px; */
   margin: 0;
   font-weight: 600;
-  letter-spacing: 0.8px;
+  /* letter-spacing: 0.8px; */
   color: #fff;
   font-family: var(--font-primary);
 }
@@ -1870,9 +1870,9 @@ section {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  /* position: relative; */
+  position: relative;
   background: var(--color-primary);
-  padding: 10px;
+  padding: 5cap;
 }
 
 @media (min-width: 1365px) {

@@ -39,9 +39,9 @@
   <header id="header" class="header d-flex align-items-center border-bottom border-5 border-warning">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="#" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="{{ asset('storage/img-web/ts.png') }}" alt="">
         <h1>TAPAK SUCI 177 GOWA</h1>
       </a>
       <nav id="navbar" class="navbar">
@@ -80,7 +80,7 @@
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero bg-success">
+  <section id="hero" class="hero">
     <div class="container position-relative" data-aos="fade-in">
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
