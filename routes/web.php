@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
-    Route::post('/admin-kejurnas/atlet', [AdminKejurnasController::class, 'atlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/atlet', [AdminKejurnasController::class, 'atlet'])->middleware('userAkses:admin-kejurnas');
 
     // ketika user logout
     Route::get('/logout', [SesiController::class, 'logout']);
