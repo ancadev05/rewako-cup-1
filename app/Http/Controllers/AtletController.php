@@ -21,7 +21,7 @@ class AtletController extends Controller
      */
     public function create()
     {
-        //
+        return view('official-kejurnas.atlet.atlet-tambah');
     }
 
     /**

@@ -16,7 +16,7 @@
                 <table class="table table-borderless">
                     <tr>
                         <td width="25%"><label for="nama_atlet">Nama Atlet</label></td>
-                        <td><input class="form-control" type="text" name="nama_atlet" id="nama_atlet"></td>
+                        <td><input class="form-control" type="text" name="nama_atlet" id="nama_atlet" value="{{ old('nama_atlet') }}"></td>
                     </tr>
                     <tr>
                         <td><label for="tempat_lahir">Tempat Lahir</label></td>

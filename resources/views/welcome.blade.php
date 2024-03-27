@@ -120,8 +120,8 @@
 
         <section>
             <div class="container" data-aos="fade-up">
-              <div class="row">
-                <img src="{{ asset('storage/img-web/null.png') }}" class="col-12" alt="..." width="">
+              <div class="">
+                <img src="{{ asset('storage/img-web/null.png') }}" class="" alt="..." height="400px">
               </div>
             </div>
         </section>

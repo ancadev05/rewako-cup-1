@@ -25,7 +25,7 @@
     </div>
 
     <div class="mb-2 d-flex justify-content-end">
-        <a href="{{ url('/atlet/atlet-tambah') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
+        <a href="{{ url('/official/atlet-tambah') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
                 class="fa fa-plus ms-2"></i></a>
     </div>
 
