@@ -53,8 +53,10 @@ Route::middleware(['auth'])->group(function () {
     // halaman official
     Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
     Route::get('/official/atlet', [OfficialController::class, 'atlet'])->middleware('userAkses:official');
-    Route::get('/official/atlet-tambah', [AtletController::class, 'create'])->middleware('userAkses:official');
     Route::get('/official/download', [OfficialController::class, 'download'])->middleware('userAkses:official');
+    Route::get('/official/atlet-tambah', [AtletController::class, 'create'])->middleware('userAkses:official');
+    Route::post('/official/atlet', [AtletController::class, 'store'])->middleware('userAkses:official');
+
 
     // halaman admin kejurnas
     Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->middleware('userAkses:admin-kejurnas');

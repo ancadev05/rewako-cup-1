@@ -8,21 +8,8 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="mb-3">Daftar Atlet</h3>
-
-    <div>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>No</td>
-                        <td>Nama Kontingen</td>
-                        <td>Alamat</td>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
+    <h3 class="">Daftar Atlet</h3>
+    <h5>Kontingen : Gowa A</h5>
 
     <div class="mb-2 d-flex justify-content-end">
         <a href="{{ url('/official/atlet-tambah') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
@@ -35,7 +22,6 @@
                 <thead class="text-center ">
                     <tr>
                         <th>No</th>
-                        <th>Nama Kontingen</th>
                         <th>Nama Atlet</th>
                         <th>JK</th>
                         <th>Golongan</th>
@@ -46,11 +32,13 @@
                     </tr>
                 </thead>
 
+                
+
                 <tbody>
+                    <?php $i=1;?>
                     @foreach ($atlet as $item)
                         <tr>
-                            <td class="text-center">1</td>
-                            <td>{{ $item->id_kontingen }}</td>
+                            <td class="text-center">{{ $i }}</td>
                             <td>{{ $item->nama_atlet }}</td>
                             <td class="text-center">{{ $item->jk }}</td>
                             <td>{{ $item->id_golongan }}</td>
@@ -62,6 +50,7 @@
                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
+                        {{ $i++ }}
                     @endforeach
 
                 </tbody>

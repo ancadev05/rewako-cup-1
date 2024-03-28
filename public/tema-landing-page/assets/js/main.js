@@ -290,4 +290,14 @@ document.addEventListener('DOMContentLoaded', () => {
     aos_init();
   });
 
+  // halaman regisstrasi
+  function kirim(){
+    // let nama = document.getElementById('name').value;
+    // console.log(nama)
+    alert('ok');
+  }
+
+
+
 });
+

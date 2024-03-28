@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Impact Bootstrap Template - Index</title>
+    <title>Tapak Suci 177 Gowa</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -82,8 +82,10 @@
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero">
-        <div class="container position-relative" data-aos="fade-in">
+    {{-- <section id="hero" class="hero"> --}}
+    <section>
+        {{-- <div class="container position-relative" data-aos="fade-in"> --}}
+        <div data-aos="fade-in">
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2000">
@@ -116,13 +118,15 @@
                 <button class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#tambahUser">
                     << REGISTRASI>>
                 </button>
+                <button type="button" class="btn btn-warning" id="coba" onclick="kirim()">coba</button>
         </section>
 
         <section>
             <div class="container" data-aos="fade-up">
-              <div class="">
-                <img src="{{ asset('storage/img-web/null.png') }}" class="" alt="..." height="400px">
-              </div>
+                <div class="">
+                    <img src="{{ asset('storage/img-web/null.png') }}" class="" alt="..."
+                        height="400px">
+                </div>
             </div>
         </section>
 
@@ -494,7 +498,7 @@
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-    <!-- <div id="preloader"></div> -->
+    <div id="preloader"></div>
 
     <!-- Button trigger modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -550,6 +554,7 @@
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
+                    <button class="btn btn-warning" id="coba" onclick="kirim()">coba</button>
                 </div>
             </div>
         </div>
@@ -567,6 +572,14 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('tema-landing-page/assets/js/main.js') }}"></script>
+
+    <script>
+        function kirim() {
+            let nama = document.getElementById('name').value;
+            console.log(nama)
+            alert('ok' + nama);
+        }
+    </script>
 
 </body>
 

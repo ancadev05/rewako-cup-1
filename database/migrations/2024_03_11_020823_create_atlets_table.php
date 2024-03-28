@@ -21,10 +21,11 @@ return new class extends Migration
             $table->string('jk');
             // $table->string('angka');
             $table->string('id_username_official');
-            $table->string('id_golongan');
-            $table->string('id_kontingen');
-            $table->string('id_kelas_tanding');
-            $table->string('id_seni');
+            $table->string('golongan');
+            $table->string('kontingen');
+            $table->integer('berat_badan');
+            $table->string('kelas_tanding');
+            $table->string('seni');
             // $table->foreign('id_golongan')->on('golongans')->references('id');
             // $table->foreign('id_kontingen')->on('kontingens')->references('id');
             // $table->foreign('id_kelas_tanding')->on('kelas_tandings')->references('id');

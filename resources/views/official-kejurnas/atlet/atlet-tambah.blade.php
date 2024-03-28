@@ -11,20 +11,39 @@
     <h3 class="border-bottom border-2 mb-3">Tambah Atlet</h3>
 
     <div class="rounded shadow p-2 border">
-        <form action="">
+        <form action="{{ url('official/atlet') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="table-responsive mb-3">
                 <table class="table table-borderless">
                     <tr>
                         <td width="25%"><label for="nama_atlet">Nama Atlet</label></td>
-                        <td><input class="form-control" type="text" name="nama_atlet" id="nama_atlet" value="{{ old('nama_atlet') }}"></td>
+                        <td>
+                            <input class="form-control @error('nama_atlet') is-invalid @enderror" type="text"
+                                name="nama_atlet" id="nama_atlet" value="{{ old('nama_atlet') }}">
+                            @error('nama_atlet')
+                                <small class="invalid-feedback"> {{ $message }} </small>
+                            @enderror
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="tempat_lahir">Tempat Lahir</label></td>
-                        <td><input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir"></td>
+                        <td>
+                            <input class="form-control @error('tempat_lahir') is-invalid @enderror" type="text"
+                                name="tempat_lahir" id="tempat_lahir" value="{{ old('tempat_lahir') }}">
+                            @error('tempat_lahir')
+                                <small class="invalid-feedback"> {{ $message }} </small>
+                            @enderror
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="tgl_lahir">Tanggal Lahir</label></td>
-                        <td><input class="form-control" type="date" name="tgl_lahir" id="tgl_lahir"></td>
+                        <td>
+                            <input class="form-control @error('tgl_lahir') is-invalid @enderror" type="date"
+                                name="tgl_lahir" id="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                            @error('tgl_lahir')
+                                <small class="invalid-feedback"> {{ $message }} </small>
+                            @enderror
+                        </td>
                     </tr>
                     <tr>
                         <td></td>
@@ -36,20 +55,25 @@
                             <label for="golongan">Golongan</label>
                         </td>
                         <td>
-                            <input class="form-control" type="text" name="golongan" id="golongan" disabled>
+                            <input class="form-control @error('golongan') is-invalid @enderror" type="text"
+                                name="golongan" id="golongan" disabled>
                             <small style="font-size: 12px; color:red;" id="hitung"></small>
+                            @error('golongan')
+                                <small class="invalid-feedback"> {{ 'tekan tombol <b>Cek Usia</b> untuk mengetahui golongan' }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
                         <td class=""><label for="jk">Jenis Kelamin</label></td>
                         <td>
                             <div class="d-flex">
-                                <div class="form-check me-3">
+                                <div class="form-check me-3 @error('jk') is-invalid @enderror">
                                     <input class="form-check-input" type="radio" name="jk" id="jk1"
                                         value="PA">
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
-                                <div class="form-check">
+                                <div class="form-check @error('jk') is-invalid @enderror">
                                     <input class="form-check-input" type="radio" name="jk" id="jk2"
                                         value="PI">
                                     <label class="form-check-label" for="jk2">Perempuan</label>
@@ -57,7 +81,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td><label for="kontingen">Kontingen</label></td>
                         <td>
                             <select class="form-select">
@@ -67,19 +91,25 @@
                                 <option value="3">Kontingen 3</option>
                             </select>
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td colspan="2">
                             <div class="my-3"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="border-bottom border-1">Kategori Tanding :</td>
+                        <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
                     <tr>
                         <td><label for="bb">Berat Badan</label></td>
-                        <td><input class="form-control" type="number" name="bb" id="bb"
-                                placeholder="isi berupa angka saja"></td>
+                        <td>
+                            <input class="form-control @error('bb') is-invalid @enderror" type="number" name="bb"
+                                id="bb" placeholder="isi berupa angka saja">
+                            @error('bb')
+                                <small class="invalid-feedback"> {{ 'tekan tombol <b>Cek Usia</b> untuk mengetahui golongan' }}
+                                </small>
+                            @enderror
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="kelas">Kelas</label></td>
@@ -108,7 +138,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="border-bottom border-1">Kategori Seni :</td>
+                        <td colspan="2" class="border-bottom border-1"><b>Kategori Seni :</b></td>
                     </tr>
                     <tr>
                         <td><label for="seni">Seni</label></td>
@@ -132,7 +162,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="border-bottom border-1">Upload Berkas</td>
+                        <td colspan="2" class="border-bottom border-1"><b>Upload Berkas</b></td>
                     </tr>
                     <tr>
                         <td><label class=" form-label" for="foto">Foto Atlet</label></td>
@@ -177,7 +207,7 @@
 
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
-                <button class="btn btn-sm btn-primary me-2">Tambah</button>
+                <button type="submit" class="btn btn-sm btn-primary me-2">Tambah</button>
                 <a href="{{ url('/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
             </div>
         </form>
