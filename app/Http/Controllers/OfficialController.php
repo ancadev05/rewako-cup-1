@@ -15,6 +15,9 @@ class OfficialController extends Controller
     public function index()
     {
         $atlet = Atlet::get();
+        $username = Auth::user()->username;
+        $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+        $kontingen = $carikontingen->nama_kontingen;
 
         function format_uang($angka)
         {
@@ -22,7 +25,6 @@ class OfficialController extends Controller
         }
 
         // kontingen
-        $kontingen = 'Gowa B';
 
         // berdasar kontingen
         // $takalar = DB::table('atlets')->where('kontingen', $kontingen)->get();

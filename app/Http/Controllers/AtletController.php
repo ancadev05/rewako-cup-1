@@ -31,46 +31,86 @@ class AtletController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $username = Auth::user()->username;
-        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get();
+        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
 
-        $request->validate(
-            [
-                'nama_atlet' => 'required',
-                'tempat_lahir' => 'required',
-                'tgl_lahir' => 'required',
-                'jk' => 'required',
-                'id_username_official' => 'required',
-                'golongan' =>  'required',
-                'berat_badan' =>  'required',
-                'kelas_tanding' => 'required',
-                'seni' => 'required',
-                'foto_atlet' => 'required',
-                'akte' => 'required',
-            ],
-            [
-                'nama_atlet' => 'wajib diisi*',
-                'tempat_lahir' => 'wajib diisi*',
-                'tgl_lahir' => 'wajib diisi*',
-                'id_username_official' => 'wajib diisi*',
-                'golongan' => 'wajib diisi*',
-                'kontingen' => 'wajib diisi*',
-                'kelas_tanding' => 'wajib diisi*',
-                'seni' => 'wajib diisi*',
-                'foto_atlet' => 'wajib diisi*',
-                'akte' => 'wajib diisi*',
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'nama_atlet' => 'required',
+        //         'tempat_lahir' => 'required',
+        //         'tgl_lahir' => 'required',
+        //         'jk' => 'required',
+        //         'id_username_official' => 'required',
+        //         'golongan' =>  'required',
+        //         'berat_badan' =>  'required',
+        //         'kelas_tanding' => 'required',
+        //         'seni' => 'required',
+        //         'foto_atlet' => 'required',
+        //         'akte' => 'required',
+        //     ],
+        //     [
+        //         'nama_atlet' => 'wajib diisi*',
+        //         'tempat_lahir' => 'wajib diisi*',
+        //         'tgl_lahir' => 'wajib diisi*',
+        //         'id_username_official' => 'wajib diisi*',
+        //         'golongan' => 'wajib diisi*',
+        //         'kontingen' => 'wajib diisi*',
+        //         'kelas_tanding' => 'wajib diisi*',
+        //         'seni' => 'wajib diisi*',
+        //         'foto_atlet' => 'wajib diisi*',
+        //         'akte' => 'wajib diisi*',
+        //     ]
+        // );
 
         $foto = false;
         // Jika user upload foto
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('foto_atlet')) {
 
             // Validasi gambar
-            $foto_file = $request->file('foto'); // mengambil file dari form
+            $foto_file = $request->file('foto_atlet'); // mengambil file dari form
             $foto = date('ymdhis') . '.' . $foto_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
             $foto_file->storeAs('public/foto-atlet/', $foto); // memindahkan file ke folder public agar bisa diakses
+        }
+
+        $akte = false;
+        // Jika user upload akte
+        if ($request->hasFile('akte')) {
+
+            // Validasi gambar
+            $akte_file = $request->file('akte'); // mengambil file dari form
+            $akte = date('ymdhis') . '.' . $akte_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+            $akte_file->storeAs('public/akte/', $akte); // memindahkan file ke folder public agar bisa diakses
+        }
+
+        $rekomendasi = false;
+        // Jika user upload surat rekoomendasi
+        if ($request->hasFile('rekomendasi')) {
+
+            // Validasi gambar
+            $rekomendasi_file = $request->file('rekomendasi'); // mengambil file dari form
+            $rekomendasi = date('ymdhis') . '.' . $rekomendasi_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+            $rekomendasi_file->storeAs('public/rekomendasi/', $rekomendasi); // memindahkan file ke folder public agar bisa diakses
+        }
+
+        $suket_izin = false;
+        // Jika user upload suket izin
+        if ($request->hasFile('suket_izin')) {
+
+            // Validasi gambar
+            $suket_izin_file = $request->file('suket_izin'); // mengambil file dari form
+            $suket_izin = date('ymdhis') . '.' . $suket_izin_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+            $suket_izin_file->storeAs('public/suket-izin/', $suket_izin); // memindahkan file ke folder public agar bisa diakses
+        }
+
+        $suket_sehat = false;
+        // Jika user upload suket sehat
+        if ($request->hasFile('suket_sehat')) {
+
+            // Validasi gambar
+            $suket_sehat_file = $request->file('suket_sehat'); // mengambil file dari form
+            $suket_sehat = date('ymdhis') . '.' . $suket_sehat_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+            $suket_sehat_file->storeAs('public/suket-sehat/', $suket_sehat); // memindahkan file ke folder public agar bisa diakses
         }
 
         $atlet = [
@@ -78,19 +118,20 @@ class AtletController extends Controller
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
-            'id_username_official' => $request->id_username_official,
+            'id_username_official' => $username,
             'golongan' => $request->golongan,
-            'kontingen' => $kontingen,
+            'kontingen' => $kontingen->nama_kontingen,
             'berat_badan' => $request->berat_badan,
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
             'foto_atlet' => $foto,
-            'akte' => $request->akte,
-            'rekomendasi' => $request->rekomendasi,
-            'izin_orangtua' => $request->izin_orangtua,
-            'suket_sehat' => $request->suket_sehat
+            'akte' => $akte,
+            'rekomendasi' => $rekomendasi,
+            'izin_orangtua' => $suket_izin,
+            'suket_sehat' => $suket_sehat
         ];
 
+        // dd($atlet);
         Atlet::create($atlet);
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil ditambahkan');

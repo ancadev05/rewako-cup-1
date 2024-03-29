@@ -53,12 +53,6 @@
                         Download
                     </a>
 
-                    <a class="nav-link {{ Request::is('/fitur') ? 'active' : '' }}" href="{{ url('/fitur') }}">
-                        <div class="sb-nav-link-icon">
-                            <i class=""></i>
-                        </div>
-                        Fitur
-                    </a>
                 @endif
                 {{-- /official --}}
 

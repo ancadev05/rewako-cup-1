@@ -9,7 +9,7 @@
 {{-- konten --}}
 @section('konten')
     <h3 class="">Daftar Atlet</h3>
-    <h5>Kontingen : Gowa A</h5>
+    <h5>Kontingen : {{ Gowa A }}</h5>
 
     <div class="mb-2 d-flex justify-content-end">
         <a href="{{ url('/official/atlet-tambah') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
