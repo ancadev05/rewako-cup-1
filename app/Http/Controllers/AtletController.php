@@ -33,7 +33,6 @@ class AtletController extends Controller
     {
 
         $username = Auth::user()->username;
-
         $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get();
 
         $request->validate(

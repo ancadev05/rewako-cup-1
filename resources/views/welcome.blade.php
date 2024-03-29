@@ -42,7 +42,7 @@
             <a href="#" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <img src="{{ asset('storage/img-web/ts.png') }}" alt="">
-                <h1>TAPAK SUCI 177 GOWA</h1>
+                <span style="color: white; font-weight: bold; font-size: ">TAPAK SUCI 177 GOWA</span>
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
@@ -83,7 +83,7 @@
 
     <!-- ======= Hero Section ======= -->
     {{-- <section id="hero" class="hero"> --}}
-    <section>
+    <div>
         {{-- <div class="container position-relative" data-aos="fade-in"> --}}
         <div data-aos="fade-in">
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -115,17 +115,18 @@
     <main id="main">
         <section class="sections-bg d-flex flex-column justify-content-center align-items-center">
             <h5 class="d-block text-center">Silahkan registrasi untuk mendapatkan username dan password!</h4>
-                <button class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#tambahUser">
+                {{-- <button class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#tambahUser">
                     << REGISTRASI>>
-                </button>
-                <button type="button" class="btn btn-warning" id="coba" onclick="kirim()">coba</button>
+                </button> --}}
+                <a href="https://wa.wizard.id/08f913" target="_blank" class="btn btn-danger btn-lg">REGISTRASI</a>
+                {{-- <button type="button" class="btn btn-warning" id="coba" onclick="kirim()">coba</button> --}}
         </section>
 
         <section>
             <div class="container" data-aos="fade-up">
                 <div class="">
                     <img src="{{ asset('storage/img-web/null.png') }}" class="" alt="..."
-                        height="400px">
+                        width="100%">
                 </div>
             </div>
         </section>
