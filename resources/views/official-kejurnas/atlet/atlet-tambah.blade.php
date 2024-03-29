@@ -59,7 +59,7 @@
                                 name="golongan" id="golongan" readonly>
                             <small style="font-size: 12px; color:red;" id="hitung"></small>
                             @error('golongan')
-                                <small class="invalid-feedback"> {{ 'tekan tombol <b>Cek Usia</b> untuk mengetahui golongan' }}
+                                <small class="invalid-feedback"> {{ 'tekan tombol Cek Usia untuk mengetahui golongan' }}
                                 </small>
                             @enderror
                         </td>
@@ -68,16 +68,19 @@
                         <td class=""><label for="jk">Jenis Kelamin</label></td>
                         <td>
                             <div class="d-flex">
-                                <div class="form-check me-3 @error('jk') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="jk" id="jk1"
-                                        value="PA">
+                                <div class="form-check me-3">
+                                    <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
+                                        name="jk" id="jk1" value="PA">
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
-                                <div class="form-check @error('jk') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="jk" id="jk2"
-                                        value="PI">
+                                <div class="form-check">
+                                    <input class="form-check-input @error('jk') is-invalid @enderror"" type="radio"
+                                        name="jk" id="jk2" value="PI">
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
+                                @error('jk')
+                                    <small class="invalid-feedback"> {{ $message }} </small>
+                                @enderror
                             </div>
                         </td>
                     </tr>
@@ -101,20 +104,21 @@
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
                     <tr>
-                        <td><label for="bb">Berat Badan</label></td>
+                        <td><label for="berat_badan">Berat Badan</label></td>
                         <td>
-                            <input class="form-control @error('bb') is-invalid @enderror" type="number" name="bb"
-                                id="bb" placeholder="isi berupa angka saja">
-                            @error('bb')
-                                <small class="invalid-feedback"> {{ 'tekan tombol <b>Cek Usia</b> untuk mengetahui golongan' }}
+                            <input class="form-control @error('berat_badan') is-invalid @enderror" type="number"
+                                name="berat_badan" id="berat_badan" placeholder="isi berupa angka saja">
+                            @error('berat_badan')
+                                <small class="invalid-feedback"> {{ $message }}
                                 </small>
                             @enderror
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="kelas">Kelas</label></td>
+                        <td><label for="kelas_tanding">Kelas</label></td>
                         <td>
-                            <select class="form-select" name="kelas" id="kelas">
+                            <select class="form-select @error('kelas_tanding') is-invalid @enderror" name="kelas_tanding"
+                                id="kelas_tanding">
                                 <option value="">-- Pilih Kelas --</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
@@ -130,6 +134,10 @@
                                 <option value="L">L</option>
                                 <option value="M">M</option>
                             </select>
+                            @error('kelas_tanding')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
@@ -143,7 +151,7 @@
                     <tr>
                         <td><label for="seni">Seni</label></td>
                         <td>
-                            <select class="form-select" name="seni" id="seni">
+                            <select class="form-select @error('seni') is-invalid @enderror" name="seni" id="seni">
                                 <option value="">-- Pilih Kategori --</option>
                                 <option value="Tunggal Tangan Kosong">Tunggal Tangan Kosong</option>
                                 <option value="Tunggal Bersenjata">Tunggal Bersenjata</option>
@@ -153,6 +161,10 @@
                                 </option>
                                 <option value="Trio">Trio</option>
                             </select>
+                            @error('seni')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     {{-- Upload Berkas --}}
@@ -165,36 +177,58 @@
                         <td colspan="2" class="border-bottom border-1"><b>Upload Berkas</b></td>
                     </tr>
                     <tr>
-                        <td><label class=" form-label" for="foto">Foto Atlet</label></td>
+                        <td><label class=" form-label" for="foto_atlet">Foto Atlet</label></td>
                         <td>
-                            <input class=" form-control form-control-sm" type="file" name="foto" id="foto">
+                            <input class=" form-control form-control-sm @error('foto_atlet') is-invalid @enderror"
+                                type="file" name="foto_atlet" id="foto_atlet">
+                            @error('foto_atlet')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
                         <td><label class=" form-label" for="akte">Akte</label></td>
                         <td>
-                            <input class=" form-control form-control-sm" type="file" name="akte" id="akte">
+                            <input class=" form-control form-control-sm @error('akte') is-invalid @enderror"
+                                type="file" name="akte" id="akte">
+                            @error('akte')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
                         <td><label class=" form-label" for="rekomendasi">Rekomendasi</label></td>
                         <td>
-                            <input class=" form-control form-control-sm" type="file" name="rekomendasi"
-                                id="rekomendasi">
+                            <input class=" form-control form-control-sm @error('rekomendasi') is-invalid @enderror"
+                                type="file" name="rekomendasi" id="rekomendasi">
+                            @error('rekomendasi')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
                         <td><label class="form-label" for="suket_izin">Surat Izin dan Pernyataan Orang Tua</label></td>
                         <td>
-                            <input class="form-control form-control-sm" type="file" name="suket_izin"
-                                id="suket_izin">
+                            <input class="form-control form-control-sm @error('suket_izin') is-invalid @enderror"
+                                type="file" name="suket_izin" id="suket_izin">
+                            @error('suket_izin')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                     <tr>
                         <td><label class="form-label" for="suket_sehat">Suket Sehat</label></td>
                         <td>
-                            <input class="form-control form-control-sm" type="file" name="suket_sehat"
-                                id="suket_sehat">
+                            <input class="form-control form-control-sm @error('suket_sehat') is-invalid @enderror"
+                                type="file" name="suket_sehat" id="suket_sehat">
+                            @error('suket_sehat')
+                                <small class="invalid-feedback"> {{ $message }}
+                                </small>
+                            @enderror
                         </td>
                     </tr>
                 </table>

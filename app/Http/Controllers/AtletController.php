@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Atlet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AtletController extends Controller
 {
@@ -30,6 +32,10 @@ class AtletController extends Controller
     public function store(Request $request)
     {
 
+        $username = Auth::user()->username;
+
+        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get();
+
         $request->validate(
             [
                 'nama_atlet' => 'required',
@@ -37,12 +43,14 @@ class AtletController extends Controller
                 'tgl_lahir' => 'required',
                 'jk' => 'required',
                 'id_username_official' => 'required',
-                'golongan' => 'required',
+                'golongan' =>  'required',
+                'berat_badan' =>  'required',
                 'kelas_tanding' => 'required',
                 'seni' => 'required',
                 'foto_atlet' => 'required',
                 'akte' => 'required',
-            ],[
+            ],
+            [
                 'nama_atlet' => 'wajib diisi*',
                 'tempat_lahir' => 'wajib diisi*',
                 'tgl_lahir' => 'wajib diisi*',
@@ -72,11 +80,16 @@ class AtletController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
             'id_username_official' => $request->id_username_official,
-            'golongan' => $request->id_golongan,
-            'kontingen' => $request->id_kontingen,
-            'kelas_tanding' => $request->id_kelas_tanding,
-            'seni' => $request->id_seni,
-            'foto_atlet' => $foto
+            'golongan' => $request->golongan,
+            'kontingen' => $kontingen,
+            'berat_badan' => $request->berat_badan,
+            'kelas_tanding' => $request->kelas_tanding,
+            'seni' => $request->seni,
+            'foto_atlet' => $foto,
+            'akte' => $request->akte,
+            'rekomendasi' => $request->rekomendasi,
+            'izin_orangtua' => $request->izin_orangtua,
+            'suket_sehat' => $request->suket_sehat
         ];
 
         Atlet::create($atlet);

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Atlet;
+use Database\Factories\GowaFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,5 +31,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Atlet::factory(20)->create();
+        
     }
 }
