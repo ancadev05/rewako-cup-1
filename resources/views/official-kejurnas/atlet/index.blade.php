@@ -9,9 +9,9 @@
 {{-- konten --}}
 @section('konten')
     <h3 class="">Daftar Atlet</h3>
-    {{-- @if (Auth::user()->level == 'official') --}}
+    @if (Auth::user()->level == 'official')
         <h5>Kontingen : {{ $kontingen}}</h5>
-    {{-- @endif --}}
+    @endif
 
     <div class="mb-2 d-flex justify-content-end">
         <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
