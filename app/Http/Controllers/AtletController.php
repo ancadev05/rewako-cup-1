@@ -14,8 +14,15 @@ class AtletController extends Controller
      */
     public function index()
     {
+        $username = Auth::user()->username;
+        $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+        $kontingen = $carikontingen->nama_kontingen;
+
         $atlet = Atlet::get();
-        return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
+
+        return view('official-kejurnas.atlet.index')
+        ->with('atlet', $atlet)
+        ->with('kontingen', $kontingen);
     }
 
     /**

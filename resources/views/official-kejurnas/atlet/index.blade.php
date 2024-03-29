@@ -9,12 +9,12 @@
 {{-- konten --}}
 @section('konten')
     <h3 class="">Daftar Atlet</h3>
-    @if (Auth::user()->level == 'official')
-        <h5>Kontingen : {{ $kontingen->nama_kontingen }}</h5>
-    @endif
+    {{-- @if (Auth::user()->level == 'official') --}}
+        <h5>Kontingen : {{ $kontingen}}</h5>
+    {{-- @endif --}}
 
     <div class="mb-2 d-flex justify-content-end">
-        <a href="{{ url('/official/atlet-tambah') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
+        <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
                 class="fa fa-plus ms-2"></i></a>
     </div>
 
@@ -50,9 +50,9 @@
                             <td>{{ $item->seni }}</td>
                             <td class="text-center"><i class="fas fa-check-circle text-success"></i></td>
                             <td class="text-center">
-                                <button class="btn btn-warning"
+                                <a href="{{ url('/official/atlet') }}" class="btn btn-warning"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                        class="fas fa-edit"></i></button>
+                                        class="fas fa-edit"></i></a>
                                 <button class="btn btn-danger"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                         class="fas fa-trash-alt"></i></button>
