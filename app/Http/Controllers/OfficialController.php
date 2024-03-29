@@ -100,12 +100,12 @@ class OfficialController extends Controller
 
     public function atlet(){
 
-        $username = Auth::user()->username;
-        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get();
-        
+        // $username = Auth::user()->username;
+        // $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get();
+
         $username = Auth::user()->username; // nama user sesuai username yang login
         $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
-        $kontingen = 
+        // $kontingen = 
         // $atlet = DB::table('atlets')->where('kontingen', $kontingen)->get();
         // dd($atlet);
 
