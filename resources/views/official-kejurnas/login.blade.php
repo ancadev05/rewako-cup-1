@@ -35,7 +35,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex flex-column align-items-center ">
-                <img src="{{ asset('storage/img-web/rewako.svg') }}" alt="" width="150px" class="">
+                <img src="{{ asset('storage/img-web/rewako.png') }}" alt="" width="150px" class="">
                 <h1 class="mb-3 text-white">REWAKO CUP I</h1>
               </div><!-- End Logo -->
 
