@@ -4,8 +4,8 @@
 
     <a class="navbar-brand ps-3" href="{{ url('/kejurnas') }}">
         <img src="{{ asset('storage/img-web/rewako.png') }}" alt="logo" class="d-inline-block align-text-top"
-            width="30" height="24">
-        Rewako Cup I
+            width="35">
+        <span class="d-none d-sm-inline-block ">Rewako Cup I</span>
     </a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">

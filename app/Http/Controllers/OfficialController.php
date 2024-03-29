@@ -100,22 +100,19 @@ class OfficialController extends Controller
         return view('official-kejurnas.dashboard')->with('data', $data);
     }
 
-    public function atlet(){
-
-        // $username = Auth::user()->username;
-        // $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get();
+    public function atlet()
+    {
 
         $username = Auth::user()->username; // nama user sesuai username yang login
+        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+
         $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
-        // $kontingen = 
-        // $atlet = DB::table('atlets')->where('kontingen', $kontingen)->get();
-        // dd($atlet);
 
-
-        return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
+        return view('official-kejurnas.atlet.index')->with('atlet', $atlet,'kontingen', $kontingen)->with('kontingen', $kontingen);
     }
 
-    public function download(){
+    public function download()
+    {
         return view('official-kejurnas.download-berkas.index');
     }
 }

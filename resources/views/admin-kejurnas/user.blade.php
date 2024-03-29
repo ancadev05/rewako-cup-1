@@ -11,7 +11,8 @@
     <h3 class="mb-3">User</h3>
 
     <div class="mb-2 d-flex justify-content-end">
-        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah User <i class="fa fa-plus ms-2"></i></button>
+        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah User <i
+                class="fa fa-plus ms-2"></i></button>
     </div>
 
     <div class="shadow p-2 border rounded">
@@ -32,29 +33,23 @@
 
                 <tbody>
                     @foreach ($user as $item)
-                    <tr>
-                        <td>1</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->username }}</td>
-                        <td>{{ $item->username }}</td>
-                        <td>{{ $item->no_wa }}</td>
-                        <td>{{ $item->alamat }}</td>
-                        <td>{{ $item->kontingen }}</td>
-                        <td class="text-center">
-                            <button type="button" class="btn btn-secondary"
-                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                            <button type="button" class="btn btn-warning"
-                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger"
-                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>{{ $item->no_wa }}</td>
+                            <td>{{ $item->alamat }}</td>
+                            <td>{{ $item->kontingen }}</td>
+                            <td class="text-center">
+                                <button class="btn btn-warning"
+                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger"
+                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                        class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

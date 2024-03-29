@@ -9,7 +9,9 @@
 {{-- konten --}}
 @section('konten')
     <h3 class="">Daftar Atlet</h3>
-    <h5>Kontingen : {{ Gowa A }}</h5>
+    @if (Auth::user()->level == 'official')
+        <h5>Kontingen : {{ $kontingen->nama_kontingen }}</h5>
+    @endif
 
     <div class="mb-2 d-flex justify-content-end">
         <a href="{{ url('/official/atlet-tambah') }}" class="btn btn-sm btn-primary">Tambah Atlet<i
@@ -32,10 +34,12 @@
                     </tr>
                 </thead>
 
-                
+
 
                 <tbody>
-                    <?php $i=1;?>
+                    <span class="text-white">
+                        <?php $i = 1; ?>
+                    </span>
                     @foreach ($atlet as $item)
                         <tr>
                             <td class="text-center">{{ $i }}</td>
@@ -46,8 +50,12 @@
                             <td>{{ $item->seni }}</td>
                             <td class="text-center"><i class="fas fa-check-circle text-success"></i></td>
                             <td class="text-center">
-                                <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-warning"
+                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger"
+                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                        class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                         {{ $i++ }}
