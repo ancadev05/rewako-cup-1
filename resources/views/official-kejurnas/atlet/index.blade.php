@@ -41,9 +41,9 @@
                             <td class="text-center">{{ $i }}</td>
                             <td>{{ $item->nama_atlet }}</td>
                             <td class="text-center">{{ $item->jk }}</td>
-                            <td>{{ $item->id_golongan }}</td>
-                            <td class="text-center">{{ $item->id_kelas_tanding }}</td>
-                            <td>{{ $item->id_seni }}</td>
+                            <td>{{ $item->golongan }}</td>
+                            <td class="text-center">{{ $item->kelas_tanding }}</td>
+                            <td>{{ $item->seni }}</td>
                             <td class="text-center"><i class="fas fa-check-circle text-success"></i></td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>

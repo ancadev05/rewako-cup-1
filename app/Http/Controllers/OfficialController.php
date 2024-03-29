@@ -25,31 +25,31 @@ class OfficialController extends Controller
         $kontingen = 'Gowa B';
 
         // berdasar kontingen
-        // $takalar = DB::table('atlets')->where('id_kontingen', $kontingen)->get();
+        // $takalar = DB::table('atlets')->where('kontingen', $kontingen)->get();
 
 
         // count atlet tanding
-        $a = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'A')->get()->count();
-        $b = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'B')->get()->count();
-        $c = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'C')->get()->count();
-        $d = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'D')->get()->count();
-        $e = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'E')->get()->count();
-        $f = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'F')->get()->count();
-        $g = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'G')->get()->count();
-        $h = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'H')->get()->count();
-        $i = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'I')->get()->count();
-        $j = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'J')->get()->count();
-        $k = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'K')->get()->count();
-        $l = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'L')->get()->count();
-        $m = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_kelas_tanding', 'M')->get()->count();
+        $a = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'A')->get()->count();
+        $b = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'B')->get()->count();
+        $c = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'C')->get()->count();
+        $d = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'D')->get()->count();
+        $e = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'E')->get()->count();
+        $f = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'F')->get()->count();
+        $g = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'G')->get()->count();
+        $h = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'H')->get()->count();
+        $i = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'I')->get()->count();
+        $j = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'J')->get()->count();
+        $k = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'K')->get()->count();
+        $l = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'L')->get()->count();
+        $m = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'M')->get()->count();
 
         // count atlet seni
-        $ttk = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_seni', 'Tunggal Tangan Kosong')->get()->count();
-        $tb = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_seni', 'Tunggal Bersenjata')->get()->count();
-        $gtk = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_seni', 'Ganda Tangan Kosong')->get()->count();
-        $gb = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_seni', 'Ganda Bersenjata')->get()->count();
-        $gtkb = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_seni', 'Ganda Tangan Kosong dan Bersenjata')->get()->count();
-        $trio = DB::table('atlets')->where('id_kontingen', $kontingen)->where('id_seni', 'Trio')->get()->count();
+        $ttk = DB::table('atlets')->where('kontingen', $kontingen)->where('seni', 'Tunggal Tangan Kosong')->get()->count();
+        $tb = DB::table('atlets')->where('kontingen', $kontingen)->where('seni', 'Tunggal Bersenjata')->get()->count();
+        $gtk = DB::table('atlets')->where('kontingen', $kontingen)->where('seni', 'Ganda Tangan Kosong')->get()->count();
+        $gb = DB::table('atlets')->where('kontingen', $kontingen)->where('seni', 'Ganda Bersenjata')->get()->count();
+        $gtkb = DB::table('atlets')->where('kontingen', $kontingen)->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->get()->count();
+        $trio = DB::table('atlets')->where('kontingen', $kontingen)->where('seni', 'Trio')->get()->count();
 
 
         // jumlah atlet
@@ -102,7 +102,7 @@ class OfficialController extends Controller
 
         $username = Auth::user()->username; // nama user sesuai username yang login
         $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
-        // $atlet = DB::table('atlets')->where('id_kontingen', $kontingen)->get();
+        // $atlet = DB::table('atlets')->where('kontingen', $kontingen)->get();
         // dd($atlet);
 
 

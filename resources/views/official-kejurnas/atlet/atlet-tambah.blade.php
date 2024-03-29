@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <input class="form-control @error('golongan') is-invalid @enderror" type="text"
-                                name="golongan" id="golongan" disabled>
+                                name="golongan" id="golongan" readonly>
                             <small style="font-size: 12px; color:red;" id="hitung"></small>
                             @error('golongan')
                                 <small class="invalid-feedback"> {{ 'tekan tombol <b>Cek Usia</b> untuk mengetahui golongan' }}

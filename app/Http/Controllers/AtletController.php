@@ -47,10 +47,10 @@ class AtletController extends Controller
                 'tempat_lahir' => 'wajib diisi*',
                 'tgl_lahir' => 'wajib diisi*',
                 'id_username_official' => 'wajib diisi*',
-                'id_golongan' => 'wajib diisi*',
-                'id_kontingen' => 'wajib diisi*',
-                'id_kelas_tanding' => 'wajib diisi*',
-                'id_seni' => 'wajib diisi*',
+                'golongan' => 'wajib diisi*',
+                'kontingen' => 'wajib diisi*',
+                'kelas_tanding' => 'wajib diisi*',
+                'seni' => 'wajib diisi*',
                 'foto_atlet' => 'wajib diisi*',
                 'akte' => 'wajib diisi*',
             ]
@@ -72,10 +72,10 @@ class AtletController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
             'id_username_official' => $request->id_username_official,
-            'id_golongan' => $request->id_golongan,
-            'id_kontingen' => $request->id_kontingen,
-            'id_kelas_tanding' => $request->id_kelas_tanding,
-            'id_seni' => $request->id_seni,
+            'golongan' => $request->id_golongan,
+            'kontingen' => $request->id_kontingen,
+            'kelas_tanding' => $request->id_kelas_tanding,
+            'seni' => $request->id_seni,
             'foto_atlet' => $foto
         ];
 
