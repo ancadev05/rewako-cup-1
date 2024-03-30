@@ -25,8 +25,6 @@
                         <th>Username</th>
                         <th>Password</th>
                         <th>No. WA</th>
-                        <th>Alamat</th>
-                        <th>Kontingen</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -39,8 +37,6 @@
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->no_wa }}</td>
-                            <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->kontingen }}</td>
                             <td class="text-center">
                                 <button class="btn btn-warning"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
