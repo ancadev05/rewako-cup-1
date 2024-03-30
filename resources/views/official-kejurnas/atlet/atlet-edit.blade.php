@@ -11,8 +11,17 @@
     <h3 class="border-bottom border-2 mb-3">Edit Atlet</h3>
 
     <div class="rounded shadow p-2 border">
-        <form action="{{ url('official/atlet/'.$atlet->id) }}" method="put" enctype="multipart/form-data">
+        <form action="{{ url('official/atlet/'.$atlet->id) }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('put')
+
+            {{-- file lama --}}
+            <input type="hidden" name="foto_atlet" value="{{ $atlet->foto_atlet }}">
+            <input type="hidden" name="akte" value="{{ $atlet->akte }}">
+            <input type="hidden" name="rekomendasi" value="{{ $atlet->rekomendasi }}">
+            <input type="hidden" name="izin_orangtua" value="{{ $atlet->izin_orangtua }}">
+            <input type="hidden" name="suket_sehat" value="{{ $atlet->suket_sehat }}">
+
             <div class="table-responsive mb-3">
                 <table class="table table-borderless">
                     <tr>

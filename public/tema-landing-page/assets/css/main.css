@@ -2668,3 +2668,12 @@ section {
 .footer .credits a {
   color: #fff;
 }
+
+
+/* edi tombol registrasi */
+#registrasi{
+  position: relative;
+  margin: auto;
+  top: 80%;
+  background-color: white;
+}
