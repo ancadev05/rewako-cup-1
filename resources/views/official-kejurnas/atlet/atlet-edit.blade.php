@@ -11,7 +11,7 @@
     <h3 class="border-bottom border-2 mb-3">Edit Atlet</h3>
 
     <div class="rounded shadow p-2 border">
-        <form action="{{ url('official/atlet') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('official/atlet/'.$atlet->id) }}" method="put" enctype="multipart/form-data">
             @csrf
             <div class="table-responsive mb-3">
                 <table class="table table-borderless">
@@ -250,7 +250,7 @@
 
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
-                <button type="submit" class="btn btn-sm btn-primary me-2">Tambah</button>
+                <button type="submit" class="btn btn-sm btn-primary me-2">Ubah</button>
                 <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
             </div>
         </form>
