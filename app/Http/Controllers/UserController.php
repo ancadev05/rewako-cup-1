@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kontingen;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,11 @@ class UserController extends Controller
     public function index()
     {
         $user = User::get();
-        return view('admin-kejurnas.user')->with('user', $user);
+        $kontingen = Kontingen::get();
+
+        return view('admin-kejurnas.user')
+            ->with('user', $user)
+            ->with('kontingen', $kontingen);
     }
 
     public function tambah()
@@ -27,17 +32,26 @@ class UserController extends Controller
             ]
         );
 
+        $userpass = 'rwk-' . date('ndhis');
+
         $user = [
             'name' => $request->name,
             'no_wa' => $request->no_wa,
-            'alamat' => $request->alamat,
-            'kontingen' => $request->kontingen,
             'level' => 'official',
-            'username' => 'rwk-' . date('ndhis'),
-            'password' => 'rwk-' . date('ndhis'),
+            'username' => $userpass,
+            'password' => $userpass,
         ];
 
+        $kontingen = [
+            'nama_kontingen' => $request->kontingen,
+            'alamat' => $request->alamat,
+            'id_username_official' => $userpass
+        ];
+
+        // dd($userpass);
+
         User::create($user);
+        Kontingen::create($kontingen);
 
         return redirect()->to('admin-kejurnas/user')->with('success', 'Data berhasil ditambahkan');
     }

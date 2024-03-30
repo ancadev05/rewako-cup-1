@@ -19,7 +19,7 @@
                         <td width="25%"><label for="nama_atlet">Nama Atlet</label></td>
                         <td>
                             <input class="form-control @error('nama_atlet') is-invalid @enderror" type="text"
-                                name="nama_atlet" id="nama_atlet" value="{{ old('nama_atlet') }}">
+                                name="nama_atlet" id="nama_atlet" value="{{ $atlet->nama_atlet }}">
                             @error('nama_atlet')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -29,7 +29,7 @@
                         <td><label for="tempat_lahir">Tempat Lahir</label></td>
                         <td>
                             <input class="form-control @error('tempat_lahir') is-invalid @enderror" type="text"
-                                name="tempat_lahir" id="tempat_lahir" value="{{ old('tempat_lahir') }}">
+                                name="tempat_lahir" id="tempat_lahir" value="{{ $atlet->tempat_lahir }}">
                             @error('tempat_lahir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -39,7 +39,7 @@
                         <td><label for="tgl_lahir">Tanggal Lahir</label></td>
                         <td>
                             <input class="form-control @error('tgl_lahir') is-invalid @enderror" type="date"
-                                name="tgl_lahir" id="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                                name="tgl_lahir" id="tgl_lahir" value="{{ $atlet->tgl_lahir }}">
                             @error('tgl_lahir')
                                 <small class="invalid-feedback"> {{ $message }} </small>
                             @enderror
@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <input class="form-control @error('golongan') is-invalid @enderror" type="text"
-                                name="golongan" id="golongan" readonly>
+                                name="golongan" id="golongan" readonly value="{{ $atlet->golongan }}">
                             <small style="font-size: 12px; color:red;" id="hitung"></small>
                             @error('golongan')
                                 <small class="invalid-feedback"> {{ 'tekan tombol Cek Usia untuk mengetahui golongan' }}
@@ -68,14 +68,17 @@
                         <td class=""><label for="jk">Jenis Kelamin</label></td>
                         <td>
                             <div class="d-flex">
+                                @php
+                                    $jk = $atlet->jk;
+                                @endphp
                                 <div class="form-check me-3">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="PA">
+                                        name="jk" id="jk1" value="PA" {{ $jk == 'PA' ? 'checked' : ''}}>
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input @error('jk') is-invalid @enderror"" type="radio"
-                                        name="jk" id="jk2" value="PI">
+                                        name="jk" id="jk2" value="PI" {{ $jk == 'PI' ? 'checked' : ''}}>
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
                                 @error('jk')
@@ -107,7 +110,7 @@
                         <td><label for="berat_badan">Berat Badan</label></td>
                         <td>
                             <input class="form-control @error('berat_badan') is-invalid @enderror" type="number"
-                                name="berat_badan" id="berat_badan" placeholder="isi berupa angka saja">
+                                name="berat_badan" id="berat_badan" placeholder="isi berupa angka saja" value="{{ $atlet->berat_badan }}">
                             @error('berat_badan')
                                 <small class="invalid-feedback"> {{ $message }}
                                 </small>
@@ -117,22 +120,25 @@
                     <tr>
                         <td><label for="kelas_tanding">Kelas</label></td>
                         <td>
+                            @php
+                                $kelas = $atlet->kelas_tanding;
+                            @endphp
                             <select class="form-select @error('kelas_tanding') is-invalid @enderror" name="kelas_tanding"
                                 id="kelas_tanding">
                                 <option value="">-- Pilih Kelas --</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                                <option value="F">F</option>
-                                <option value="G">G</option>
-                                <option value="H">H</option>
-                                <option value="I">I</option>
-                                <option value="J">J</option>
-                                <option value="K">K</option>
-                                <option value="L">L</option>
-                                <option value="M">M</option>
+                                <option value="A" {{ $kelas == "A" ? "selected" : ""}}>A</option>
+                                <option value="B" {{ $kelas == "B" ? "selected" : ""}}>B</option>
+                                <option value="C" {{ $kelas == "C" ? "selected" : ""}}>C</option>
+                                <option value="D" {{ $kelas == "D" ? "selected" : ""}}>D</option>
+                                <option value="E" {{ $kelas == "E" ? "selected" : ""}}>E</option>
+                                <option value="F" {{ $kelas == "F" ? "selected" : ""}}>F</option>
+                                <option value="G" {{ $kelas == "G" ? "selected" : ""}}>G</option>
+                                <option value="H" {{ $kelas == "H" ? "selected" : ""}}>H</option>
+                                <option value="I" {{ $kelas == "I" ? "selected" : ""}}>I</option>
+                                <option value="J" {{ $kelas == "J" ? "selected" : ""}}>J</option>
+                                <option value="K" {{ $kelas == "K" ? "selected" : ""}}>K</option>
+                                <option value="L" {{ $kelas == "L" ? "selected" : ""}}>L</option>
+                                <option value="M" {{ $kelas == "M" ? "selected" : ""}}>M</option>
                             </select>
                             @error('kelas_tanding')
                                 <small class="invalid-feedback"> {{ $message }}
@@ -151,13 +157,16 @@
                     <tr>
                         <td><label for="seni">Seni</label></td>
                         <td>
+                            @php
+                                $seni = $atlet->seni;
+                            @endphp
                             <select class="form-select @error('seni') is-invalid @enderror" name="seni" id="seni">
                                 <option value="">-- Pilih Kategori --</option>
-                                <option value="Tunggal Tangan Kosong">Tunggal Tangan Kosong</option>
-                                <option value="Tunggal Bersenjata">Tunggal Bersenjata</option>
-                                <option value="Ganda Tangan Kosong">Ganda Tangan Kosong</option>
-                                <option value="Ganda Bersenjata">Ganda Bersenjata</option>
-                                <option value="Ganda Tangan Kosong dan Bersenjata">Ganda Tangan Kosong dan Bersenjata
+                                <option value="Tunggal Tangan Kosong" {{ $seni == "Tunggal Tangan Kosong" ? "selected" : ""}}>Tunggal Tangan Kosong</option>
+                                <option value="Tunggal Bersenjata" {{ $seni == "Tunggal Bersenjata" ? "selected" : ""}}>Tunggal Bersenjata</option>
+                                <option value="Ganda Tangan Kosong" {{ $seni == "Ganda Tangan Kosong" ? "selected" : ""}}>Ganda Tangan Kosong</option>
+                                <option value="Ganda Bersenjata" {{ $seni == "Ganda Bersenjata" ? "selected" : ""}}>Ganda Bersenjata</option>
+                                <option value="Ganda Tangan Kosong dan Bersenjata" {{ $seni == "Ganda Tangan Kosong dan Bersenjata" ? "selected" : ""}}>Ganda Tangan Kosong dan Bersenjata
                                 </option>
                                 <option value="Trio">Trio</option>
                             </select>
@@ -242,7 +251,7 @@
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
                 <button type="submit" class="btn btn-sm btn-primary me-2">Tambah</button>
-                <a href="{{ url('/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
+                <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
             </div>
         </form>
     </div>

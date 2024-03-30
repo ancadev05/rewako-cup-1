@@ -16,9 +16,10 @@ class AtletController extends Controller
     {
         $username = Auth::user()->username;
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+        $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
         $kontingen = $carikontingen->nama_kontingen;
 
-        $atlet = Atlet::get();
+        // $atlet = Atlet::get();
 
         return view('official-kejurnas.atlet.index')
         ->with('atlet', $atlet)
@@ -157,7 +158,9 @@ class AtletController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $atlet = Atlet::where('id', $id)->first();
+
+        return view('official-kejurnas.atlet.atlet-edit')->with('atlet', $atlet);
     }
 
     /**
