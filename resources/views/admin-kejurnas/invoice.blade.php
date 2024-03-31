@@ -36,17 +36,28 @@
                             <td>{{ $item->nama_official }}</td>
                             <td>{{ $item->id_kontingen }}</td>
                             <td>{{ $item->id_username_official }}</td>
-                            <td>
-                                
-                            </td>
-                            <td>
+                            <td class="text-center">
                                 @if ($item->pembayaran == 0)
                                     <form action="{{ url('/admin-kejurnas/invoice/' . $item->id) }}" method="post">
                                         @csrf
-                                        <button class="btn btn-sm btn-danger" type="submit">Pending</button>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-toggle-off" style="font-size: 20px"></i>
+                                        </button>
                                     </form>
                                 @else
-                                    <button class="btn btn-sm btn-success">Lunas</button>
+                                    <form action="{{ url('/admin-kejurnas/invoice/' . $item->id) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-toggle-on" style="font-size: 20px"></i>
+                                        </button>
+                                    </form>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($item->pembayaran == 0)
+                                    <span class="text-danger fw-bold"> <i class="fas fa-exclamation-circle"></i> Pending...</span>
+                                @else
+                                    <span class="text-success fw-bold"><i class="fas fa-check-circle"></i> Lunas</span>
                                 @endif
                             </td>
                         </tr>

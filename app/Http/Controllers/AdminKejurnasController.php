@@ -25,7 +25,7 @@ class AdminKejurnasController extends Controller
 
     public function atlet()
     {
-        $atlet = Atlet::get();
+        $atlet = Atlet::orderBy('id','asc')->paginate();
         return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
     }
 
@@ -44,13 +44,27 @@ class AdminKejurnasController extends Controller
     public function verifikasiPembayaran(string $id)
     {
 
-        // dd($id);
+        $pembayaran = Invoice::where('id', $id)->first();
+        $status = $pembayaran->pembayaran;
+        // dd($pembayaran->pembayaran);
 
-        $invoice = [
-            'pembayaran' => 1
-        ];
+        if ($status == 1) {
+            $invoice = [
+                'pembayaran' => 0
+            ];
+            Invoice::where('id', $id)->update($invoice);
+        } else {
+            $invoice = [
+                'pembayaran' => 1
+            ];
+            Invoice::where('id', $id)->update($invoice);
+        }
 
-        Invoice::where('id', $id)->update($invoice);
+        // $invoice = [
+        //     'pembayaran' => 1
+        // ];
+
+        // Invoice::where('id', $id)->update($invoice);
 
         return redirect()->to('admin-kejurnas/invoice')->with('success', 'Status pembayaran telah diubah');
     }

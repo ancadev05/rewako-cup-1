@@ -15,10 +15,14 @@ class AtletController extends Controller
      */
     public function index()
     {
-        $username = Auth::user()->username;
+        // menentukan username
+        $username = Auth::user()->username; 
+
+        // menentukan nama kontingen
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
-        $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
         $kontingen = $carikontingen->nama_kontingen;
+
+        $atlet = Atlet::where('id_username_official', $username)->paginate();
 
         // status pembayaran invoice
         $invoice = Invoice::where('id_username_official', $username)->get()->first();

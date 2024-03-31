@@ -22,7 +22,7 @@
                     <a class="nav-link {{ Request::is('admin-kejurnas/atlet') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/atlet') }}">
                         <div class="sb-nav-link-icon">
-                            <i class="fas fa-running"></i>
+                            <i class="fas fa-user-friends"></i>
                         </div>
                         Kontingen
                     </a>
@@ -36,7 +36,7 @@
                     <a class="nav-link {{ Request::is('admin-kejurnas/invoice') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/invoice') }}">
                         <div class="sb-nav-link-icon">
-                            <i class="fas fa-running"></i>
+                            <i class="fas fa-file-alt"></i>
                         </div>
                         Invoice
                     </a>

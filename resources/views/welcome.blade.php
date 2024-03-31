@@ -129,15 +129,13 @@
                     <button type="button" class="btn btn-warning" id="coba" onclick="kirim()">coba</button>
             </section> --}}
 
+            {{-- registrasi --}}
             <div style="background-color: #ff6a00;" data-aos="fade-up">
                 <div class="container">
-                    <div class="">
-                        <a href="https://wa.wizard.id/08f913" target="_blank" id="registrasi">
-                            << REGISTRASI>>
-                        </a>
-                        <img src="{{ asset('storage/img-web/registrasi.png') }}" class="" alt="..."
+                        <a href="https://wa.wizard.id/08f913" target="_blank" class="d-block bg-primary ">
+                            <img src="{{ asset('storage/img-web/regis.png') }}" class="" alt="..."
                             width="100%">
-                    </div>
+                        </a>
                 </div>
             </div>
 

@@ -12,15 +12,15 @@
     {{-- nama ini hanya akan muncul saat login official --}}
     @if (Auth::user()->level == 'official')
         <h5>Kontingen : {{ $kontingen }}</h5>
-    @endif
 
-     {{-- pemberitahuan --}}
-     <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
-        <ul class="">
-            <li>Fitur Tambah, Edit dan Hapus Atlet akan hilang setalah melakukan pembayaran</li>
-            <li>Jadi pastikan data Atlet sudah fix sebelum melakukan pembayaran</li>
-        </ul>
-    </div>
+        {{-- pemberitahuan --}}
+        <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
+            <ul class="">
+                <li>Fitur Tambah, Edit dan Hapus Atlet akan hilang setalah melakukan pembayaran</li>
+                <li>Jadi pastikan data Atlet sudah fix sebelum melakukan pembayaran</li>
+            </ul>
+        </div>
+    @endif
 
     {{-- pembeda antara tampilan admin dan official --}}
     @if (Auth::user()->level == 'official')
@@ -54,7 +54,7 @@
 
                 <tbody>
                     <span class="text-white">
-                        <?php $i = 1; ?>
+                        <?php $i = $atlet->firstItem(); ?>
                     </span>
                     @forelse ($atlet as $item)
                         <tr>
@@ -90,7 +90,7 @@
                                 @endif
                             @endif
                         </tr>
-                        {{ $i++ }}
+                        <?php $i++; ?>
                     @empty
                         <div class="alert alert-danger">
                             Belum ada atlet yang terdaftar.
