@@ -10,7 +10,7 @@
     <title>@yield('title')</title>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="{{ asset('assets/img/ts.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/img-web/ts.png') }}" type="image/x-icon">
 
     {{-- Bootstrap 5 --}}
     {{-- <link href="{{ asset('assets/bootstrap5/css/bootstrap.css') }}" rel="stylesheet" /> --}}
@@ -55,7 +55,7 @@
                     @csrf
                     <div class="col-12">
                       <label for="username" class="form-label">Username</label>
-                      <input type="test" name="username" class="form-control" id="username" value="{{ old('username') }}">
+                      <input type="test" name="username" class="form-control" id="username" value="{{ old('username') }}" autocomplete="off">
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 

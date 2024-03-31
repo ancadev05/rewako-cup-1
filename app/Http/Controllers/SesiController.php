@@ -9,7 +9,7 @@ class SesiController extends Controller
 {
     public function index()
     {
-        return view('official-kejurnas.login');
+        return view('login');
     }
 
     public function login(Request $request)

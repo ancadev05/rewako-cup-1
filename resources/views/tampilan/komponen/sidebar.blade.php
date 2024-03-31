@@ -33,6 +33,13 @@
                         </div>
                         Atlet
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/atlet') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/atlet') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        Invoice
+                    </a>
                 @endif
                 {{-- /admin kejurnas --}}
 

@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             DummyKelasTandingsSeeder::class,
             DummyKontingensSeeder::class,
             DummySenisSeeder::class,
-            DummyUsersSeeder::class
+            DummyUsersSeeder::class,
+            DummyInvoicesSeeder::class
         ]);
 
         Atlet::factory(20)->create();
