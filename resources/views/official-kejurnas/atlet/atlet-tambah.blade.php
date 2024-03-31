@@ -210,11 +210,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label class="form-label" for="suket_izin">Surat Izin dan Pernyataan Orang Tua</label></td>
+                        <td><label class="form-label" for="izin_orangtua">Surat Izin dan Pernyataan Orang Tua</label></td>
                         <td>
-                            <input class="form-control form-control-sm @error('suket_izin') is-invalid @enderror"
-                                type="file" name="suket_izin" id="suket_izin">
-                            @error('suket_izin')
+                            <input class="form-control form-control-sm @error('izin_orangtua') is-invalid @enderror"
+                                type="file" name="izin_orangtua" id="izin_orangtua">
+                            @error('izin_orangtua')
                                 <small class="invalid-feedback"> {{ $message }}
                                 </small>
                             @enderror
@@ -242,7 +242,7 @@
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
                 <button type="submit" class="btn btn-sm btn-primary me-2">Tambah</button>
-                <a href="{{ url('/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
+                <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
             </div>
         </form>
     </div>

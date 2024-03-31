@@ -38,6 +38,12 @@ class OfficialController extends Controller
         // berdasar kontingen
         // $takalar = DB::table('atlets')->where('kontingen', $kontingen)->get();
 
+        // count golongan atlet
+        $golongan = Atlet::where('golongan')->get();
+        // $pudTanding = Atlet::where('golongan', 'Pra Usia Dini')->orwhere('kelas_tanding','M')->get();
+        $pudTanding = DB::table('atlets')->where('golongan', 'Pra Usia Dini')->where('kelas_tanding', 'A' OR 'M' OR 'H')->get();
+        // $pudSeni = Atlet::where('golongan', 'Pra Usia Dini')->where()->get();
+        dd($pudTanding);
 
         // count atlet tanding
         $a = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'A')->get()->count();
@@ -73,7 +79,21 @@ class OfficialController extends Controller
         $kTanding = 250000;
         $kTunggal = 250000;
         $kGanda = 225000;
-        $kTrio = 200000;
+
+        // perhitungan biaya kategori seni trio
+        if($aTrio > 0 && $aTrio <= 3) { // trio pra usia dini
+            $kTrio = 700000;
+        } elseif ($aTrio > 3 && $aTrio <= 6) { // trioo usia dini
+            $kTrio = 1400000;
+        } elseif ($aTrio > 6 && $aTrio <= 9) { // trioo pra remaja
+            $kTrio = 2100000;
+        } elseif ($aTrio > 9 && $aTrio <= 12) { // trioo remaja
+            $kTrio = 2800000;
+        } elseif ($aTrio > 12 && $aTrio <= 15) { // trioo dewasa
+            $kTrio = 3500000;
+        } elseif ($aTrio > 15 && $aTrio <= 18) { // trioo master
+            $kTrio = 4200000;
+        } 
 
         // jumlah biaya
         $jumlah = ($kTanding * $aTanding) + ($kTunggal * $aTunggal) + ($kGanda * $aGanda) + ($kTrio * $aTrio);
@@ -109,7 +129,9 @@ class OfficialController extends Controller
 
         ];
 
-        return view('official-kejurnas.dashboard')->with('data', $data);
+        return view('official-kejurnas.dashboard')
+        ->with('data', $data)
+        ->with('golongan', );
     }
 
     public function atlet()
