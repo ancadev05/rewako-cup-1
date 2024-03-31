@@ -2,13 +2,13 @@
 
 {{-- title --}}
 @section('title')
-    Edit Atlet
+{{ $atlet->nama_atlet }}
 @endsection
 {{-- /title --}}
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="border-bottom border-2 mb-3">Edit Atlet</h3>
+    <h3 class="border-bottom border-2 mb-3">{{ $atlet->nama_atlet }}</h3>
 
     <div class="rounded shadow p-2 border">
         <form action="{{ url('official/atlet/'.$atlet->id) }}" method="post" enctype="multipart/form-data">
@@ -25,165 +25,43 @@
             <div class="table-responsive mb-3">
                 <table class="table table-borderless">
                     <tr>
-                        <td width="25%"><label for="nama_atlet">Nama Atlet</label></td>
-                        <td>
-                            <input class="form-control @error('nama_atlet') is-invalid @enderror" type="text"
-                                name="nama_atlet" id="nama_atlet" value="{{ $atlet->nama_atlet }}">
-                            @error('nama_atlet')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </td>
+                        <td width="25%">Nama Atlet</td>
+                        <td>: {{ $atlet->nama_atlet }}</td>
+                        <td rowspan="10"><img src="{{ asset('storage/foto-atlet/'.$atlet->foto_atlet) }}" alt="" width="200px"></td>
                     </tr>
                     <tr>
-                        <td><label for="tempat_lahir">Tempat Lahir</label></td>
-                        <td>
-                            <input class="form-control @error('tempat_lahir') is-invalid @enderror" type="text"
-                                name="tempat_lahir" id="tempat_lahir" value="{{ $atlet->tempat_lahir }}">
-                            @error('tempat_lahir')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </td>
+                        <td>Tempat Lahir</td>
+                        <td>: {{ $atlet->tempat_lahir }}</td>
                     </tr>
                     <tr>
-                        <td><label for="tgl_lahir">Tanggal Lahir</label></td>
-                        <td>
-                            <input class="form-control @error('tgl_lahir') is-invalid @enderror" type="date"
-                                name="tgl_lahir" id="tgl_lahir" value="{{ $atlet->tgl_lahir }}">
-                            @error('tgl_lahir')
-                                <small class="invalid-feedback"> {{ $message }} </small>
-                            @enderror
-                        </td>
+                        <td>Tanggal Lahir</td>
+                        <td>: {{ $atlet->tgl_lahir }}</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><button class="btn btn-sm btn-secondary" onclick="hitung()" type="button">Cek Usia</button>
-                        </td>
+                        <td>Golongan</td>
+                        <td>: {{ $atlet->golongan }}</td>
                     </tr>
                     <tr>
-                        <td>
-                            <label for="golongan">Golongan</label>
-                        </td>
-                        <td>
-                            <input class="form-control @error('golongan') is-invalid @enderror" type="text"
-                                name="golongan" id="golongan" readonly value="{{ $atlet->golongan }}">
-                            <small style="font-size: 12px; color:red;" id="hitung"></small>
-                            @error('golongan')
-                                <small class="invalid-feedback"> {{ 'tekan tombol Cek Usia untuk mengetahui golongan' }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=""><label for="jk">Jenis Kelamin</label></td>
-                        <td>
-                            <div class="d-flex">
-                                @php
-                                    $jk = $atlet->jk;
-                                @endphp
-                                <div class="form-check me-3">
-                                    <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="PA" {{ $jk == 'PA' ? 'checked' : ''}}>
-                                    <label class="form-check-label" for="jk1">Laki-Laki</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input @error('jk') is-invalid @enderror"" type="radio"
-                                        name="jk" id="jk2" value="PI" {{ $jk == 'PI' ? 'checked' : ''}}>
-                                    <label class="form-check-label" for="jk2">Perempuan</label>
-                                </div>
-                                @error('jk')
-                                    <small class="invalid-feedback"> {{ $message }} </small>
-                                @enderror
-                            </div>
-                        </td>
-                    </tr>
-                    {{-- <tr>
-                        <td><label for="kontingen">Kontingen</label></td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>-- Pilih Kontingen --</option>
-                                <option value="1">Kontingen 1</option>
-                                <option value="2">Kontingen 2</option>
-                                <option value="3">Kontingen 3</option>
-                            </select>
-                        </td>
-                    </tr> --}}
-                    <tr>
-                        <td colspan="2">
-                            <div class="my-3"></div>
-                        </td>
+                        <td>Jenis Kelamin</td>
+                        <td>: {{ $atlet->jk }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
                     <tr>
-                        <td><label for="berat_badan">Berat Badan</label></td>
-                        <td>
-                            <input class="form-control @error('berat_badan') is-invalid @enderror" type="number"
-                                name="berat_badan" id="berat_badan" placeholder="isi berupa angka saja" value="{{ $atlet->berat_badan }}">
-                            @error('berat_badan')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
+                        <td>Berat Badan</td>
+                        <td>: {{ $atlet->berat_badan }}</td>
                     </tr>
                     <tr>
-                        <td><label for="kelas_tanding">Kelas</label></td>
-                        <td>
-                            @php
-                                $kelas = $atlet->kelas_tanding;
-                            @endphp
-                            <select class="form-select @error('kelas_tanding') is-invalid @enderror" name="kelas_tanding"
-                                id="kelas_tanding">
-                                <option value="">-- Pilih Kelas --</option>
-                                <option value="A" {{ $kelas == "A" ? "selected" : ""}}>A</option>
-                                <option value="B" {{ $kelas == "B" ? "selected" : ""}}>B</option>
-                                <option value="C" {{ $kelas == "C" ? "selected" : ""}}>C</option>
-                                <option value="D" {{ $kelas == "D" ? "selected" : ""}}>D</option>
-                                <option value="E" {{ $kelas == "E" ? "selected" : ""}}>E</option>
-                                <option value="F" {{ $kelas == "F" ? "selected" : ""}}>F</option>
-                                <option value="G" {{ $kelas == "G" ? "selected" : ""}}>G</option>
-                                <option value="H" {{ $kelas == "H" ? "selected" : ""}}>H</option>
-                                <option value="I" {{ $kelas == "I" ? "selected" : ""}}>I</option>
-                                <option value="J" {{ $kelas == "J" ? "selected" : ""}}>J</option>
-                                <option value="K" {{ $kelas == "K" ? "selected" : ""}}>K</option>
-                                <option value="L" {{ $kelas == "L" ? "selected" : ""}}>L</option>
-                                <option value="M" {{ $kelas == "M" ? "selected" : ""}}>M</option>
-                            </select>
-                            @error('kelas_tanding')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="my-3"></div>
-                        </td>
+                        <td>Kelas</td>
+                        <td>: {{ $atlet->kelas_tanding }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Seni :</b></td>
                     </tr>
                     <tr>
                         <td><label for="seni">Seni</label></td>
-                        <td>
-                            @php
-                                $seni = $atlet->seni;
-                            @endphp
-                            <select class="form-select @error('seni') is-invalid @enderror" name="seni" id="seni">
-                                <option value="">-- Pilih Kategori --</option>
-                                <option value="Tunggal Tangan Kosong" {{ $seni == "Tunggal Tangan Kosong" ? "selected" : ""}}>Tunggal Tangan Kosong</option>
-                                <option value="Tunggal Bersenjata" {{ $seni == "Tunggal Bersenjata" ? "selected" : ""}}>Tunggal Bersenjata</option>
-                                <option value="Ganda Tangan Kosong" {{ $seni == "Ganda Tangan Kosong" ? "selected" : ""}}>Ganda Tangan Kosong</option>
-                                <option value="Ganda Bersenjata" {{ $seni == "Ganda Bersenjata" ? "selected" : ""}}>Ganda Bersenjata</option>
-                                <option value="Ganda Tangan Kosong dan Bersenjata" {{ $seni == "Ganda Tangan Kosong dan Bersenjata" ? "selected" : ""}}>Ganda Tangan Kosong dan Bersenjata
-                                </option>
-                                <option value="Trio">Trio</option>
-                            </select>
-                            @error('seni')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
+                        <td>: {{ $atlet->seni }}</td>
                     </tr>
                     {{-- Upload Berkas --}}
                     <tr>

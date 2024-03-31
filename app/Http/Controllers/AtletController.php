@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AtletController extends Controller
 {
@@ -16,7 +17,7 @@ class AtletController extends Controller
     public function index()
     {
         // menentukan username
-        $username = Auth::user()->username; 
+        $username = Auth::user()->username;
 
         // menentukan nama kontingen
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
@@ -28,9 +29,9 @@ class AtletController extends Controller
         $invoice = Invoice::where('id_username_official', $username)->get()->first();
 
         return view('official-kejurnas.atlet.index')
-        ->with('atlet', $atlet)
-        ->with('kontingen', $kontingen)
-        ->with('invoice', $invoice);
+            ->with('atlet', $atlet)
+            ->with('kontingen', $kontingen)
+            ->with('invoice', $invoice);
     }
 
     /**
@@ -46,7 +47,7 @@ class AtletController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $username = Auth::user()->username;
         $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
 
@@ -59,6 +60,7 @@ class AtletController extends Controller
                 'id_username_official' => 'required',
                 'golongan' =>  'required',
                 'foto_atlet' => 'required',
+                'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048',
                 'akte' => 'required',
                 'rekomendasi' => 'required',
                 'izin_orangtua' => 'required',
@@ -79,6 +81,10 @@ class AtletController extends Controller
             ]
         );
 
+        // pengisian kolom bantu
+        $golongan = $request->golongan;
+
+        // verifikasi berkas
         $foto = false;
         // Jika user upload foto
         if ($request->hasFile('foto_atlet')) {
@@ -158,7 +164,23 @@ class AtletController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $kalimat = "Belajar PHP dengan Copilot";
+        $kata_array = explode(" ", $kalimat);
+        $kata_pertama_setiap_kata = ucwords($kalimat);
+        echo $kata_pertama_setiap_kata; // Output: Belajar PHP Dengan Copilot
+
+        $tgl = date('l, d M Y');
+        $tgl2 = date('Y-m-d');
+        // $tanggal = tanggalIndonesia(date('2024-04-01'));
+        $tanggal2 = tanggalIndonesia($tgl2);
+
+        dd( $tanggal2);
+
+
+        $atlet = Atlet::where('id', $id)->first();
+
+        return view('official-kejurnas.atlet.atlet-show')->with('atlet', $atlet);
     }
 
     /**
@@ -179,6 +201,27 @@ class AtletController extends Controller
         // $username = Auth::user()->username;
         // $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
 
+        $request->validate(
+            [
+                'nama_atlet' => 'required',
+                'tempat_lahir' => 'required',
+                'tgl_lahir' => 'required',
+                'jk' => 'required',
+                'id_username_official' => 'required',
+                'golongan' =>  'required',
+                'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
+            ],
+            [
+                'nama_atlet' => 'wajib diisi*',
+                'tempat_lahir' => 'wajib diisi*',
+                'tgl_lahir' => 'wajib diisi*',
+                'id_username_official' => 'wajib diisi*',
+                'golongan' => 'wajib diisi*'
+            ]
+        );
+
+        // validasi file baru
+        // validasi foto
 
         $foto = false;
         // Jika user upload foto
@@ -188,6 +231,14 @@ class AtletController extends Controller
             $foto_file = $request->file('foto_atlet'); // mengambil file dari form
             $foto = date('ymdhis') . '.' . $foto_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
             $foto_file->storeAs('public/foto-atlet/', $foto); // memindahkan file ke folder public agar bisa diakses
+
+            // hapus file lama
+            Storage::delete('public/foto-etlet/' . $request->foto_atlet_lama);
+
+            $atlet['foto_atlet'] = $foto;
+            Atlet::where('id', $id)->update($atlet);
+        } else {
+            $atlet['foto_atlet'] = $request->foto_atlet_lama;
         }
 
         $akte = false;
@@ -257,9 +308,8 @@ class AtletController extends Controller
      */
     public function destroy(string $id)
     {
-        Atlet::where('id',$id)->delete();
+        Atlet::where('id', $id)->delete();
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil dihapus');
-
     }
 }

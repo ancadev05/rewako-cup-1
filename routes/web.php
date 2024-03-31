@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
     Route::get('/official/atlet', [OfficialController::class, 'atlet'])->middleware('userAkses:official');
     Route::get('/official/download', [OfficialController::class, 'download'])->middleware('userAkses:official');
+    Route::get('/official/download/kwitansi', [DownloadBerkasController::class, 'kwitansi'])->middleware('userAkses:official');
     // Route::get('/official/atlet-tambah', [AtletController::class, 'create'])->middleware('userAkses:official');
     // Route::post('/official/atlet', [AtletController::class, 'store'])->middleware('userAkses:official');
     // Route::get('/official/atlet-edit', [AtletController::class, 'edit'])->middleware('userAkses:official');

@@ -19,7 +19,7 @@ class OfficialController extends Controller
 
         // username official
         $username = Auth::user()->username;
-        
+
         // nama kontingen sesuai username official
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
         $kontingen = $carikontingen->nama_kontingen;
@@ -28,22 +28,36 @@ class OfficialController extends Controller
         $invoice = Invoice::where('id_username_official', $username)->get()->first();
         // dd($invoice->pembayaran);
 
-        function format_uang($angka)
-        {
-            return number_format($angka, 0, ',', '.');
-        }
+        // function format_uang($angka)
+        // {
+        //     return number_format($angka, 0, ',', '.');
+        // }
 
         // kontingen
 
         // berdasar kontingen
         // $takalar = DB::table('atlets')->where('kontingen', $kontingen)->get();
 
+        // keterangan kolom bantu
+        // PUD-T = pra usia dini tanding
+        // UD-T = usia dini tanding
+        // PR-T = pra remaja tanding
+        // R-T = remaja tanding
+        // D-T = dewasa tanding
+        // M-T = master tanding
+        // PUD-TTK = pra usia dini tunggal tangan kosong
+        // UD-TB = usia dini tunggal bersenjata
+        // PR-GTK = pra remaja ganda tangan koosong
+        // R-GB = remaja ganda bersenjata
+        // D-GTKB = dewasa ganda tangan koosong dan bersenjata
+        // M-TRI = master 
+
         // count golongan atlet
         $golongan = Atlet::where('golongan')->get();
         // $pudTanding = Atlet::where('golongan', 'Pra Usia Dini')->orwhere('kelas_tanding','M')->get();
-        $pudTanding = DB::table('atlets')->where('golongan', 'Pra Usia Dini')->where('kelas_tanding', 'A' OR 'M' OR 'H')->get();
+        $pudTanding = DB::table('atlets')->where('golongan', 'Pra Usia Dini')->where('kelas_tanding', 'A' or 'M' or 'H')->get();
         // $pudSeni = Atlet::where('golongan', 'Pra Usia Dini')->where()->get();
-        dd($pudTanding);
+        // dd($pudTanding);
 
         // count atlet tanding
         $a = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'A')->get()->count();
@@ -81,7 +95,7 @@ class OfficialController extends Controller
         $kGanda = 225000;
 
         // perhitungan biaya kategori seni trio
-        if($aTrio > 0 && $aTrio <= 3) { // trio pra usia dini
+        if ($aTrio > 0 && $aTrio <= 3) { // trio pra usia dini
             $kTrio = 700000;
         } elseif ($aTrio > 3 && $aTrio <= 6) { // trioo usia dini
             $kTrio = 1400000;
@@ -93,7 +107,7 @@ class OfficialController extends Controller
             $kTrio = 3500000;
         } elseif ($aTrio > 15 && $aTrio <= 18) { // trioo master
             $kTrio = 4200000;
-        } 
+        }
 
         // jumlah biaya
         $jumlah = ($kTanding * $aTanding) + ($kTunggal * $aTunggal) + ($kGanda * $aGanda) + ($kTrio * $aTrio);
@@ -130,8 +144,8 @@ class OfficialController extends Controller
         ];
 
         return view('official-kejurnas.dashboard')
-        ->with('data', $data)
-        ->with('golongan', );
+            ->with('data', $data)
+            ->with('golongan',);
     }
 
     public function atlet()
@@ -142,7 +156,7 @@ class OfficialController extends Controller
 
         $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
 
-        return view('official-kejurnas.atlet.index')->with('atlet', $atlet,'kontingen', $kontingen)->with('kontingen', $kontingen);
+        return view('official-kejurnas.atlet.index')->with('atlet', $atlet, 'kontingen', $kontingen)->with('kontingen', $kontingen);
     }
 
     public function download()

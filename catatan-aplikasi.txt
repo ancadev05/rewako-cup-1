@@ -21,3 +21,42 @@ git push -u origin master
 git remote add origin https://github.com/ancadev05/ts-177-gowa.git
 git branch -M master
 git push -u origin master
+
+31/3/2024
+
+composer dump-autoload
+
+keterangan kolom bantu
+PUD-T = pra usia dini tanding
+UD-T = usia dini tanding
+PR-T = pra remaja tanding
+R-T = remaja tanding
+D-T = dewasa tanding
+M-T = master tanding
+
+PUD-TTK = pra usia dini tunggal tangan kosong
+PUD-TB = pra usia dini tunggal bersenjata
+PUD-GTK = pra usia dini ganda tangan kosong
+PUD-GB = pra usia dini ganda bersenjata
+PUD-GTKB = pra usia dini ganda tangan kosong bersenjata
+PUD-TRI = pra usia dini trio
+
+UD-TTK = usia dini tunggal tangan kosong
+UD-TB = usia dini tunggal bersenjata
+UD-GTK = usia dini ganda tangan kosong
+UD-GB = usia dini ganda bersenjata
+UD-GTKB = usia dini ganda tangan kosong bersenjata
+UD-TRI = usia dini trio
+
+PR-TTK = pra remaja tunggal tangan kosong
+PR-TB = pra remaja tunggal bersenjata
+PR-GTK = pra remaja ganda tangan kosong
+PR-GB = pra remaja ganda bersenjata
+PR-GTKB = pra remaja ganda tangan kosong bersenjata
+PR-TRI = pra remaja trio
+
+PR-GTK = pra remaja ganda tangan koosong
+R-GB = remaja ganda bersenjata
+D-GTKB = dewasa ganda tangan koosong dan bersenjata
+M-TRI = master 
+

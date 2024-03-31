@@ -26,19 +26,19 @@
               <td>1</td>
               <td>Kwitansi Pembayaran</td>
               <td><i class="fas fa-check-circle text-success"></i></td>
-              <td><a href="{{ url('download/kwitansi') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a></td>
+              <td><a href="{{ url('official/download/kwitansi') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a></td>
             </tr>
             <tr>
               <td>2</td>
               <td>Id Card</td>
               <td><i class="fas fa-check-circle text-success"></i></td>
-              <td><a href="{{ url('download/idcard') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a></td>
+              <td><a href="{{ url('official/download/idcard') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a></td>
             </tr>
             <tr>
               <td>3</td>
               <td>Form A-1</td>
               <td><i class="fas fa-check-circle text-success"></i></td>
-              <td><a href="{{ url('download/a-1') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a></td>
+              <td><a href="{{ url('official/download/a-1') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a></td>
             </tr>
             <tr>
               <td>4</td>

@@ -74,6 +74,10 @@
                             @if (Auth::user()->level == 'official')
                                 @if ($invoice->pembayaran == 0)
                                     <td class="text-center">
+                                        <a href="{{ url('/official/atlet/' . $item->id) }}"
+                                            class="btn btn-secondary"
+                                            style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                                class="fas fa-eye"></i></a>
                                         <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}"
                                             class="btn btn-warning"
                                             style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
