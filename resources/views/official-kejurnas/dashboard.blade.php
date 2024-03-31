@@ -62,28 +62,32 @@
     </div>
 
 
-
-    <div class="p-2 alert alert-success">
-        <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
-            <div>
-                <h1>Total Pembayaran : Rp{{ $data[3]['jumlah'] }}</h1>
-            </div>
-            <div>
-                <h1><i class="fas fa-check-circle text-success"></i></h1>
-            </div>
-        </div>
-    </div>
-    <div class="p-2 alert alert-danger">
-        <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
-            <div>
-                <h1>Total Pembayaran : Rp{{ $data[3]['jumlah'] }}</h1>
-                <a href="https://wa.me/6281255242365" class="btn btn-sm btn-success" target="_blank"><i class="fab fa-whatsapp"></i>
-                    Konfirmasi Pembayaran</a>
-            </div>
-            <div>
-                <h1><i class="fas fa-times-circle text-danger"></i></h1>
+    {{-- status pembayaran --}}
+    @if ($data[5]['statusBayar'] == 1)
+        <div class="p-2 alert alert-success">
+            <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
+                <div>
+                    <h1>Total Pembayaran : Rp{{ $data[3]['jumlah'] }}</h1>
+                </div>
+                <div>
+                    <h1><i class="fas fa-check-circle text-success"></i></h1>
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <div class="p-2 alert alert-danger">
+            <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
+                <div>
+                    <h1>Total Pembayaran : Rp{{ $data[3]['jumlah'] }}</h1>
+                    <a href="https://wa.me/6281255242365" class="btn btn-sm btn-success" target="_blank"><i
+                            class="fab fa-whatsapp"></i>
+                        Konfirmasi Pembayaran</a>
+                </div>
+                <div>
+                    <h1><i class="fas fa-times-circle text-danger"></i></h1>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
 {{-- /konten --}}

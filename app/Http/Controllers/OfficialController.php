@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atlet;
+use App\Models\Invoice;
 use App\Models\Kontingen;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,9 +16,17 @@ class OfficialController extends Controller
     public function index()
     {
         $atlet = Atlet::get();
+
+        // username official
         $username = Auth::user()->username;
+        
+        // nama kontingen sesuai username official
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
         $kontingen = $carikontingen->nama_kontingen;
+
+        // status pembayaran kontingen bersangkutan
+        $invoice = Invoice::where('id_username_official', $username)->get()->first();
+        // dd($invoice->pembayaran);
 
         function format_uang($angka)
         {
@@ -70,29 +79,32 @@ class OfficialController extends Controller
         $jumlah = ($kTanding * $aTanding) + ($kTunggal * $aTunggal) + ($kGanda * $aGanda) + ($kTrio * $aTrio);
 
         $data = [
-            [
+            [ //index 0
                 'aTanding' => $aTanding,
                 'aTunggal' => $aTunggal,
                 'aGanda' => $aGanda,
                 'aTrio' => $aTrio
             ],
-            [
+            [ //index 1
                 'kTanding' => format_uang($kTanding),
                 'kTunggal' => format_uang($kTunggal),
                 'kGanda' => format_uang($kGanda),
                 'kTrio' => format_uang($kTrio)
             ],
-            [
+            [ //index 2
                 'tanding' => format_uang($kTanding * $aTanding),
                 'tunggal' => format_uang($kTunggal * $aTunggal),
                 'ganda' => format_uang($kGanda * $aGanda),
                 'trio' => format_uang($kTrio * $aTrio)
             ],
-            [
+            [ //index 3
                 'jumlah' => format_uang($jumlah)
             ],
-            [
+            [ //index 4
                 'namaKontingen' => $kontingen
+            ],
+            [ //index 5
+                'statusBayar' => $invoice->pembayaran
             ]
 
         ];

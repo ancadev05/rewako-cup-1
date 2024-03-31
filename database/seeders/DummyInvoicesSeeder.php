@@ -17,16 +17,19 @@ class DummyInvoicesSeeder extends Seeder
             [
                 'id_username_official'=>'off1',
                 'nama_official'=>'Gowa',
+                'id_kontingen'=>'Gowa',
                 'pembayaran'=>0
             ],
             [
                 'id_username_official'=>'off2',
                 'nama_official'=>'Makassar',
+                'id_kontingen'=>'Makassar',
                 'pembayaran'=>0
             ],
             [
                 'id_username_official'=>'off3',
                 'nama_official'=>'Takalar',
+                'id_kontingen'=>'Takalar',
                 'pembayaran'=>0
             ]
             ];

@@ -48,9 +48,9 @@ class UserController extends Controller
             'alamat' => $request->alamat,
             'id_username_official' => $userpass
         ];
-        
+
         $invoice = [
-            'id_username_official' => $userpass,
+            'id_username_official' => strtoupper($userpass),
             'nama_official' => $request->name,
             'pembayaran' => 0
         ];
@@ -61,5 +61,4 @@ class UserController extends Controller
 
         return redirect()->to('admin-kejurnas/user')->with('success', 'Data berhasil ditambahkan');
     }
-
 }

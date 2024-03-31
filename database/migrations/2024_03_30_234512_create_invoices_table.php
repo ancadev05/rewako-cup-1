@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_username_official');
             $table->string('nama_official');
+            $table->string('id_kontingen');
             $table->integer('pembayaran');
             $table->timestamps();
         });
