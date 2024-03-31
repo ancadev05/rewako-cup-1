@@ -67,7 +67,7 @@
         <div class="p-2 alert alert-success">
             <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
                 <div>
-                    <h1>Total Pembayaran : Rp{{ $data[3]['jumlah'] }}</h1>
+                    <h1>Status Pembayaran : LUNAS</h1>
                 </div>
                 <div>
                     <h1><i class="fas fa-check-circle text-success"></i></h1>

@@ -24,7 +24,8 @@
                         <th>Nama Official</th>
                         <th>Kontingen</th>
                         <th>No. Invoice</th>
-                        <th>Status</th>
+                        <th>Aksi</th>
+                        <th>Ket.</th>
                     </tr>
                 </thead>
 
@@ -36,8 +37,11 @@
                             <td>{{ $item->id_kontingen }}</td>
                             <td>{{ $item->id_username_official }}</td>
                             <td>
+                                
+                            </td>
+                            <td>
                                 @if ($item->pembayaran == 0)
-                                    <form action="{{ url('/admin-kejurnas/invoice/'.$item->id) }}" method="post">
+                                    <form action="{{ url('/admin-kejurnas/invoice/' . $item->id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-sm btn-danger" type="submit">Pending</button>
                                     </form>
@@ -51,5 +55,4 @@
             </table>
         </div>
     </div>
-
 @endsection {{-- /konten --}}

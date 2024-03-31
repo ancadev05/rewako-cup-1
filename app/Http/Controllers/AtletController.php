@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atlet;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,11 +20,13 @@ class AtletController extends Controller
         $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
         $kontingen = $carikontingen->nama_kontingen;
 
-        // $atlet = Atlet::get();
+        // status pembayaran invoice
+        $invoice = Invoice::where('id_username_official', $username)->get()->first();
 
         return view('official-kejurnas.atlet.index')
         ->with('atlet', $atlet)
-        ->with('kontingen', $kontingen);
+        ->with('kontingen', $kontingen)
+        ->with('invoice', $invoice);
     }
 
     /**
