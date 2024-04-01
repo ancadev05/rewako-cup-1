@@ -189,7 +189,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label class=" form-label" for="akte">Akte</label></td>
+                        <td><label class=" form-label" for="akte">Akte / Ijazah</label></td>
                         <td>
                             <input class=" form-control form-control-sm @error('akte') is-invalid @enderror"
                                 type="file" name="akte" id="akte">
@@ -199,7 +199,7 @@
                             @enderror
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td><label class=" form-label" for="rekomendasi">Rekomendasi</label></td>
                         <td>
                             <input class=" form-control form-control-sm @error('rekomendasi') is-invalid @enderror"
@@ -231,7 +231,7 @@
                                 </small>
                             @enderror
                         </td>
-                    </tr>
+                    </tr> --}}
                 </table>
             </div>
 

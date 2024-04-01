@@ -53,33 +53,32 @@ class AtletController extends Controller
 
         // $request->validate(
         //     [
-        //         'nama_atlet' => 'required',
-        //         'tempat_lahir' => 'required',
-        //         'tgl_lahir' => 'required',
-        //         'jk' => 'required',
-        //         'id_username_official' => 'required',
-        //         'golongan' =>  'required',
-        //         'foto_atlet' => 'required',
-        //         'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048',
-        //         'akte' => 'required',
-        //         'rekomendasi' => 'required',
-        //         'izin_orangtua' => 'required',
-        //         'suket_sehat' => 'required'
-        //     ],
-        //     [
-        //         'nama_atlet' => 'wajib diisi*',
-        //         'tempat_lahir' => 'wajib diisi*',
-        //         'tgl_lahir' => 'wajib diisi*',
-        //         'id_username_official' => 'wajib diisi*',
-        //         'golongan' => 'wajib diisi*',
-        //         'foto_atlet' => 'wajib diisi*',
-        //         'akte' => 'wajib diisi*',
-        //         'foto_atlet:required' => 'wajib diisi',
-        //         'foto_atlet:mimes' => 'format file tidak sesuai',
-        //         'foto_atlet:max' => 'ukuran foto maksimal 2MB',
-        //         'rekomendasi' => 'wajib diisi',
-        //         'izin_orangtua' => 'wajib diisi',
-        //         'suket_sehat' => 'wajib diisi'
+        //     //     'nama_atlet' => 'required',
+        //     //     'tempat_lahir' => 'required',
+        //     //     'tgl_lahir' => 'required',
+        //     //     'jk' => 'required',
+        //     //     'golongan' =>  'required',
+        //     //     'foto_atlet' => 'required',
+        //     //     'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048',
+        //     //     // 'akte' => 'required',
+        //     //     // 'rekomendasi' => 'required',
+        //     //     // 'izin_orangtua' => 'required',
+        //     //     // 'suket_sehat' => 'required'
+        //     // ],
+        //     // [
+        //     //     'nama_atlet' => 'wajib diisi*',
+        //     //     'tempat_lahir' => 'wajib diisi*',
+        //     //     'tgl_lahir' => 'wajib diisi*',
+        //     //     'id_username_official' => 'wajib diisi*',
+        //     //     'golongan' => 'wajib diisi*',
+        //     //     'foto_atlet' => 'wajib diisi*',
+        //     //     // 'akte' => 'wajib diisi*',
+        //     //     'foto_atlet:required' => 'wajib diisi',
+        //     //     'foto_atlet:mimes' => 'format file tidak sesuai',
+        //     //     'foto_atlet:max' => 'ukuran foto maksimal 2MB'
+        //     //     // 'rekomendasi' => 'wajib diisi',
+        //         // 'izin_orangtua' => 'wajib diisi',
+        //         // 'suket_sehat' => 'wajib diisi'
         //     ]
         // );
 
@@ -101,45 +100,45 @@ class AtletController extends Controller
             $foto_file->storeAs('public/foto-atlet/', $foto); // memindahkan file ke folder public agar bisa diakses
         }
 
-        $akte = false;
-        // Jika user upload akte
-        if ($request->hasFile('akte')) {
+        // $akte = false;
+        // // Jika user upload akte
+        // if ($request->hasFile('akte')) {
 
-            // Validasi gambar
-            $akte_file = $request->file('akte'); // mengambil file dari form
-            $akte = date('ymdhis') . '.' . $akte_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $akte_file->storeAs('public/akte/', $akte); // memindahkan file ke folder public agar bisa diakses
-        }
+        //     // Validasi gambar
+        //     $akte_file = $request->file('akte'); // mengambil file dari form
+        //     $akte = date('ymdhis') . '.' . $akte_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+        //     $akte_file->storeAs('public/akte/', $akte); // memindahkan file ke folder public agar bisa diakses
+        // }
 
-        $rekomendasi = false;
-        // Jika user upload surat rekoomendasi
-        if ($request->hasFile('rekomendasi')) {
+        // $rekomendasi = false;
+        // // Jika user upload surat rekoomendasi
+        // if ($request->hasFile('rekomendasi')) {
 
-            // Validasi gambar
-            $rekomendasi_file = $request->file('rekomendasi'); // mengambil file dari form
-            $rekomendasi = date('ymdhis') . '.' . $rekomendasi_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $rekomendasi_file->storeAs('public/rekomendasi/', $rekomendasi); // memindahkan file ke folder public agar bisa diakses
-        }
+        //     // Validasi gambar
+        //     $rekomendasi_file = $request->file('rekomendasi'); // mengambil file dari form
+        //     $rekomendasi = date('ymdhis') . '.' . $rekomendasi_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+        //     $rekomendasi_file->storeAs('public/rekomendasi/', $rekomendasi); // memindahkan file ke folder public agar bisa diakses
+        // }
 
-        $izin_orangtua = false;
-        // Jika user upload suket izin
-        if ($request->hasFile('izin_orangtua')) {
+        // $izin_orangtua = false;
+        // // Jika user upload suket izin
+        // if ($request->hasFile('izin_orangtua')) {
 
-            // Validasi gambar
-            $izin_orangtua_file = $request->file('izin_orangtua'); // mengambil file dari form
-            $izin_orangtua = date('ymdhis') . '.' . $izin_orangtua_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $izin_orangtua_file->storeAs('public/suket-izin/', $izin_orangtua); // memindahkan file ke folder public agar bisa diakses
-        }
+        //     // Validasi gambar
+        //     $izin_orangtua_file = $request->file('izin_orangtua'); // mengambil file dari form
+        //     $izin_orangtua = date('ymdhis') . '.' . $izin_orangtua_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+        //     $izin_orangtua_file->storeAs('public/suket-izin/', $izin_orangtua); // memindahkan file ke folder public agar bisa diakses
+        // }
 
-        $suket_sehat = false;
-        // Jika user upload suket sehat
-        if ($request->hasFile('suket_sehat')) {
+        // $suket_sehat = false;
+        // // Jika user upload suket sehat
+        // if ($request->hasFile('suket_sehat')) {
 
-            // Validasi gambar
-            $suket_sehat_file = $request->file('suket_sehat'); // mengambil file dari form
-            $suket_sehat = date('ymdhis') . '.' . $suket_sehat_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $suket_sehat_file->storeAs('public/suket-sehat/', $suket_sehat); // memindahkan file ke folder public agar bisa diakses
-        }
+        //     // Validasi gambar
+        //     $suket_sehat_file = $request->file('suket_sehat'); // mengambil file dari form
+        //     $suket_sehat = date('ymdhis') . '.' . $suket_sehat_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
+        //     $suket_sehat_file->storeAs('public/suket-sehat/', $suket_sehat); // memindahkan file ke folder public agar bisa diakses
+        // }
 
 
         $atlet = [
@@ -155,10 +154,10 @@ class AtletController extends Controller
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
             'foto_atlet' => $foto,
-            'akte' => $akte,
-            'rekomendasi' => $rekomendasi,
-            'izin_orangtua' => $izin_orangtua,
-            'suket_sehat' => $suket_sehat
+            // 'akte' => $akte,
+            // 'rekomendasi' => $rekomendasi,
+            // 'izin_orangtua' => $izin_orangtua,
+            // 'suket_sehat' => $suket_sehat
         ];
 
         // dd($atlet);
@@ -172,20 +171,6 @@ class AtletController extends Controller
      */
     public function show(string $id)
     {
-
-        // $kalimat = "Belajar PHP dengan Copilot";
-        // $kata_array = explode(" ", $kalimat);
-        // $kata_pertama_setiap_kata = ucwords($kalimat);
-        // echo $kata_pertama_setiap_kata; // Output: Belajar PHP Dengan Copilot
-
-        // $tgl = date('l, d M Y');
-        // $tgl2 = date('Y-m-d');
-        // // $tanggal = tanggalIndonesia(date('2024-04-01'));
-        // $tanggal2 = tanggalIndonesia($tgl2);
-
-        // dd($tanggal2);
-
-
         $atlet = Atlet::where('id', $id)->first();
 
         return view('official-kejurnas.atlet.atlet-show')->with('atlet', $atlet);
@@ -235,7 +220,6 @@ class AtletController extends Controller
         $seni = ambilHurufAwal($request->seni);
         $bantu = $golongan . '-' . $jk . '-' . $kelas . '-' . $seni;
 
-        // validasi file baru
         // validasi foto
 
         $foto = false;
@@ -256,46 +240,6 @@ class AtletController extends Controller
             $atlet['foto_atlet'] = $request->foto_atlet_lama;
         }
 
-        $akte = false;
-        // Jika user upload akte
-        if ($request->hasFile('akte')) {
-
-            // Validasi gambar
-            $akte_file = $request->file('akte'); // mengambil file dari form
-            $akte = date('ymdhis') . '.' . $akte_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $akte_file->storeAs('public/akte/', $akte); // memindahkan file ke folder public agar bisa diakses
-        }
-
-        $rekomendasi = false;
-        // Jika user upload surat rekoomendasi
-        if ($request->hasFile('rekomendasi')) {
-
-            // Validasi gambar
-            $rekomendasi_file = $request->file('rekomendasi'); // mengambil file dari form
-            $rekomendasi = date('ymdhis') . '.' . $rekomendasi_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $rekomendasi_file->storeAs('public/rekomendasi/', $rekomendasi); // memindahkan file ke folder public agar bisa diakses
-        }
-
-        $izin_orangtua = false;
-        // Jika user upload suket izin
-        if ($request->hasFile('izin_orangtua')) {
-
-            // Validasi gambar
-            $izin_orangtua_file = $request->file('izin_orangtua'); // mengambil file dari form
-            $izin_orangtua = date('ymdhis') . '.' . $izin_orangtua_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $izin_orangtua_file->storeAs('public/suket-izin/', $izin_orangtua); // memindahkan file ke folder public agar bisa diakses
-        }
-
-        $suket_sehat = false;
-        // Jika user upload suket sehat
-        if ($request->hasFile('suket_sehat')) {
-
-            // Validasi gambar
-            $suket_sehat_file = $request->file('suket_sehat'); // mengambil file dari form
-            $suket_sehat = date('ymdhis') . '.' . $suket_sehat_file->getClientOriginalExtension(); // meriname file, antisipasi nama file double
-            $suket_sehat_file->storeAs('public/suket-sehat/', $suket_sehat); // memindahkan file ke folder public agar bisa diakses
-        }
-
         $atlet = [
             'nama_atlet' => $request->nama_atlet,
             'tempat_lahir' => $request->tempat_lahir,
@@ -305,14 +249,9 @@ class AtletController extends Controller
             'bantu' => $bantu,
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
-            'foto_atlet' => $foto,
-            'akte' => $akte,
-            'rekomendasi' => $rekomendasi,
-            'izin_orangtua' => $izin_orangtua,
-            'suket_sehat' => $suket_sehat
+            'foto_atlet' => $foto
         ];
 
-        // dd($atlet);
         Atlet::where('id', $id)->update($atlet);
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil diubah');

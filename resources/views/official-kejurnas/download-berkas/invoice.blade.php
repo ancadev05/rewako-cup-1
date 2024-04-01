@@ -10,7 +10,10 @@
 @section('konten')
     <div class="kertas border shadow mb-3" id="print">
         {{-- invoice --}}
-        <div class="" style="font-size: 12px">
+        <div class=" position-relative" style="font-size: 12px">
+
+            <img src="{{ asset('storage/img-web/lunas.png') }}" alt=""
+            style="top:50%;left:50%;transform: translate(-50%, -50%);" class=" position-absolute m-auto">
 
             {{-- kop --}}
             <div class="d-flex justify-content-between border-2 border-bottom border-black mb-3 pb-1">
@@ -21,13 +24,13 @@
                     </div>
                     <div class="d-flex flex-column fw-bold">
                         <span>PANITIA PELAKSANA</span>
-                        <span>PEN TURNAMEN NASIONAL</span>
+                        <span>OPEN TURNAMEN NASIONAL</span>
                         <span>PENCAK SILAT TAPAK SUCI</span>
                         <span>REWAKO CUP I</span>
                     </div>
                 </div>
                 {{-- logo invoice --}}
-                <div class="d-flex flex-column m-0 p-0">
+                <div class="d-flex flex-column">
                     <span style="font-size: 28px; line-height:1;" class="m-0 p-0 fw-bold">INVOICE</span>
                     <span style="line-height: 1" class="m-0 p-0">No. {{ $invoice->id_username_official }}</span>
                 </div>
@@ -245,7 +248,7 @@
 
             {{-- tanggal invoice --}}
             <div class="d-flex justify-content-between ">
-                <span class="fw-bold text-bg-warning p-2 d-inline-block ">
+                <span class="fw-bold">
                     <table>
                         <tr>
                             <td>Bank</td>

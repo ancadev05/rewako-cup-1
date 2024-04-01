@@ -27,10 +27,10 @@ return new class extends Migration
             $table->string('kelas_tanding')->nullable();
             $table->string('seni')->nullable();
             $table->string('foto_atlet');
-            $table->string('akte');
-            $table->string('rekomendasi');
-            $table->string('izin_orangtua');
-            $table->string('suket_sehat');
+            $table->string('akte')->nullable();
+            $table->string('rekomendasi')->nullable();
+            $table->string('izin_orangtua')->nullable();
+            $table->string('suket_sehat')->nullable();
             $table->timestamps();
         });
     }

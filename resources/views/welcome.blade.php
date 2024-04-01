@@ -139,6 +139,13 @@
                 </div>
             </div>
 
+            <section class="services sections-bg">
+                <div class="container">
+                    <h5 class="text-center">Jika sudah memiliki akun, silahkan login ke aplikasi</h5>
+                    <a href="http://localhost/ts-177-gowa/official/atlet" class="btn btn-danger d-block ">Login</a>
+                </div>
+            </section>
+
             <!-- ======= About Us Section ======= -->
             <section id="about" class="about">
                 <div class="container" data-aos="fade-up">
