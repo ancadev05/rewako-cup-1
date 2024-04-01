@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <input class="form-control @error('golongan') is-invalid @enderror" type="text"
-                                name="golongan" id="golongan" readonly>
+                                name="golongan" id="golongan" value="{{ old('golongan') }}" readonly>
                             <small style="font-size: 12px; color:red;" id="hitung"></small>
                             @error('golongan')
                                 <small class="invalid-feedback"> {{ 'tekan tombol Cek Usia untuk mengetahui golongan' }}
@@ -70,12 +70,12 @@
                             <div class="d-flex">
                                 <div class="form-check me-3">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="PA">
+                                        name="jk" id="jk1" value="PA" {{ old('checked') }}>
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input @error('jk') is-invalid @enderror"" type="radio"
-                                        name="jk" id="jk2" value="PI">
+                                        name="jk" id="jk2" value="PI" {{ old('checked') }}>
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
                                 @error('jk')
@@ -103,7 +103,7 @@
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td><label for="berat_badan">Berat Badan</label></td>
                         <td>
                             <input class="form-control @error('berat_badan') is-invalid @enderror" type="number"
@@ -113,13 +113,13 @@
                                 </small>
                             @enderror
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td><label for="kelas_tanding">Kelas</label></td>
                         <td>
                             <select class="form-select @error('kelas_tanding') is-invalid @enderror" name="kelas_tanding"
                                 id="kelas_tanding">
-                                <option value="">-- Pilih Kelas --</option>
+                                <option value="0" selected>-- Pilih Kelas --</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="C">C</option>
@@ -152,7 +152,7 @@
                         <td><label for="seni">Seni</label></td>
                         <td>
                             <select class="form-select @error('seni') is-invalid @enderror" name="seni" id="seni">
-                                <option value="">-- Pilih Kategori --</option>
+                                <option value="0" selected>-- Pilih Kategori --</option>
                                 <option value="Tunggal Tangan Kosong">Tunggal Tangan Kosong</option>
                                 <option value="Tunggal Bersenjata">Tunggal Bersenjata</option>
                                 <option value="Ganda Tangan Kosong">Ganda Tangan Kosong</option>

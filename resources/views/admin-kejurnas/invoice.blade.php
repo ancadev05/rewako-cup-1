@@ -10,11 +10,6 @@
 @section('konten')
     <h3 class="mb-3">Status Pembayaran Official</h3>
 
-    <div class="mb-2 d-flex justify-content-end">
-        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah User <i
-                class="fa fa-plus ms-2"></i></button>
-    </div>
-
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
             <table class="table table-sm table-striped table-hover">

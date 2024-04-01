@@ -19,7 +19,7 @@
                         <th>No</th>
                         <th>Kategori</th>
                         <th class="text-center">Jumlah Atlet</th>
-                        <th class="text-end">SWO</th>
+                        <th class="text-end">SWP</th>
                         <th class="text-end">Total</th>
                     </tr>
                 </thead>
@@ -28,28 +28,28 @@
                         <td>1</td>
                         <td>Kategori Tanding</td>
                         <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                        <td class="text-end">{{ $data[1]['kTanding'] }}</td>
+                        <td class="text-end">Rp. 250.000,-</td>
                         <td class="text-end">{{ $data[2]['tanding'] }}</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Kategori Tunggal</td>
                         <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                        <td class="text-end">{{ $data[1]['kTunggal'] }}</td>
+                        <td class="text-end">Rp. 250.000,-</td>
                         <td class="text-end">{{ $data[2]['tunggal'] }}</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Kategori Ganda</td>
                         <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                        <td class="text-end">{{ $data[1]['kGanda'] }}</td>
+                        <td class="text-end">Rp. 450.000,-</td>
                         <td class="text-end">{{ $data[2]['ganda'] }}</td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Kategori Trio</td>
                         <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                        <td class="text-end">{{ $data[1]['kTrio'] }}</td>
+                        <td class="text-end">Rp700.000,-</td>
                         <td class="text-end">{{ $data[2]['trio'] }}</td>
                     </tr>
                     <tr>
@@ -63,7 +63,7 @@
 
     {{-- invoice --}}
     <div class="shadow p-3 mb-4 bg-white rounded border ">
-        
+
         {{-- kop --}}
         <div class="d-flex align-items-center border-2 border-bottom border-black mb-3">
             <div>
@@ -84,8 +84,12 @@
                     <td width="200px">Nama Kontingen</td>
                     <td>: {{ $data[4]['namaKontingen'] }}</td>
                 </tr>
+                <tr class="fw-bold">
+                    <td width="200px">Alamat Kontingen</td>
+                    <td>: {{ $data[4]['namaKontingen'] }}</td>
+                </tr>
             </table>
-        </div>  {{-- /data kontingen --}}
+        </div> {{-- /data kontingen --}}
 
         {{-- rincian pembayaran --}}
         <div>
@@ -97,38 +101,17 @@
                                 <th>No</th>
                                 <th>Kategori</th>
                                 <th class="text-center">Jumlah Atlet</th>
-                                <th class="text-end">SWO</th>
+                                <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Kategori Tanding</td>
-                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTanding'] }}</td>
-                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Kategori Tunggal</td>
+                                <td>Seni Tunggal</td>
                                 <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Kategori Ganda</td>
-                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                <td class="text-end">{{ $data[1]['kGanda'] }}</td>
-                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Kategori Trio</td>
-                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTrio'] }}</td>
-                                <td class="text-end">{{ $data[2]['trio'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
@@ -145,38 +128,24 @@
                                 <th>No</th>
                                 <th>Kategori</th>
                                 <th class="text-center">Jumlah Atlet</th>
-                                <th class="text-end">SWO</th>
+                                <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Kategori Tanding</td>
+                                <td>Tanding</td>
                                 <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Kategori Tunggal</td>
+                                <td>Seni Tunggal</td>
                                 <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Kategori Ganda</td>
-                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                <td class="text-end">{{ $data[1]['kGanda'] }}</td>
-                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Kategori Trio</td>
-                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTrio'] }}</td>
-                                <td class="text-end">{{ $data[2]['trio'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
@@ -193,38 +162,31 @@
                                 <th>No</th>
                                 <th>Kategori</th>
                                 <th class="text-center">Jumlah Atlet</th>
-                                <th class="text-end">SWO</th>
+                                <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Kategori Tanding</td>
+                                <td>Tanding</td>
                                 <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Kategori Tunggal</td>
+                                <td>Seni Tunggal</td>
                                 <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Kategori Ganda</td>
+                                <td>Seni Ganda</td>
                                 <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                <td class="text-end">{{ $data[1]['kGanda'] }}</td>
+                                <td class="text-end">Rp. 450.000,-</td>
                                 <td class="text-end">{{ $data[2]['ganda'] }}</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Kategori Trio</td>
-                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTrio'] }}</td>
-                                <td class="text-end">{{ $data[2]['trio'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
@@ -241,37 +203,37 @@
                                 <th>No</th>
                                 <th>Kategori</th>
                                 <th class="text-center">Jumlah Atlet</th>
-                                <th class="text-end">SWO</th>
+                                <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Kategori Tanding</td>
+                                <td>Tanding</td>
                                 <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Kategori Tunggal</td>
+                                <td>Seni Tunggal</td>
                                 <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Kategori Ganda</td>
+                                <td>Seni Ganda</td>
                                 <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                <td class="text-end">{{ $data[1]['kGanda'] }}</td>
+                                <td class="text-end">Rp. 450.000,-</td>
                                 <td class="text-end">{{ $data[2]['ganda'] }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Kategori Trio</td>
+                                <td>Seni Trio</td>
                                 <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTrio'] }}</td>
+                                <td class="text-end">Rp700.000,-</td>
                                 <td class="text-end">{{ $data[2]['trio'] }}</td>
                             </tr>
                             <tr>
@@ -289,37 +251,37 @@
                                 <th>No</th>
                                 <th>Kategori</th>
                                 <th class="text-center">Jumlah Atlet</th>
-                                <th class="text-end">SWO</th>
+                                <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Kategori Tanding</td>
+                                <td>Tanding</td>
                                 <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Kategori Tunggal</td>
+                                <td>Seni Tunggal</td>
                                 <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
                                 <td class="text-end">{{ $data[2]['tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Kategori Ganda</td>
+                                <td>Seni Ganda</td>
                                 <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                <td class="text-end">{{ $data[1]['kGanda'] }}</td>
+                                <td class="text-end">Rp. 450.000,-</td>
                                 <td class="text-end">{{ $data[2]['ganda'] }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Kategori Trio</td>
+                                <td>Seni Trio</td>
                                 <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                <td class="text-end">{{ $data[1]['kTrio'] }}</td>
+                                <td class="text-end">Rp700.000,-</td>
                                 <td class="text-end">{{ $data[2]['trio'] }}</td>
                             </tr>
                             <tr>
@@ -330,8 +292,40 @@
                     </table>
             </div>
         </div> {{-- /rincian pembayaran --}}
+
+        {{-- tanggal invoice --}}
+        <div class="d-flex justify-content-between ">
+            <span class="fw-bold text-bg-warning p-2 d-inline-block ">
+                <table>
+                    <tr>
+                        <td>Bank</td>
+                        <td>: Mandiri</td>
+                    </tr>
+                    <tr>
+                        <td>Atas Nama</td>
+                        <td>: Mandiri</td>
+                    </tr>
+                    <tr>
+                        <td>No. Rekening</td>
+                        <td>: 8998990</td>
+                    </tr>
+                </table>
+            </span>
+            <div>
+                @php
+                    $tgl = tanggalIndonesia(date('Y-m-d'));
+                @endphp
+                <span class="d-block">{{ $tgl }}</span>
+                <img src="{{ asset('storage/img-web/ttd-bendahara.png') }}" alt="qr" height="90px">
+                {{-- nama bendahara --}}
+                <div class="d-flex flex-column fw-bold">
+                    <span class="border-bottom border-2 border-dark">Irma, S.Pd., K.Ka.</span>
+                    <span>Bendahara Panitia </span>
+                </div> {{-- /nama bendahara --}}
+            </div>
+        </div>
     </div> {{-- /invoice --}}
-    
+
 
     {{-- status pembayaran --}}
     @if ($data[5]['statusBayar'] == 1)

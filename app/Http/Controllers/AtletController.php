@@ -74,7 +74,9 @@ class AtletController extends Controller
                 'golongan' => 'wajib diisi*',
                 'foto_atlet' => 'wajib diisi*',
                 'akte' => 'wajib diisi*',
-                'foto_atlet' => 'wajib diisi',
+                'foto_atlet:required' => 'wajib diisi',
+                'foto_atlet:mimes' => 'format file tidak sesuai',
+                'foto_atlet:max' => 'ukuran foto maksimal 2MB',
                 'rekomendasi' => 'wajib diisi',
                 'izin_orangtua' => 'wajib diisi',
                 'suket_sehat' => 'wajib diisi'
@@ -82,7 +84,12 @@ class AtletController extends Controller
         );
 
         // pengisian kolom bantu
-        $golongan = $request->golongan;
+        $golongan = ambilHurufAwal($request->golongan);
+        $jk = $request->jk;
+        $kelas = $request->kelas_tanding;
+        $seni = ambilHurufAwal($request->seni);
+
+        $bantu = $golongan . '-' . $jk . '-' . $kelas . '-' . $seni;
 
         // verifikasi berkas
         $foto = false;
@@ -135,14 +142,16 @@ class AtletController extends Controller
             $suket_sehat_file->storeAs('public/suket-sehat/', $suket_sehat); // memindahkan file ke folder public agar bisa diakses
         }
 
+
         $atlet = [
             'nama_atlet' => $request->nama_atlet,
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
             'id_username_official' => $username,
+            'kontingen' => $kontingen,
+            'bantu' => $bantu,
             'golongan' => $request->golongan,
-            'kontingen' => $kontingen->nama_kontingen,
             'berat_badan' => $request->berat_badan,
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
@@ -153,7 +162,7 @@ class AtletController extends Controller
             'suket_sehat' => $suket_sehat
         ];
 
-        // dd($atlet);
+        dd($atlet);
         Atlet::create($atlet);
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil ditambahkan');
@@ -175,7 +184,7 @@ class AtletController extends Controller
         // $tanggal = tanggalIndonesia(date('2024-04-01'));
         $tanggal2 = tanggalIndonesia($tgl2);
 
-        dd( $tanggal2);
+        dd($tanggal2);
 
 
         $atlet = Atlet::where('id', $id)->first();

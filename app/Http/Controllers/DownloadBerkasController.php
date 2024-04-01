@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atlet;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class DownloadBerkasController extends Controller
 {
     public function index()
     {
-        return view('official-kejurnas.download-berkas.index');
+        $invoice = Invoice::get();
+        return view('official-kejurnas.download-berkas.index')->with('invoice', $invoice);
     }
 
     public function kwitansi()

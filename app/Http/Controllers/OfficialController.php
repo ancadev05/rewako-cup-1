@@ -161,6 +161,9 @@ class OfficialController extends Controller
 
     public function download()
     {
-        return view('official-kejurnas.download-berkas.index');
+        $username = Auth::user()->username; // nama user sesuai username yang login
+        $invoice = Invoice::where('id_username_official', $username)->get()->first();
+        // dd($invoice->pembayaran);
+        return view('official-kejurnas.download-berkas.index')->with('invoice', $invoice);
     }
 }

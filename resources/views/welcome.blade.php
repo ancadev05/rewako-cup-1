@@ -130,7 +130,7 @@
             </section> --}}
 
             {{-- registrasi --}}
-            <div style="background-color: #ff6a00;" data-aos="fade-up">
+            <div style="background-color: #ff6a00;" data-aos="fade-up" class="mt-5">
                 <div class="container">
                         <a href="https://wa.wizard.id/08f913" target="_blank" class="d-block bg-primary ">
                             <img src="{{ asset('storage/img-web/regis.png') }}" class="" alt="..."
