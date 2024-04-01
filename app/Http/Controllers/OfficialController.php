@@ -95,7 +95,7 @@ class OfficialController extends Controller
         $kGanda = 225000;
 
         // perhitungan biaya kategori seni trio
-        if ($aTrio > 0 && $aTrio <= 3) { // trio pra usia dini
+        if ($aTrio >= 0 && $aTrio <= 3) { // trio pra usia dini
             $kTrio = 700000;
         } elseif ($aTrio > 3 && $aTrio <= 6) { // trioo usia dini
             $kTrio = 1400000;
