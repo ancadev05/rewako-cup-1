@@ -37,6 +37,20 @@
                         <td><a href="{{ url('/official/download/invoice') }}" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Surat Pernyataan Atlet</td>
+                        <td><i class="fas fa-check-circle text-success"></i></td>
+                        <td><a href="{{ asset('storage/download-file/surat-pernyataan-atlet.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Surat Permohonan Perizinan</td>
+                        <td><i class="fas fa-check-circle text-success"></i></td>
+                        <td><a href="{{ asset('storage/download-file/permohonan-perizinan.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
+                        </td>
+                    </tr>
                     @if ($invoice->pembayaran == 1)
                         <tr>
                             <td>2</td>
