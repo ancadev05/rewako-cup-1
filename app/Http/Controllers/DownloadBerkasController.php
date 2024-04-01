@@ -25,16 +25,10 @@ class DownloadBerkasController extends Controller
         // nama kontingen sesuai username official
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
         $kontingen = $carikontingen->nama_kontingen;
+        $alamatKontingen = $carikontingen->alamat;
 
         // status pembayaran kontingen bersangkutan
         $invoice = Invoice::where('id_username_official', $username)->get()->first();
-
-        // count golongan atlet
-        $golongan = Atlet::where('golongan')->get();
-        // $pudTanding = Atlet::where('golongan', 'Pra Usia Dini')->orwhere('kelas_tanding','M')->get();
-        $pudTanding = DB::table('atlets')->where('golongan', 'Pra Usia Dini')->where('kelas_tanding', 'A' or 'M' or 'H')->get();
-        // $pudSeni = Atlet::where('golongan', 'Pra Usia Dini')->where()->get();
-        // dd($pudTanding);
 
         // count atlet tanding
         $a = DB::table('atlets')->where('kontingen', $kontingen)->where('kelas_tanding', 'A')->get()->count();
@@ -122,6 +116,8 @@ class DownloadBerkasController extends Controller
 
         return view('official-kejurnas.download-berkas.invoice')
             ->with('data', $data)
+            ->with('invoice', $invoice)
+            ->with('alamatKontingen', $alamatKontingen)
             ->with('golongan',);
     }
     public function kwitansi()

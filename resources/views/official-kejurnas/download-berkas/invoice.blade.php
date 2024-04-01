@@ -13,15 +13,23 @@
         <div class="" style="font-size: 12px">
 
             {{-- kop --}}
-            <div class="d-flex align-items-center border-2 border-bottom border-black mb-3">
-                <div>
-                    <img src="{{ asset('storage/img-web/rewako.png') }}" alt="" srcset="" width="90px">
+            <div class="d-flex justify-content-between border-2 border-bottom border-black mb-3 pb-1">
+                {{-- logoo kop --}}
+                <div class="d-flex align-items-center ">
+                    <div class="me-2">
+                        <img src="{{ asset('storage/img-web/rewako.png') }}" alt="" srcset="" width="90px">
+                    </div>
+                    <div class="d-flex flex-column fw-bold">
+                        <span>PANITIA PELAKSANA</span>
+                        <span>PEN TURNAMEN NASIONAL</span>
+                        <span>PENCAK SILAT TAPAK SUCI</span>
+                        <span>REWAKO CUP I</span>
+                    </div>
                 </div>
-                <div class="d-flex flex-column fw-bold">
-                    <span>PANITIA PELAKSANA</span>
-                    <span>PEN TURNAMEN NASIONAL</span>
-                    <span>PENCAK SILAT TAPAK SUCI</span>
-                    <span>REWAKO CUP I</span>
+                {{-- logo invoice --}}
+                <div class="d-flex flex-column m-0 p-0">
+                    <span style="font-size: 28px; line-height:1;" class="m-0 p-0 fw-bold">INVOICE</span>
+                    <span style="line-height: 1" class="m-0 p-0">No. {{ $invoice->id_username_official }}</span>
                 </div>
             </div> {{-- /kop --}}
 
@@ -34,7 +42,7 @@
                     </tr>
                     <tr class="fw-bold">
                         <td width="200px">Alamat Kontingen</td>
-                        <td>: {{ $data[4]['namaKontingen'] }}</td>
+                        <td>: {{ $alamatKontingen }}</td>
                     </tr>
                 </table>
             </div> {{-- /data kontingen --}}
@@ -42,203 +50,197 @@
             {{-- rincian pembayaran --}}
             <div>
                 <div class="table-responsive">
-                    <div class="text-bg-secondary p-1 fw-bold ">A. PRA USIA DINI</div>
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Kategori</th>
-                                    <th class="text-center">Jumlah Atlet</th>
-                                    <th class="text-end">SWP</th>
-                                    <th class="text-end">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Seni Tunggal</td>
-                                    <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                    <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-                <div class="table-responsive">
-                    <div class="text-bg-secondary p-1 fw-bold">B. USIA DINI</div>
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Kategori</th>
-                                    <th class="text-center">Jumlah Atlet</th>
-                                    <th class="text-end">SWP</th>
-                                    <th class="text-end">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tanding</td>
-                                    <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tanding'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Seni Tunggal</td>
-                                    <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                    <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-                <div class="table-responsive">
-                    <div class="text-bg-secondary p-1 fw-bold">C. PRA REMAJA</div>
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Kategori</th>
-                                    <th class="text-center">Jumlah Atlet</th>
-                                    <th class="text-end">SWP</th>
-                                    <th class="text-end">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tanding</td>
-                                    <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tanding'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Seni Tunggal</td>
-                                    <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Seni Ganda</td>
-                                    <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                    <td class="text-end">Rp. 450.000,-</td>
-                                    <td class="text-end">{{ $data[2]['ganda'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                    <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-                <div class="table-responsive">
-                    <div class="text-bg-secondary p-1 fw-bold">D. REMAJA</div>
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Kategori</th>
-                                    <th class="text-center">Jumlah Atlet</th>
-                                    <th class="text-end">SWP</th>
-                                    <th class="text-end">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tanding</td>
-                                    <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tanding'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Seni Tunggal</td>
-                                    <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Seni Ganda</td>
-                                    <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                    <td class="text-end">Rp. 450.000,-</td>
-                                    <td class="text-end">{{ $data[2]['ganda'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Seni Trio</td>
-                                    <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                    <td class="text-end">Rp. 700.000,-</td>
-                                    <td class="text-end">{{ $data[2]['trio'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                    <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-                <div class="table-responsive">
-                    <div class="text-bg-secondary p-1 fw-bold">E. DEWASA</div>
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Kategori</th>
-                                    <th class="text-center">Jumlah Atlet</th>
-                                    <th class="text-end">SWP</th>
-                                    <th class="text-end">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tanding</td>
-                                    <td class="text-center">{{ $data[0]['aTanding'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tanding'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Seni Tunggal</td>
-                                    <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
-                                    <td class="text-end">Rp. 250.000,-</td>
-                                    <td class="text-end">{{ $data[2]['tunggal'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Seni Ganda</td>
-                                    <td class="text-center">{{ $data[0]['aGanda'] }}</td>
-                                    <td class="text-end">Rp. 450.000,-</td>
-                                    <td class="text-end">{{ $data[2]['ganda'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Seni Trio</td>
-                                    <td class="text-center">{{ $data[0]['aTrio'] }}</td>
-                                    <td class="text-end">Rp. 700.000,-</td>
-                                    <td class="text-end">{{ $data[2]['trio'] }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                    <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <td colspan="5" class="text-bg-secondary p-1 fw-bold ">A. PRA USIA DINI</td>
+                            </tr>
+                            <tr>
+                                <th>No</th>
+                                <th>Kategori</th>
+                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-end">SWP</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Seni Tunggal</td>
+                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><b>Jumlah :</b></td>
+                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                            </tr>
+                            <tr>
+                        </tbody>
+                        <td colspan="5" class="text-bg-secondary p-1 fw-bold ">B. USIA DINI</td>
+                        </tr>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kategori</th>
+                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-end">SWP</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Tanding</td>
+                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Seni Tunggal</td>
+                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><b>Jumlah :</b></td>
+                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                            </tr>
+                        </tbody>
+                        <tr>
+                            <td colspan="5" class="text-bg-secondary p-1 fw-bold ">C. PRA REMAJA</td>
+                        </tr>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kategori</th>
+                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-end">SWP</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Tanding</td>
+                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Seni Tunggal</td>
+                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Seni Ganda</td>
+                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
+                                <td class="text-end">Rp. 450.000,-</td>
+                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><b>Jumlah :</b></td>
+                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                            </tr>
+                        </tbody>
+                        <tr>
+                            <td colspan="5" class="text-bg-secondary p-1 fw-bold ">D. REMAJA</td>
+                        </tr>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kategori</th>
+                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-end">SWP</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Tanding</td>
+                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Seni Tunggal</td>
+                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Seni Ganda</td>
+                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
+                                <td class="text-end">Rp. 450.000,-</td>
+                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Seni Trio</td>
+                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
+                                <td class="text-end">Rp. 700.000,-</td>
+                                <td class="text-end">{{ $data[2]['trio'] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><b>Jumlah :</b></td>
+                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                            </tr>
+                        </tbody>
+                        <tr>
+                            <td colspan="5" class="text-bg-secondary p-1 fw-bold ">E. DEWASA</td>
+                        </tr>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kategori</th>
+                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-end">SWP</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Tanding</td>
+                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Seni Tunggal</td>
+                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-end">Rp. 250.000,-</td>
+                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Seni Ganda</td>
+                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
+                                <td class="text-end">Rp. 450.000,-</td>
+                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Seni Trio</td>
+                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
+                                <td class="text-end">Rp. 700.000,-</td>
+                                <td class="text-end">{{ $data[2]['trio'] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-end"><b>Jumlah :</b></td>
+                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                            </tr>
+                        </tbody>
+                    </table> {{-- /table --}}
+                </div>{{-- /end table responsive --}}
             </div> {{-- /rincian pembayaran --}}
 
             {{-- tanggal invoice --}}
@@ -264,7 +266,7 @@
                         $tgl = tanggalIndonesia(date('Y-m-d'));
                     @endphp
                     <span class="d-block">{{ $tgl }}</span>
-                    <img src="{{ asset('storage/img-web/ttd-bendahara.png') }}" alt="qr" height="90px">
+                    <img src="{{ asset('storage/img-web/ttd-bendahara.png') }}" alt="qr" height="60px">
                     {{-- nama bendahara --}}
                     <div class="d-flex flex-column fw-bold">
                         <span class="border-bottom border-2 border-dark">Irma, S.Pd., K.Ka.</span>
