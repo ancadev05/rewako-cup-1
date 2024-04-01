@@ -51,44 +51,43 @@ class AtletController extends Controller
         $username = Auth::user()->username;
         $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
 
-        $request->validate(
-            [
-                'nama_atlet' => 'required',
-                'tempat_lahir' => 'required',
-                'tgl_lahir' => 'required',
-                'jk' => 'required',
-                'id_username_official' => 'required',
-                'golongan' =>  'required',
-                'foto_atlet' => 'required',
-                'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048',
-                'akte' => 'required',
-                'rekomendasi' => 'required',
-                'izin_orangtua' => 'required',
-                'suket_sehat' => 'required'
-            ],
-            [
-                'nama_atlet' => 'wajib diisi*',
-                'tempat_lahir' => 'wajib diisi*',
-                'tgl_lahir' => 'wajib diisi*',
-                'id_username_official' => 'wajib diisi*',
-                'golongan' => 'wajib diisi*',
-                'foto_atlet' => 'wajib diisi*',
-                'akte' => 'wajib diisi*',
-                'foto_atlet:required' => 'wajib diisi',
-                'foto_atlet:mimes' => 'format file tidak sesuai',
-                'foto_atlet:max' => 'ukuran foto maksimal 2MB',
-                'rekomendasi' => 'wajib diisi',
-                'izin_orangtua' => 'wajib diisi',
-                'suket_sehat' => 'wajib diisi'
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'nama_atlet' => 'required',
+        //         'tempat_lahir' => 'required',
+        //         'tgl_lahir' => 'required',
+        //         'jk' => 'required',
+        //         'id_username_official' => 'required',
+        //         'golongan' =>  'required',
+        //         'foto_atlet' => 'required',
+        //         'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048',
+        //         'akte' => 'required',
+        //         'rekomendasi' => 'required',
+        //         'izin_orangtua' => 'required',
+        //         'suket_sehat' => 'required'
+        //     ],
+        //     [
+        //         'nama_atlet' => 'wajib diisi*',
+        //         'tempat_lahir' => 'wajib diisi*',
+        //         'tgl_lahir' => 'wajib diisi*',
+        //         'id_username_official' => 'wajib diisi*',
+        //         'golongan' => 'wajib diisi*',
+        //         'foto_atlet' => 'wajib diisi*',
+        //         'akte' => 'wajib diisi*',
+        //         'foto_atlet:required' => 'wajib diisi',
+        //         'foto_atlet:mimes' => 'format file tidak sesuai',
+        //         'foto_atlet:max' => 'ukuran foto maksimal 2MB',
+        //         'rekomendasi' => 'wajib diisi',
+        //         'izin_orangtua' => 'wajib diisi',
+        //         'suket_sehat' => 'wajib diisi'
+        //     ]
+        // );
 
         // pengisian kolom bantu
         $golongan = ambilHurufAwal($request->golongan);
         $jk = $request->jk;
         $kelas = $request->kelas_tanding;
         $seni = ambilHurufAwal($request->seni);
-
         $bantu = $golongan . '-' . $jk . '-' . $kelas . '-' . $seni;
 
         // verifikasi berkas
@@ -144,12 +143,12 @@ class AtletController extends Controller
 
 
         $atlet = [
-            'nama_atlet' => $request->nama_atlet,
+            'nama_atlet' => strtoupper($request->nama_atlet),
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
             'id_username_official' => $username,
-            'kontingen' => $kontingen,
+            'kontingen' => $kontingen->nama_kontingen,
             'bantu' => $bantu,
             'golongan' => $request->golongan,
             'berat_badan' => $request->berat_badan,
@@ -162,7 +161,7 @@ class AtletController extends Controller
             'suket_sehat' => $suket_sehat
         ];
 
-        dd($atlet);
+        // dd($atlet);
         Atlet::create($atlet);
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil ditambahkan');
@@ -174,17 +173,17 @@ class AtletController extends Controller
     public function show(string $id)
     {
 
-        $kalimat = "Belajar PHP dengan Copilot";
-        $kata_array = explode(" ", $kalimat);
-        $kata_pertama_setiap_kata = ucwords($kalimat);
-        echo $kata_pertama_setiap_kata; // Output: Belajar PHP Dengan Copilot
+        // $kalimat = "Belajar PHP dengan Copilot";
+        // $kata_array = explode(" ", $kalimat);
+        // $kata_pertama_setiap_kata = ucwords($kalimat);
+        // echo $kata_pertama_setiap_kata; // Output: Belajar PHP Dengan Copilot
 
-        $tgl = date('l, d M Y');
-        $tgl2 = date('Y-m-d');
-        // $tanggal = tanggalIndonesia(date('2024-04-01'));
-        $tanggal2 = tanggalIndonesia($tgl2);
+        // $tgl = date('l, d M Y');
+        // $tgl2 = date('Y-m-d');
+        // // $tanggal = tanggalIndonesia(date('2024-04-01'));
+        // $tanggal2 = tanggalIndonesia($tgl2);
 
-        dd($tanggal2);
+        // dd($tanggal2);
 
 
         $atlet = Atlet::where('id', $id)->first();
@@ -212,12 +211,12 @@ class AtletController extends Controller
 
         $request->validate(
             [
-                'nama_atlet' => 'required',
-                'tempat_lahir' => 'required',
-                'tgl_lahir' => 'required',
-                'jk' => 'required',
-                'id_username_official' => 'required',
-                'golongan' =>  'required',
+                // 'nama_atlet' => 'required',
+                // 'tempat_lahir' => 'required',
+                // 'tgl_lahir' => 'required',
+                // 'jk' => 'required',
+                // 'id_username_official' => 'required',
+                // 'golongan' =>  'required',
                 'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
             ],
             [
@@ -228,6 +227,13 @@ class AtletController extends Controller
                 'golongan' => 'wajib diisi*'
             ]
         );
+
+        // pengisian kolom bantu
+        $golongan = ambilHurufAwal($request->golongan);
+        $jk = $request->jk;
+        $kelas = $request->kelas_tanding;
+        $seni = ambilHurufAwal($request->seni);
+        $bantu = $golongan . '-' . $jk . '-' . $kelas . '-' . $seni;
 
         // validasi file baru
         // validasi foto
@@ -296,7 +302,7 @@ class AtletController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
             'golongan' => $request->golongan,
-            'berat_badan' => $request->berat_badan,
+            'bantu' => $bantu,
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
             'foto_atlet' => $foto,

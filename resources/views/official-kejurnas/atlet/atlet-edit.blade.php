@@ -115,7 +115,7 @@
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td><label for="berat_badan">Berat Badan</label></td>
                         <td>
                             <input class="form-control @error('berat_badan') is-invalid @enderror" type="number"
@@ -125,7 +125,7 @@
                                 </small>
                             @enderror
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td><label for="kelas_tanding">Kelas</label></td>
                         <td>

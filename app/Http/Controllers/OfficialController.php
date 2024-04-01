@@ -15,42 +15,24 @@ class OfficialController extends Controller
 {
     public function index()
     {
-        $atlet = Atlet::get();
-
+        
         // username official
         $username = Auth::user()->username;
+        
+        // mencari nama atlet
+        $atlet = Atlet::where('id_username_official', $username)->get()->count();
+
+        // nama official
+        $cariOfficial = User::where('username', $username)->first();
+        $namaOfficial = $cariOfficial->name;
 
         // nama kontingen sesuai username official
         $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
         $kontingen = $carikontingen->nama_kontingen;
+        $alamatkontingen = $carikontingen->alamat;
 
         // status pembayaran kontingen bersangkutan
         $invoice = Invoice::where('id_username_official', $username)->get()->first();
-        // dd($invoice->pembayaran);
-
-        // function format_uang($angka)
-        // {
-        //     return number_format($angka, 0, ',', '.');
-        // }
-
-        // kontingen
-
-        // berdasar kontingen
-        // $takalar = DB::table('atlets')->where('kontingen', $kontingen)->get();
-
-        // keterangan kolom bantu
-        // PUD-T = pra usia dini tanding
-        // UD-T = usia dini tanding
-        // PR-T = pra remaja tanding
-        // R-T = remaja tanding
-        // D-T = dewasa tanding
-        // M-T = master tanding
-        // PUD-TTK = pra usia dini tunggal tangan kosong
-        // UD-TB = usia dini tunggal bersenjata
-        // PR-GTK = pra remaja ganda tangan koosong
-        // R-GB = remaja ganda bersenjata
-        // D-GTKB = dewasa ganda tangan koosong dan bersenjata
-        // M-TRI = master 
 
         // count golongan atlet
         $golongan = Atlet::where('golongan')->get();
@@ -145,7 +127,10 @@ class OfficialController extends Controller
 
         return view('official-kejurnas.dashboard')
             ->with('data', $data)
-            ->with('golongan',);
+            ->with('jumlahAtlet', $atlet)
+            ->with('kontingen', $kontingen)
+            ->with('alamatKontingen', $alamatkontingen)
+            ->with('namaOfficial', $namaOfficial);
     }
 
     public function atlet()

@@ -185,6 +185,7 @@
                                 <small class="invalid-feedback"> {{ $message }}
                                 </small>
                             @enderror
+                            <span style="font-size: 11px; color:red;">Ukuran fto Max 2MB</span>
                         </td>
                     </tr>
                     <tr>

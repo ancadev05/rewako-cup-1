@@ -2,7 +2,7 @@
 
 {{-- title --}}
 @section('title')
-{{ $atlet->nama_atlet }}
+    {{ $atlet->nama_atlet }}
 @endsection
 {{-- /title --}}
 
@@ -11,7 +11,7 @@
     <h3 class="border-bottom border-2 mb-3">{{ $atlet->nama_atlet }}</h3>
 
     <div class="rounded shadow p-2 border">
-        <form action="{{ url('official/atlet/'.$atlet->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('official/atlet/' . $atlet->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
 
@@ -27,7 +27,8 @@
                     <tr>
                         <td width="25%">Nama Atlet</td>
                         <td>: {{ $atlet->nama_atlet }}</td>
-                        <td rowspan="10"><img src="{{ asset('storage/foto-atlet/'.$atlet->foto_atlet) }}" alt="" width="200px"></td>
+                        <td rowspan="10"><img src="{{ asset('storage/foto-atlet/' . $atlet->foto_atlet) }}" alt=""
+                                width="200px"></td>
                     </tr>
                     <tr>
                         <td>Tempat Lahir</td>
@@ -48,10 +49,10 @@
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Berat Badan</td>
                         <td>: {{ $atlet->berat_badan }}</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td>Kelas</td>
                         <td>: {{ $atlet->kelas_tanding }}</td>
@@ -86,8 +87,8 @@
                     <tr>
                         <td><label class=" form-label" for="akte">Akte</label></td>
                         <td>
-                            <input class=" form-control form-control-sm @error('akte') is-invalid @enderror"
-                                type="file" name="akte" id="akte">
+                            <input class=" form-control form-control-sm @error('akte') is-invalid @enderror" type="file"
+                                name="akte" id="akte">
                             @error('akte')
                                 <small class="invalid-feedback"> {{ $message }}
                                 </small>
@@ -137,8 +138,8 @@
 
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
-                <button type="submit" class="btn btn-sm btn-primary me-2">Ubah</button>
-                <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
+                <a href="{{ url('/official/atlet/' . $atlet->id . '/edit') }}" class="btn btn-sm btn-warning me-2">Edit</a>
+                <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
             </div>
         </form>
     </div>
