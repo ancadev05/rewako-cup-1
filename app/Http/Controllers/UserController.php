@@ -48,10 +48,11 @@ class UserController extends Controller
             'alamat' => $request->alamat,
             'id_username_official' => $userpass
         ];
-
+        
         $invoice = [
             'id_username_official' => strtoupper($userpass),
             'nama_official' => $request->name,
+            'id_kontingen' => $request->kontingen,
             'pembayaran' => 0
         ];
 
