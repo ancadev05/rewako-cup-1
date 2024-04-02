@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('id_username_official');
             $table->string('kontingen');
             $table->string('bantu');
+            $table->string('bantu_tanding');
+            $table->string('bantu_seni');
             $table->string('golongan');
             $table->string('kelas_tanding')->nullable();
             $table->string('seni')->nullable();

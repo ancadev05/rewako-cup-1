@@ -13,7 +13,7 @@
         <div class=" position-relative" style="font-size: 12px">
 
             <img src="{{ asset('storage/img-web/lunas.png') }}" alt=""
-            style="top:50%;left:50%;transform: translate(-50%, -50%);" class=" position-absolute m-auto">
+                style="top:50%;left:50%;transform: translate(-50%, -50%);" class=" position-absolute m-auto">
 
             {{-- kop --}}
             <div class="d-flex justify-content-between border-2 border-bottom border-black mb-3 pb-1">
@@ -55,6 +55,7 @@
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
+                            {{-- pra usia dini --}}
                             <tr>
                                 <td colspan="5" class="text-bg-secondary p-1 fw-bold ">A. PRA USIA DINI</td>
                             </tr>
@@ -70,17 +71,19 @@
                             <tr>
                                 <td>1</td>
                                 <td>Seni Tunggal</td>
-                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-center">{{ $kategori['pud_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                                <td class="text-end">{{ }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                                <td class="text-end"><b>Rp{{  }}</b></td>
                             </tr>
                             <tr>
                         </tbody>
-                        <td colspan="5" class="text-bg-secondary p-1 fw-bold ">B. USIA DINI</td>
+                        {{-- usia dini --}}
+                        <tr>
+                            <td colspan="5" class="text-bg-secondary p-1 fw-bold ">B. USIA DINI</td>
                         </tr>
                         <thead>
                             <tr>
@@ -95,22 +98,23 @@
                             <tr>
                                 <td>1</td>
                                 <td>Tanding</td>
-                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-center">{{ $kategori['ud_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal</td>
-                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-center">{{ $kategori['ud_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                                <td class="text-end"><b>Rp{{  }}</b></td>
                             </tr>
                         </tbody>
+                        {{-- pra remaja --}}
                         <tr>
                             <td colspan="5" class="text-bg-secondary p-1 fw-bold ">C. PRA REMAJA</td>
                         </tr>
@@ -127,29 +131,30 @@
                             <tr>
                                 <td>1</td>
                                 <td>Tanding</td>
-                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-center">{{ $kategori['pr_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                                <td class="text-end">{{ }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal</td>
-                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-center">{{ $kategori['pr_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Seni Ganda</td>
-                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
+                                <td class="text-center">{{ $kategori['pr_ganda'] }}</td>
                                 <td class="text-end">Rp. 450.000,-</td>
-                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                                <td class="text-end"><b>Rp{{  }}</b></td>
                             </tr>
                         </tbody>
+                        {{-- remaja --}}
                         <tr>
                             <td colspan="5" class="text-bg-secondary p-1 fw-bold ">D. REMAJA</td>
                         </tr>
@@ -166,36 +171,37 @@
                             <tr>
                                 <td>1</td>
                                 <td>Tanding</td>
-                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-center">{{ $kategori['r_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal</td>
-                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-center">{{ $kategori['r_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                                <td class="text-end">{{ }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Seni Ganda</td>
-                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
+                                <td class="text-center">{{ $kategori['r_ganda'] }}</td>
                                 <td class="text-end">Rp. 450.000,-</td>
-                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
+                                <td class="text-end">{{ }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>Seni Trio</td>
-                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
+                                <td class="text-center">{{ $kategori['r_trio'] }}</td>
                                 <td class="text-end">Rp. 700.000,-</td>
-                                <td class="text-end">{{ $data[2]['trio'] }}</td>
+                                <td class="text-end">{{ }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                                <td class="text-end"><b>Rp{{  }}</b></td>
                             </tr>
                         </tbody>
+                        {{-- dewasa --}}
                         <tr>
                             <td colspan="5" class="text-bg-secondary p-1 fw-bold ">E. DEWASA</td>
                         </tr>
@@ -212,34 +218,34 @@
                             <tr>
                                 <td>1</td>
                                 <td>Tanding</td>
-                                <td class="text-center">{{ $data[0]['aTanding'] }}</td>
+                                <td class="text-center">{{ $kategori['d_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tanding'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal</td>
-                                <td class="text-center">{{ $data[0]['aTunggal'] }}</td>
+                                <td class="text-center">{{ $kategori['d_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ $data[2]['tunggal'] }}</td>
+                                <td class="text-end">{{ }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Seni Ganda</td>
-                                <td class="text-center">{{ $data[0]['aGanda'] }}</td>
+                                <td class="text-center">{{ $kategori['d_ganda'] }}</td>
                                 <td class="text-end">Rp. 450.000,-</td>
-                                <td class="text-end">{{ $data[2]['ganda'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>Seni Trio</td>
-                                <td class="text-center">{{ $data[0]['aTrio'] }}</td>
+                                <td class="text-center">{{ $kategori['d_trio'] }}</td>
                                 <td class="text-end">Rp. 700.000,-</td>
-                                <td class="text-end">{{ $data[2]['trio'] }}</td>
+                                <td class="text-end">{{  }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{ $data[3]['jumlah'] }}</b></td>
+                                <td class="text-end"><b>Rp{{  }}</b></td>
                             </tr>
                         </tbody>
                     </table> {{-- /table --}}

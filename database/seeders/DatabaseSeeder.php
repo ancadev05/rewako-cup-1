@@ -23,15 +23,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            DummyGolongansSeeder::class,
-            DummyKelasTandingsSeeder::class,
+            // DummyGolongansSeeder::class,
+            // DummyKelasTandingsSeeder::class,
             DummyKontingensSeeder::class,
-            DummySenisSeeder::class,
+            // DummySenisSeeder::class,
             DummyUsersSeeder::class,
             DummyInvoicesSeeder::class
         ]);
 
-        Atlet::factory(20)->create();
+        // Atlet::factory(20)->create();
         
     }
 }

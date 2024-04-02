@@ -15,19 +15,19 @@ class DummyKontingensSeeder extends Seeder
     {
         $kontinges = [
             [
-                'nama_kontingen' => 'Gowa',
-                'alamat' => 'Gowa',
-                'id_username_official' => 'off1'
+                'nama_kontingen' => 'MA Bontorita',
+                'alamat' => 'Bontorita',
+                'id_username_official' => 'rwk-402012634'
             ], 
             [
-                'nama_kontingen' => 'Makassar',
-                'alamat' => 'Makassar',
-                'id_username_official' => 'off2'
+                'nama_kontingen' => 'MTs Bontoreya',
+                'alamat' => 'Bontoreya',
+                'id_username_official' => 'rwk-402024220'
             ],
             [
-                'nama_kontingen' => 'Takalar',
-                'alamat' => 'Takalar',
-                'id_username_official' => 'off3'
+                'nama_kontingen' => 'SMK 1 Galesong',
+                'alamat' => 'Burane',
+                'id_username_official' => 'rwk-402032727'
             ]
         ];
 

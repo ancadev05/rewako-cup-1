@@ -18,25 +18,25 @@ class DummyUsersSeeder extends Seeder
                 'name' => 'Admin Kejurnas',
                 'username' => 'admin',
                 'no_wa' => '08123456789',
-                'password' => 'admin',
+                'password' => 'admin;',
                 'level' => 'admin-kejurnas'
             ], [
-                'name' => 'Gowa',
-                'username' => 'off1',
+                'name' => 'Hamzah',
+                'username' => 'rwk-402012634',
                 'no_wa' => '8123456789',
-                'password' => '123',
+                'password' => 'rwk-402012634',
                 'level' => 'official'
             ], [
-                'name' => 'Makassar',
-                'username' => 'off2',
+                'name' => 'Anca',
+                'username' => 'rwk-402024220',
                 'no_wa' => '08123456789',
-                'password' => '123',
+                'password' => 'rwk-402024220',
                 'level' => 'official'
             ], [
-                'name' => 'Takalar',
-                'username' => 'off3',
+                'name' => 'Kono',
+                'username' => 'rwk-402032727',
                 'no_wa' => '08123456789',
-                'password' => '123',
+                'password' => 'rwk-402032727',
                 'level' => 'official'
             ]
         ];

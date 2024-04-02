@@ -93,7 +93,7 @@ class AtletController extends Controller
         $kTanding = $request->kelas_tanding == '-' ? '0' : 'T';
         $kSeni = $request->seni == '-' ? '0' : 'S';
 
-        $bantu = $golongan . '/' . $jk . '/' . $kTanding .'.'. $kSeni . '/' . $kelas . '.' . $seni;
+        $bantu = $golongan . '/' . $jk . '/' . $kTanding . '.' . $kSeni . '/' . $kelas . '.' . $seni;
         // golongan/jk/tanding-seni/kelas-kategori
 
 
@@ -114,6 +114,8 @@ class AtletController extends Controller
             'id_username_official' => $username,
             'kontingen' => $kontingen->nama_kontingen,
             'bantu' => $bantu,
+            'bantu_tanding' => $kTanding,
+            'bantu_seni' => $kSeni,
             'golongan' => $request->golongan,
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
@@ -221,6 +223,12 @@ class AtletController extends Controller
      */
     public function destroy(string $id)
     {
+        // menghapus juga filnye //
+        // cari file fotonya
+        $cariFoto = Atlet::where('id', $id)->get();
+        // hapus file lama
+        Storage::delete('public/foto-etlet/' . $cariFoto->foto_atlet);
+        
         Atlet::where('id', $id)->delete();
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil dihapus');
