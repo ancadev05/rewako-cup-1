@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <td>Tanggal Lahir</td>
-                        <td>: {{ $atlet->tgl_lahir }}</td>
+                        <td>: {{ tanggalIndonesia($atlet->tgl_lahir) }}</td>
                     </tr>
                     <tr>
                         <td>Golongan</td>
@@ -49,10 +49,6 @@
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
-                    {{-- <tr>
-                        <td>Berat Badan</td>
-                        <td>: {{ $atlet->berat_badan }}</td>
-                    </tr> --}}
                     <tr>
                         <td>Kelas</td>
                         <td>: {{ $atlet->kelas_tanding }}</td>
@@ -64,70 +60,6 @@
                         <td><label for="seni">Seni</label></td>
                         <td>: {{ $atlet->seni }}</td>
                     </tr>
-                    {{-- Upload Berkas --}}
-                    <tr>
-                        <td colspan="2">
-                            <div class="my-3"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="border-bottom border-1"><b>Upload Berkas</b></td>
-                    </tr>
-                    <tr>
-                        <td><label class=" form-label" for="foto_atlet">Foto Atlet</label></td>
-                        <td>
-                            <input class=" form-control form-control-sm @error('foto_atlet') is-invalid @enderror"
-                                type="file" name="foto_atlet" id="foto_atlet">
-                            @error('foto_atlet')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class=" form-label" for="akte">Akte</label></td>
-                        <td>
-                            <input class=" form-control form-control-sm @error('akte') is-invalid @enderror" type="file"
-                                name="akte" id="akte">
-                            @error('akte')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class=" form-label" for="rekomendasi">Rekomendasi</label></td>
-                        <td>
-                            <input class=" form-control form-control-sm @error('rekomendasi') is-invalid @enderror"
-                                type="file" name="rekomendasi" id="rekomendasi">
-                            @error('rekomendasi')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class="form-label" for="suket_izin">Surat Izin dan Pernyataan Orang Tua</label></td>
-                        <td>
-                            <input class="form-control form-control-sm @error('suket_izin') is-invalid @enderror"
-                                type="file" name="suket_izin" id="suket_izin">
-                            @error('suket_izin')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class="form-label" for="suket_sehat">Suket Sehat</label></td>
-                        <td>
-                            <input class="form-control form-control-sm @error('suket_sehat') is-invalid @enderror"
-                                type="file" name="suket_sehat" id="suket_sehat">
-                            @error('suket_sehat')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
                 </table>
             </div>
 
@@ -138,10 +70,8 @@
 
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
-                <a href="{{ url('/official/atlet/' . $atlet->id . '/edit') }}" class="btn btn-sm btn-warning me-2">Edit</a>
                 <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
             </div>
         </form>
     </div>
-
 @endsection

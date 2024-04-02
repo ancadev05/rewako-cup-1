@@ -76,15 +76,15 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="alamat" name="alamat">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
                             <label for="kontingen" class="col-sm-2 col-form-label">Kontingen</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="kontingen" name="kontingen">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="alamat" name="alamat">
                             </div>
                         </div>
                         <div class="modal-footer">

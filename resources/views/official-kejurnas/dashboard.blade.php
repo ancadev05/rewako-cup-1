@@ -15,15 +15,15 @@
         <table class="table mb-3 fw-bold ">
             <tr>
                 <td>Nama Official</td>
-                <td>: {{ $namaOfficial }}</td>
+                <td>: {{ $official->name }}</td>
             </tr>
             <tr>
                 <td>Nama Kontingen</td>
-                <td>: {{ $kontingen }}</td>
+                <td>: {{ $kontingen->nama_kontingen }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
-                <td>: {{ $alamatKontingen }}</td>
+                <td>: {{ $kontingen->alamat }}</td>
             </tr>
         </table>
     </div>
@@ -33,14 +33,14 @@
             <div class="card text-bg-primary shadow">
                 <div class="card-body">
                     <h5 class="card-title">Jumlah Atlet Terdaftar</h5>
-                    <h1>{{ $jumlahAtlet }} pesilat</h1>
+                    <h1>{{ $atlet }} pesilat</h1>
                 </div>
             </div>
         </div>
     </div>
 
     {{-- status pembayaran --}}
-    @if ($data[5]['statusBayar'] == 1)
+    @if ($invoice->pembayaran == 1)
         <div class="p-2 alert alert-success">
             <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
                 <div>
@@ -55,10 +55,13 @@
         <div class="p-2 alert alert-danger">
             <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
                 <div>
-                    <h1>Total Pembayaran : Rp{{ $data[3]['jumlah'] }}</h1>
+                    <h1>Total Tagihan : Rp{{ $invoice->pembayaran }}</h1>
                     <a href="https://wa.me/6281255242365" class="btn btn-sm btn-success" target="_blank"><i
                             class="fab fa-whatsapp"></i>
                         Konfirmasi Pembayaran</a>
+                    <a href="{{ url('/official/download/invoice') }}" class="btn btn-sm btn-secondary" target="_blank"><i
+                            class="fas fa-file-alt"></i>
+                        Cek Invoice</a>
                 </div>
                 <div>
                     <h1><i class="fas fa-times-circle text-danger"></i></h1>

@@ -84,17 +84,6 @@
                             </div>
                         </td>
                     </tr>
-                    {{-- <tr>
-                        <td><label for="kontingen">Kontingen</label></td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>-- Pilih Kontingen --</option>
-                                <option value="1">Kontingen 1</option>
-                                <option value="2">Kontingen 2</option>
-                                <option value="3">Kontingen 3</option>
-                            </select>
-                        </td>
-                    </tr> --}}
                     <tr>
                         <td colspan="2">
                             <div class="my-3"></div>
@@ -103,23 +92,12 @@
                     <tr>
                         <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>
                     </tr>
-                    {{-- <tr>
-                        <td><label for="berat_badan">Berat Badan</label></td>
-                        <td>
-                            <input class="form-control @error('berat_badan') is-invalid @enderror" type="number"
-                                name="berat_badan" id="berat_badan" placeholder="isi berupa angka saja">
-                            @error('berat_badan')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr> --}}
                     <tr>
                         <td><label for="kelas_tanding">Kelas</label></td>
                         <td>
                             <select class="form-select @error('kelas_tanding') is-invalid @enderror" name="kelas_tanding"
                                 id="kelas_tanding">
-                                <option value="0" selected>-- Pilih Kelas --</option>
+                                <option value="-" selected>-- Pilih Kelas --</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="C">C</option>
@@ -152,7 +130,7 @@
                         <td><label for="seni">Seni</label></td>
                         <td>
                             <select class="form-select @error('seni') is-invalid @enderror" name="seni" id="seni">
-                                <option value="0" selected>-- Pilih Kategori --</option>
+                                <option value="-" selected>-- Pilih Kategori --</option>
                                 <option value="Tunggal Tangan Kosong">Tunggal Tangan Kosong</option>
                                 <option value="Tunggal Bersenjata">Tunggal Bersenjata</option>
                                 <option value="Ganda Tangan Kosong">Ganda Tangan Kosong</option>
@@ -167,7 +145,7 @@
                             @enderror
                         </td>
                     </tr>
-                    {{-- Upload Berkas --}}
+                    {{-- Upload Foto --}}
                     <tr>
                         <td colspan="2">
                             <div class="my-3"></div>
@@ -188,56 +166,16 @@
                             <span style="font-size: 11px; color:red;">Ukuran fto Max 2MB</span>
                         </td>
                     </tr>
-                    <tr>
-                        <td><label class=" form-label" for="akte">Akte / Ijazah</label></td>
-                        <td>
-                            <input class=" form-control form-control-sm @error('akte') is-invalid @enderror"
-                                type="file" name="akte" id="akte">
-                            @error('akte')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    {{-- <tr>
-                        <td><label class=" form-label" for="rekomendasi">Rekomendasi</label></td>
-                        <td>
-                            <input class=" form-control form-control-sm @error('rekomendasi') is-invalid @enderror"
-                                type="file" name="rekomendasi" id="rekomendasi">
-                            @error('rekomendasi')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class="form-label" for="izin_orangtua">Surat Izin dan Pernyataan Orang Tua</label></td>
-                        <td>
-                            <input class="form-control form-control-sm @error('izin_orangtua') is-invalid @enderror"
-                                type="file" name="izin_orangtua" id="izin_orangtua">
-                            @error('izin_orangtua')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label class="form-label" for="suket_sehat">Suket Sehat</label></td>
-                        <td>
-                            <input class="form-control form-control-sm @error('suket_sehat') is-invalid @enderror"
-                                type="file" name="suket_sehat" id="suket_sehat">
-                            @error('suket_sehat')
-                                <small class="invalid-feedback"> {{ $message }}
-                                </small>
-                            @enderror
-                        </td>
-                    </tr> --}}
                 </table>
             </div>
 
-            <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
-                <span>Pastikan data atlet diisi dengan benar dan sesaui dengan berkas aslinya sebelum klik tombol tambah
-                    dibawah...</span>
+            <div class="alert alert-warning border-0 border-start border-5 border-warning shadow">
+                <ul>
+                    <li>Pastikan data atlet diisi dengan benar dan sesaui dengan berkas aslinya sebelum klik tombol tambah
+                        dibawah...</li>
+                    <li>Silahkan tambahkan kembali nama Atlet yang sama jika Atlet tersebut mengikuti lebih dari satu
+                        kategori seni (selama berada di golongan yang sama)</li>
+                </ul>
             </div>
 
 

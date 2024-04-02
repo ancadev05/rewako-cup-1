@@ -266,7 +266,7 @@
                 </span>
                 <div>
                     @php
-                        $tgl = tanggalIndonesia(date('Y-m-d'));
+                        $tgl = hariTanggalIndonesia(date('Y-m-d'));
                     @endphp
                     <span class="d-block">{{ $tgl }}</span>
                     <img src="{{ asset('storage/img-web/ttd-bendahara.png') }}" alt="qr" height="60px">

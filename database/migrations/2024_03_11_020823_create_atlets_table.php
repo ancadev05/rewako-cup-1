@@ -23,14 +23,9 @@ return new class extends Migration
             $table->string('kontingen');
             $table->string('bantu');
             $table->string('golongan');
-            $table->integer('berat_badan')->nullable();
             $table->string('kelas_tanding')->nullable();
             $table->string('seni')->nullable();
             $table->string('foto_atlet');
-            $table->string('akte')->nullable();
-            $table->string('rekomendasi')->nullable();
-            $table->string('izin_orangtua')->nullable();
-            $table->string('suket_sehat')->nullable();
             $table->timestamps();
         });
     }
