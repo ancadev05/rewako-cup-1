@@ -73,6 +73,6 @@ class AdminKejurnasController extends Controller
 
         // Invoice::where('id', $id)->update($invoice);
 
-        return redirect()->to('admin-kejurnas/invoice')->with('success', 'Status pembayaran telah diubah');
+        return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'Status pembayaran telah diubah');
     }
 }
