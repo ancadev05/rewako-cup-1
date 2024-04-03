@@ -28,14 +28,21 @@ class AdminKejurnasController extends Controller
         $atlet = Atlet::orderBy('id','asc')->paginate();
         return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
     }
+    
+    public function kontingen()
+    {
+        $kontingen = Kontingen::orderBy('id', 'asc')->paginate();
+        // dd($kontingen);
+        return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
+    }
 
     // pengelola invoice
-    public function invoice()
+    public function pembayaran()
     {
         $invoice = Invoice::get();
         $kontingen = Kontingen::get();
 
-        return view('admin-kejurnas.invoice')
+        return view('admin-kejurnas.pembayaran')
             ->with('invoice', $invoice)
             ->with('kontingen', $kontingen);
     }

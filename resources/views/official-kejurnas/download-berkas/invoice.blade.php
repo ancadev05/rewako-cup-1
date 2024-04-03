@@ -12,11 +12,15 @@
         {{-- invoice --}}
         <div class=" position-relative" style="font-size: 12px">
 
-            <img src="{{ asset('storage/img-web/lunas.png') }}" alt=""
-                style="top:50%;left:50%;transform: translate(-50%, -50%);" class=" position-absolute m-auto">
+            {{-- logoo lunas --}}
+            @if ($invoice->pembayaran == 1)
+                <img src="{{ asset('storage/img-web/lunas.png') }}" alt=""
+                    style="top:50%;left:50%;transform: translate(-50%, -50%);" class=" position-absolute m-auto">
+            @endif
+            {{-- /logoo lunas --}}
 
             {{-- kop --}}
-            <div class="d-flex justify-content-between border-2 border-bottom border-black mb-3 pb-1">
+            <div class="d-flex justify-content-between border-2 border-bottom border-black pb-1">
                 {{-- logoo kop --}}
                 <div class="d-flex align-items-center ">
                     <div class="me-2">
@@ -30,28 +34,34 @@
                     </div>
                 </div>
                 {{-- logo invoice --}}
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column ">
                     <span style="font-size: 28px; line-height:1;" class="m-0 p-0 fw-bold">INVOICE</span>
-                    <span style="line-height: 1" class="m-0 p-0">No. {{ $invoice->id_username_official }}</span>
+                    <span style="line-height: 1" class="m-0 p-0 border-1 border-bottom">No.
+                        {{ $invoice->id_username_official }}</span>
                 </div>
             </div> {{-- /kop --}}
 
             {{-- data kontingen --}}
-            <div class="border-2 border-bottom border-black mb-3">
-                <table>
+            <div style="font-size: 12px">
+                <table class="table table-sm table-borderless">
                     <tr class="fw-bold">
-                        <td width="200px">Nama Kontingen</td>
-                        <td>: {{ $data[4]['namaKontingen'] }}</td>
+                        <td>Nama Official</td>
+                        <td>: {{ $user->name }}</td>
+                        <td>Nama Kontingen</td>
+                        <td>: {{ $kontingen->nama_kontingen }}</td>
                     </tr>
                     <tr class="fw-bold">
-                        <td width="200px">Alamat Kontingen</td>
-                        <td>: {{ $alamatKontingen }}</td>
+                        <td>No. Whatsapp</td>
+                        <td>: {{ $user->no_wa }}</td>
+                        <td>Alamat Kontingen</td>
+                        <td>: {{ $kontingen->alamat }}</td>
                     </tr>
                 </table>
-            </div> {{-- /data kontingen --}}
+            </div>
+            {{-- /data kontingen --}}
 
             {{-- rincian pembayaran --}}
-            <div>
+            <div style="font-size: 11px">
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
@@ -70,14 +80,14 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Seni Tunggal</td>
+                                <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['pud_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ }}</td>
+                                <td class="text-end"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{  }}</b></td>
+                                <td class="text-end"><b>Rp. {{ format_uang($biaya['jml_pud']) . ',-' }}</b></td>
                             </tr>
                             <tr>
                         </tbody>
@@ -100,18 +110,18 @@
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['ud_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_ud_tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Seni Tunggal</td>
+                                <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['ud_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_ud_tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{  }}</b></td>
+                                <td class="text-end"><b>Rp. {{ format_uang($biaya['jml_ud']) . ',-' }}</b></td>
                             </tr>
                         </tbody>
                         {{-- pra remaja --}}
@@ -133,25 +143,25 @@
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['pr_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ }}</td>
+                                <td class="text-end">{{ $biaya['by_pr_tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Seni Tunggal</td>
+                                <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['pr_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_pr_tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Seni Ganda</td>
+                                <td>Seni Ganda (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['pr_ganda'] }}</td>
                                 <td class="text-end">Rp. 450.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_pr_ganda'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{  }}</b></td>
+                                <td class="text-end"><b>Rp. {{ format_uang($biaya['jml_pr']) . ',-' }}</b></td>
                             </tr>
                         </tbody>
                         {{-- remaja --}}
@@ -173,32 +183,32 @@
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['r_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_r_tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Seni Tunggal</td>
+                                <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['r_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ }}</td>
+                                <td class="text-end">{{ $biaya['by_r_tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Seni Ganda</td>
+                                <td>Seni Ganda (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['r_ganda'] }}</td>
                                 <td class="text-end">Rp. 450.000,-</td>
-                                <td class="text-end">{{ }}</td>
+                                <td class="text-end">{{ $biaya['by_r_ganda'] }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Seni Trio</td>
+                                <td>Seni Trio (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['r_trio'] }}</td>
                                 <td class="text-end">Rp. 700.000,-</td>
-                                <td class="text-end">{{ }}</td>
+                                <td class="text-end">{{ $biaya['by_r_trio'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{  }}</b></td>
+                                <td class="text-end"><b>Rp. {{ format_uang($biaya['jml_r']) . ',-' }}</b></td>
                             </tr>
                         </tbody>
                         {{-- dewasa --}}
@@ -220,33 +230,39 @@
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['d_tanding'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_d_tanding'] }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Seni Tunggal</td>
+                                <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['d_tunggal'] }}</td>
                                 <td class="text-end">Rp. 250.000,-</td>
-                                <td class="text-end">{{ }}</td>
+                                <td class="text-end">{{ $biaya['by_d_tunggal'] }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Seni Ganda</td>
+                                <td>Seni Ganda (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['d_ganda'] }}</td>
                                 <td class="text-end">Rp. 450.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_d_ganda'] }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Seni Trio</td>
+                                <td>Seni Trio (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['d_trio'] }}</td>
                                 <td class="text-end">Rp. 700.000,-</td>
-                                <td class="text-end">{{  }}</td>
+                                <td class="text-end">{{ $biaya['by_d_trio'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end"><b>Jumlah :</b></td>
-                                <td class="text-end"><b>Rp{{  }}</b></td>
+                                <td class="text-end"><b>Rp. {{ format_uang($biaya['jml_d']) . ',-' }}</b></td>
                             </tr>
+                            {{-- total biaya --}}
+                            <tr>
+                                <td class="fw-bold text-end" colspan="4">Total Pembayaran :</td>
+                                <td class="fw-bold text-end">Rp. {{ format_uang($totalBiaya) . ',-' }}</td>
+                            </tr>
+                            {{-- /total biaya --}}
                         </tbody>
                     </table> {{-- /table --}}
                 </div>{{-- /end table responsive --}}
@@ -254,7 +270,7 @@
 
             {{-- tanggal invoice --}}
             <div class="d-flex justify-content-between ">
-                <span class="fw-bold">
+                <div class="fw-bold border">
                     <table>
                         <tr>
                             <td>Bank</td>
@@ -262,14 +278,14 @@
                         </tr>
                         <tr>
                             <td>Atas Nama</td>
-                            <td>: Mandiri</td>
+                            <td>: Irma</td>
                         </tr>
                         <tr>
                             <td>No. Rekening</td>
-                            <td>: 8998990</td>
+                            <td>: 174-00-0304723-0</td>
                         </tr>
                     </table>
-                </span>
+                </div>
                 <div>
                     @php
                         $tgl = hariTanggalIndonesia(date('Y-m-d'));

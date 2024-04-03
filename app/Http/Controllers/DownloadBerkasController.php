@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Atlet;
 use App\Models\Invoice;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +22,13 @@ class DownloadBerkasController extends Controller
         // menentukan username
         $username = Auth::user()->username;
 
-        // menentukan nama kontingen
-        $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
-        $kontingen = $carikontingen->nama_kontingen;
+        // akun user
+        $user = User::where('username', $username)->get()->first();
 
+        // menentukan nama kontingen
+        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+
+        // menampilkan daftar atlet sesuai kontingen/username
         $atlet = Atlet::where('id_username_official', $username)->paginate();
 
         // status pembayaran invoice
@@ -53,8 +57,8 @@ class DownloadBerkasController extends Controller
             'd_trio' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Dewasa')->whereIn('seni', ['Trio'])->get()->count(),
         ];
 
-        
-        // menghitung noominal pembayaran
+
+        // menghitung jumlah atlet per golongan dan kategori
         // pra usia dini
         $pud_tunggal = $kategori['pud_tunggal'];
         // usia dini
@@ -82,43 +86,47 @@ class DownloadBerkasController extends Controller
         $by_trio = 700000;
 
         // biaya per kategori dan golongan
-        // pra usia dini
-        $by_pud_tunggal = $pud_tunggal * $by_tunggal;
-        // usia dini
-        $by_ud_tanding = $ud_tanding * $by_tanding;
-        $by_ud_tunggal = $ud_tunggal * $by_tunggal;
-        // pra remaja
-        $by_pr_tanding = $pr_tanding * $by_tanding;
-        $by_pr_tunggal = $pr_tunggal * $by_tunggal;
-        $by_pr_ganda = $pr_ganda * $by_ganda;
-        // remaja
-        $by_r_tanding = $r_tanding * $by_tanding;
-        $by_r_tunggal = $r_tunggal * $by_tunggal;
-        $by_r_ganda = $r_ganda * $by_ganda;
-        $by_r_trio = $r_trio * $by_trio;
-        // dewasa
-        $by_d_tanding = $d_tanding * $by_tanding;
-        $by_d_tunggal = $d_tunggal * $by_tunggal;
-        $by_d_ganda = $d_ganda * $by_ganda;
-        $by_d_trio = $d_trio * $by_trio;
+        $biaya = [
+            // pra usia dini
+            'by_pud_tunggal' => $pud_tunggal * $by_tunggal,
+            // usia dini
+            'by_ud_tanding' => $ud_tanding * $by_tanding,
+            'by_ud_tunggal' => $ud_tunggal * $by_tunggal,
+            // pra remaja
+            'by_pr_tanding' => $pr_tanding * $by_tanding,
+            'by_pr_tunggal' => $pr_tunggal * $by_tunggal,
+            'by_pr_ganda' => $pr_ganda * $by_ganda,
+            // remaja
+            'by_r_tanding' => $r_tanding * $by_tanding,
+            'by_r_tunggal' => $r_tunggal * $by_tunggal,
+            'by_r_ganda' => $r_ganda * $by_ganda,
+            'by_r_trio' => $r_trio * $by_trio,
+            // dewasa
+            'by_d_tanding' => $d_tanding * $by_tanding,
+            'by_d_tunggal' => $d_tunggal * $by_tunggal,
+            'by_d_ganda' => $d_ganda * $by_ganda,
+            'by_d_trio' => $d_trio * $by_trio,
+
+            // jumlah biaya per golongan
+            // jumlah pra usia dini
+            'jml_pud' => $pud_tunggal * $by_tunggal,
+            // jumlah usia dini
+            'jml_ud' => ($ud_tanding * $by_tanding) + ($ud_tunggal * $by_tunggal),
+            // jumlah pra remaja
+            'jml_pr' => ($pr_tanding * $by_tanding) + ($pr_tunggal * $by_tunggal) + ($pr_ganda * $by_ganda),
+            // jumlah remaja
+            'jml_r' => ($r_tanding * $by_tanding) + ($r_tunggal * $by_tunggal) + ($r_ganda * $by_ganda) + ($r_trio * $by_trio),
+            // jumlah dewasa
+            'jml_d' => ($d_tanding * $by_tanding) + ($d_tunggal * $by_tunggal) + ($d_ganda * $by_ganda) + ($d_trio * $by_trio),
+
+        ];
         
+        // total biaya keseluruhan
+        $total = $biaya['jml_pud'] + $biaya['jml_ud'] + $biaya['jml_pr'] + $biaya['jml_r'] + $biaya['jml_d'];
 
-        // perhitungan biaya kategori seni trio
-        // if ($aTrio >= 0 && $aTrio <= 3) { // trio pra usia dini
-        //     $kTrio = 700000;
-        // } elseif ($aTrio > 3 && $aTrio <= 6) { // trioo usia dini
-        //     $kTrio = 1400000;
-        // } elseif ($aTrio > 6 && $aTrio <= 9) { // trioo pra remaja
-        //     $kTrio = 2100000;
-        // } elseif ($aTrio > 9 && $aTrio <= 12) { // trioo remaja
-        //     $kTrio = 2800000;
-        // } elseif ($aTrio > 12 && $aTrio <= 15) { // trioo dewasa
-        //     $kTrio = 3500000;
-        // } elseif ($aTrio > 15 && $aTrio <= 18) { // trioo master
-        //     $kTrio = 4200000;
-        // }
 
-        dd($by_r_ganda);
+
+        // dd($biaya);
 
 
 
@@ -138,9 +146,12 @@ class DownloadBerkasController extends Controller
 
 
         return view('official-kejurnas.download-berkas.invoice')
+            ->with('user', $user)
             ->with('kategori', $kategori)
             ->with('atlet', $atlet)
             ->with('kontingen', $kontingen)
+            ->with('biaya', $biaya)
+            ->with('totalBiaya', $total)
             ->with('invoice', $invoice);
 
 

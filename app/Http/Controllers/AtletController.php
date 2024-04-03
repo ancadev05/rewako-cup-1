@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Atlet;
 use App\Models\Invoice;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,16 +20,20 @@ class AtletController extends Controller
         // menentukan username
         $username = Auth::user()->username;
 
-        // menentukan nama kontingen
-        $carikontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
-        $kontingen = $carikontingen->nama_kontingen;
+        // akun user
+        $user = User::where('username', $username)->get()->first();
 
-        $atlet = Atlet::where('id_username_official', $username)->paginate();
+        // menentukan nama kontingen
+        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+
+        // menampilkan daftar atlet sesuai kontingen/username
+        $atlet = Atlet::where('id_username_official', $username)->orderBy('seni', 'asc')->paginate();
 
         // status pembayaran invoice
         $invoice = Invoice::where('id_username_official', $username)->get()->first();
 
         return view('official-kejurnas.atlet.index')
+            ->with('user', $user)
             ->with('atlet', $atlet)
             ->with('kontingen', $kontingen)
             ->with('invoice', $invoice);
@@ -78,17 +83,6 @@ class AtletController extends Controller
         $jk = $request->jk;
         $kelas = $request->kelas_tanding;
         $seni = ambilHurufAwal($request->seni);
-
-        // if($request->kelas_tanding == '-') {
-        //     $kTanding = '0';
-        // } else{
-        //     $kTanding = 'T';
-        // }
-        // if($request->seni == '-') {
-        //     $kSeni = '0';
-        // } else{
-        //     $kSeni = 'S';
-        // }
 
         $kTanding = $request->kelas_tanding == '-' ? '0' : 'T';
         $kSeni = $request->seni == '-' ? '0' : 'S';
@@ -152,25 +146,23 @@ class AtletController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $username = Auth::user()->username;
-        // $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
-
         $request->validate(
             [
-                // 'nama_atlet' => 'required',
-                // 'tempat_lahir' => 'required',
-                // 'tgl_lahir' => 'required',
-                // 'jk' => 'required',
-                // 'id_username_official' => 'required',
-                // 'golongan' =>  'required',
-                'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
+                'nama_atlet' => 'required',
+                'tempat_lahir' => 'required',
+                'tgl_lahir' => 'required',
+                'jk' => 'required',
+                'golongan' =>  'required',
+                'foto_atlet' => 'required|file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
             ],
             [
                 'nama_atlet' => 'wajib diisi*',
                 'tempat_lahir' => 'wajib diisi*',
                 'tgl_lahir' => 'wajib diisi*',
-                'id_username_official' => 'wajib diisi*',
-                'golongan' => 'wajib diisi*'
+                'golongan' => 'wajib diisi*',
+                'foto_atlet:required' => 'wajib diisi*',
+                'foto_atlet:mimes' => 'format file tidak sesuai',
+                'foto_atlet:image' => 'file tidak sesuai'
             ]
         );
 
@@ -179,10 +171,14 @@ class AtletController extends Controller
         $jk = $request->jk;
         $kelas = $request->kelas_tanding;
         $seni = ambilHurufAwal($request->seni);
-        $bantu = $golongan . '-' . $jk . '-' . $kelas . '-' . $seni;
+
+        $kTanding = $request->kelas_tanding == '-' ? '0' : 'T';
+        $kSeni = $request->seni == '-' ? '0' : 'S';
+
+        $bantu = $golongan . '/' . $jk . '/' . $kTanding . '.' . $kSeni . '/' . $kelas . '.' . $seni;
+        // golongan/jk/tanding-seni/kelas-kategori
 
         // validasi foto
-
         $foto = false;
         // Jika user upload foto
         if ($request->hasFile('foto_atlet')) {
@@ -193,7 +189,7 @@ class AtletController extends Controller
             $foto_file->storeAs('public/foto-atlet/', $foto); // memindahkan file ke folder public agar bisa diakses
 
             // hapus file lama
-            Storage::delete('public/foto-etlet/' . $request->foto_atlet_lama);
+            Storage::delete('public/foto-atlet/' . $request->foto_atlet_lama);
 
             $atlet['foto_atlet'] = $foto;
             Atlet::where('id', $id)->update($atlet);
@@ -202,15 +198,17 @@ class AtletController extends Controller
         }
 
         $atlet = [
-            'nama_atlet' => $request->nama_atlet,
+            'nama_atlet' => strtoupper($request->nama_atlet),
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jk' => $request->jk,
-            'golongan' => $request->golongan,
             'bantu' => $bantu,
+            'bantu_tanding' => $kTanding,
+            'bantu_seni' => $kSeni,
+            'golongan' => $request->golongan,
             'kelas_tanding' => $request->kelas_tanding,
             'seni' => $request->seni,
-            'foto_atlet' => $foto
+            'foto_atlet' => $foto,
         ];
 
         Atlet::where('id', $id)->update($atlet);
@@ -225,10 +223,11 @@ class AtletController extends Controller
     {
         // menghapus juga filnye //
         // cari file fotonya
-        $cariFoto = Atlet::where('id', $id)->get();
+        $cariFoto = Atlet::where('id', $id)->first();
+
         // hapus file lama
-        Storage::delete('public/foto-etlet/' . $cariFoto->foto_atlet);
-        
+        Storage::delete('public/foto-atlet/' . $cariFoto->foto_atlet);
+
         Atlet::where('id', $id)->delete();
 
         return redirect()->to('official/atlet')->with('success', 'Data berhasil dihapus');

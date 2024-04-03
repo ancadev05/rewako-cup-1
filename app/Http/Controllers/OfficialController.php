@@ -36,17 +36,6 @@ class OfficialController extends Controller
             ->with('invoice', $invoice);
     }
 
-    public function atlet()
-    {
-
-        $username = Auth::user()->username; // nama user sesuai username yang login
-        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
-
-        $atlet = DB::table('atlets')->where('id_username_official', $username)->get();
-
-        return view('official-kejurnas.atlet.index')->with('atlet', $atlet, 'kontingen', $kontingen)->with('kontingen', $kontingen);
-    }
-
     public function download()
     {
         $username = Auth::user()->username; // nama user sesuai username yang login

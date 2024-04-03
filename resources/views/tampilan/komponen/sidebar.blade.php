@@ -19,8 +19,8 @@
                         </div>
                         User
                     </a>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/atlet') ? 'active' : '' }}"
-                        href="{{ url('admin-kejurnas/atlet') }}">
+                    <a class="nav-link {{ Request::is('admin-kejurnas/kontingen') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/kontingen') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-user-friends"></i>
                         </div>
@@ -33,12 +33,12 @@
                         </div>
                         Atlet
                     </a>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/invoice') ? 'active' : '' }}"
-                        href="{{ url('admin-kejurnas/invoice') }}">
+                    <a class="nav-link {{ Request::is('admin-kejurnas/pembayaran') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/pembayaran') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-file-alt"></i>
                         </div>
-                        Invoice
+                        Pembayaran
                     </a>
                 @endif
                 {{-- /admin kejurnas --}}

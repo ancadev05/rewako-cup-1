@@ -8,10 +8,25 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="">Daftar Atlet</h3>
+    <h3 class="border-bottom border-2 mb-3">Daftar Atlet</h3>
     {{-- nama ini hanya akan muncul saat login official --}}
     @if (Auth::user()->level == 'official')
-        <h5>Kontingen : {{ $kontingen }}</h5>
+        <div>
+            <table class="table table-sm table-borderless border-bottom border-2 mb-3">
+                <tr class="fw-bold">
+                    <td>Nama Official</td>
+                    <td>: {{ $user->name }}</td>
+                    <td>Nama Kontingen</td>
+                    <td>: {{ $kontingen->nama_kontingen }}</td>
+                </tr>
+                <tr class="fw-bold">
+                    <td>No. Whatsapp</td>
+                    <td>: {{ $user->no_wa }}</td>
+                    <td>Alamat Kontingen</td>
+                    <td>: {{ $kontingen->alamat }}</td>
+                </tr>
+            </table>
+        </div>
 
         {{-- pemberitahuan --}}
         <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
@@ -65,7 +80,7 @@
                             <td class="text-center">{{ $item->kelas_tanding }}</td>
                             <td>{{ $item->seni }}</td>
                             <td class="text-center">
-                                @if ($item->foto_atlet && $item->akte && $item->rekomendasi && $item->izin_orangtua && $item->suket_sehat)
+                                @if ($item->foto_atlet)
                                     <i class="fas fa-check-circle text-success"></i>
                                 @else
                                     <i class="fas fa-exclamation-circle text-warning"></i>
