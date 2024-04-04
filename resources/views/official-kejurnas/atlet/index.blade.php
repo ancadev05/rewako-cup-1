@@ -58,7 +58,7 @@
                         <th>Golongan</th>
                         <th>Kelas Tanding</th>
                         <th>Seni</th>
-                        <th>Status <br> Berkas</th>
+                        <th>Foto</th>
                         @if (Auth::user()->level == 'official')
                             @if ($invoice->pembayaran == 0)
                                 <th>Aksi</th>
@@ -69,7 +69,7 @@
 
                 <tbody>
                     <span class="text-white">
-                        <?php $i = $atlet->firstItem(); ?>
+                        <?php $i = 1; ?>
                     </span>
                     @forelse ($atlet as $item)
                         <tr>

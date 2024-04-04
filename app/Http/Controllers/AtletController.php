@@ -153,7 +153,7 @@ class AtletController extends Controller
                 'tgl_lahir' => 'required',
                 'jk' => 'required',
                 'golongan' =>  'required',
-                'foto_atlet' => 'required|file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
+                'foto_atlet' => 'file|image|mimes:jpg,jpeg,png,JPG,JPEG,PNG|max:2048'
             ],
             [
                 'nama_atlet' => 'wajib diisi*',
@@ -179,7 +179,6 @@ class AtletController extends Controller
         // golongan/jk/tanding-seni/kelas-kategori
 
         // validasi foto
-        $foto = false;
         // Jika user upload foto
         if ($request->hasFile('foto_atlet')) {
 
@@ -207,8 +206,7 @@ class AtletController extends Controller
             'bantu_seni' => $kSeni,
             'golongan' => $request->golongan,
             'kelas_tanding' => $request->kelas_tanding,
-            'seni' => $request->seni,
-            'foto_atlet' => $foto,
+            'seni' => $request->seni
         ];
 
         Atlet::where('id', $id)->update($atlet);

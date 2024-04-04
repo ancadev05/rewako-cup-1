@@ -11,7 +11,7 @@
     <h3 class="border-bottom border-2 mb-3">Edit Atlet</h3>
 
     <div class="rounded shadow p-2 border">
-        <form action="{{ url('official/atlet/'.$atlet->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('official/atlet/' . $atlet->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
 
@@ -78,12 +78,12 @@
                                 @endphp
                                 <div class="form-check me-3">
                                     <input class="form-check-input @error('jk') is-invalid @enderror" type="radio"
-                                        name="jk" id="jk1" value="PA" {{ $jk == 'PA' ? 'checked' : ''}}>
+                                        name="jk" id="jk1" value="PA" {{ $jk == 'PA' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input @error('jk') is-invalid @enderror"" type="radio"
-                                        name="jk" id="jk2" value="PI" {{ $jk == 'PI' ? 'checked' : ''}}>
+                                        name="jk" id="jk2" value="PI" {{ $jk == 'PI' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="jk2">Perempuan</label>
                                 </div>
                                 @error('jk')
@@ -109,19 +109,19 @@
                             <select class="form-select @error('kelas_tanding') is-invalid @enderror" name="kelas_tanding"
                                 id="kelas_tanding">
                                 <option value="-">-- Pilih Kelas --</option>
-                                <option value="A" {{ $kelas == "A" ? "selected" : ""}}>A</option>
-                                <option value="B" {{ $kelas == "B" ? "selected" : ""}}>B</option>
-                                <option value="C" {{ $kelas == "C" ? "selected" : ""}}>C</option>
-                                <option value="D" {{ $kelas == "D" ? "selected" : ""}}>D</option>
-                                <option value="E" {{ $kelas == "E" ? "selected" : ""}}>E</option>
-                                <option value="F" {{ $kelas == "F" ? "selected" : ""}}>F</option>
-                                <option value="G" {{ $kelas == "G" ? "selected" : ""}}>G</option>
-                                <option value="H" {{ $kelas == "H" ? "selected" : ""}}>H</option>
-                                <option value="I" {{ $kelas == "I" ? "selected" : ""}}>I</option>
-                                <option value="J" {{ $kelas == "J" ? "selected" : ""}}>J</option>
-                                <option value="K" {{ $kelas == "K" ? "selected" : ""}}>K</option>
-                                <option value="L" {{ $kelas == "L" ? "selected" : ""}}>L</option>
-                                <option value="M" {{ $kelas == "M" ? "selected" : ""}}>M</option>
+                                <option value="A" {{ $kelas == 'A' ? 'selected' : '' }}>A</option>
+                                <option value="B" {{ $kelas == 'B' ? 'selected' : '' }}>B</option>
+                                <option value="C" {{ $kelas == 'C' ? 'selected' : '' }}>C</option>
+                                <option value="D" {{ $kelas == 'D' ? 'selected' : '' }}>D</option>
+                                <option value="E" {{ $kelas == 'E' ? 'selected' : '' }}>E</option>
+                                <option value="F" {{ $kelas == 'F' ? 'selected' : '' }}>F</option>
+                                <option value="G" {{ $kelas == 'G' ? 'selected' : '' }}>G</option>
+                                <option value="H" {{ $kelas == 'H' ? 'selected' : '' }}>H</option>
+                                <option value="I" {{ $kelas == 'I' ? 'selected' : '' }}>I</option>
+                                <option value="J" {{ $kelas == 'J' ? 'selected' : '' }}>J</option>
+                                <option value="K" {{ $kelas == 'K' ? 'selected' : '' }}>K</option>
+                                <option value="L" {{ $kelas == 'L' ? 'selected' : '' }}>L</option>
+                                <option value="M" {{ $kelas == 'M' ? 'selected' : '' }}>M</option>
                             </select>
                             @error('kelas_tanding')
                                 <small class="invalid-feedback"> {{ $message }}
@@ -145,13 +145,19 @@
                             @endphp
                             <select class="form-select @error('seni') is-invalid @enderror" name="seni" id="seni">
                                 <option value="-">-- Pilih Kategori --</option>
-                                <option value="Tunggal Tangan Kosong" {{ $seni == "Tunggal Tangan Kosong" ? "selected" : ""}}>Tunggal Tangan Kosong</option>
-                                <option value="Tunggal Bersenjata" {{ $seni == "Tunggal Bersenjata" ? "selected" : ""}}>Tunggal Bersenjata</option>
-                                <option value="Ganda Tangan Kosong" {{ $seni == "Ganda Tangan Kosong" ? "selected" : ""}}>Ganda Tangan Kosong</option>
-                                <option value="Ganda Bersenjata" {{ $seni == "Ganda Bersenjata" ? "selected" : ""}}>Ganda Bersenjata</option>
-                                <option value="Ganda Tangan Kosong dan Bersenjata" {{ $seni == "Ganda Tangan Kosong dan Bersenjata" ? "selected" : ""}}>Ganda Tangan Kosong dan Bersenjata
+                                <option value="Tunggal Tangan Kosong"
+                                    {{ $seni == 'Tunggal Tangan Kosong' ? 'selected' : '' }}>Tunggal Tangan Kosong</option>
+                                <option value="Tunggal Bersenjata" {{ $seni == 'Tunggal Bersenjata' ? 'selected' : '' }}>
+                                    Tunggal Bersenjata</option>
+                                <option value="Ganda Tangan Kosong" {{ $seni == 'Ganda Tangan Kosong' ? 'selected' : '' }}>
+                                    Ganda Tangan Kosong</option>
+                                <option value="Ganda Bersenjata" {{ $seni == 'Ganda Bersenjata' ? 'selected' : '' }}>Ganda
+                                    Bersenjata</option>
+                                <option value="Ganda Tangan Kosong dan Bersenjata"
+                                    {{ $seni == 'Ganda Tangan Kosong dan Bersenjata' ? 'selected' : '' }}>Ganda Tangan
+                                    Kosong dan Bersenjata
                                 </option>
-                                <option value="Trio">Trio</option>
+                                <option value="Trio" {{ $seni == 'Trio' ? 'selected' : '' }}>Trio</option>
                             </select>
                             @error('seni')
                                 <small class="invalid-feedback"> {{ $message }}
@@ -181,12 +187,6 @@
                     </tr>
                 </table>
             </div>
-
-            <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
-                <span>Pastikan data atlet diisi dengan benar dan sesaui dengan berkas aslinya sebelum klik tombol tambah
-                    dibawah...</span>
-            </div>
-
 
             <div class="mt-4 mb-3 d-flex justify-content-end">
                 <button type="submit" class="btn btn-sm btn-primary me-2">Ubah</button>

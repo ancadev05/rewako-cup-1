@@ -55,11 +55,11 @@
         <div class="p-2 alert alert-danger">
             <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
                 <div>
-                    <h1>Total Tagihan : Rp{{ $invoice->pembayaran }}</h1>
-                    <a href="https://wa.me/6281255242365" class="btn btn-sm btn-success" target="_blank"><i
+                    <h1>Anda belum melakukan pembayaran!</h1>
+                    <a href="https://wa.me/6281255242365" class="btn btn-success" target="_blank"><i
                             class="fab fa-whatsapp"></i>
                         Konfirmasi Pembayaran</a>
-                    <a href="{{ url('/official/download/invoice') }}" class="btn btn-sm btn-secondary" target="_blank"><i
+                    <a href="{{ url('/official/download/invoice') }}" class="btn btn-secondary" target="_blank"><i
                             class="fas fa-file-alt"></i>
                         Cek Invoice</a>
                 </div>

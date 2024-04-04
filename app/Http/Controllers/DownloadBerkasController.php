@@ -37,10 +37,10 @@ class DownloadBerkasController extends Controller
         // menghitung jumlah atlet setiap kategori
         $kategori = [
             // pra usia dini
-            'pud_tunggal' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Pra Usia Dini')->where('seni', 'Tunggal Tangan Kosong')->get()->count(),
+            'pud_tunggal' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Pra Usia Dini')->whereIn('seni', ['Tunggal Tangan Kosong', 'Tunggal Bersenjata'])->get()->count(),
             // usia dini
             'ud_tanding' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Usia Dini')->where('bantu_tanding', 'T')->get()->count(),
-            'ud_tunggal' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Usia Dini')->where('seni', 'Tunggal Tangan Kosong')->where('seni', 'Tunggal Bersenjata')->get()->count(),
+            'ud_tunggal' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Usia Dini')->whereIn('seni', ['Tunggal Tangan Kosong', 'Tunggal Bersenjata'])->get()->count(),
             // pra remaja
             'pr_tanding' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Pra Remaja')->where('bantu_tanding', 'T')->get()->count(),
             'pr_tunggal' => DB::table('atlets')->where('id_username_official', $username)->where('golongan', 'Pra Remaja')->whereIn('seni', ['Tunggal Tangan Kosong', 'Tunggal Bersenjata'])->get()->count(),
@@ -82,8 +82,38 @@ class DownloadBerkasController extends Controller
         // biaya pendaftaran atlet
         $by_tanding = 250000;
         $by_tunggal = 250000;
-        $by_ganda = 450000;
-        $by_trio = 700000;
+        $by_ganda = 225000;
+
+        // $by_trio = 700000;
+
+        // perhitungan biaya kategori seni trio remaja
+        if ($r_trio > 0 && $r_trio <= 3) { // trio pra usia dini
+            $byr_trio = 700000;
+        } elseif ($r_trio > 3 && $r_trio <= 6) { // trioo usia dini
+            $byr_trio = 1400000;
+        } elseif ($r_trio > 6 && $r_trio <= 9) { // trioo pra remaja
+            $byr_trio = 2100000;
+        } elseif ($r_trio > 9 && $r_trio <= 12) { // trioo remaja
+            $byr_trio = 2800000;
+        } elseif ($r_trio > 12 && $r_trio <= 15) { // trioo dewasa
+            $byr_trio = 3500000;
+        } elseif ($r_trio > 15 && $r_trio <= 18) { // trioo master
+            $byr_trio = 4200000;
+        }
+        // perhitungan biaya kategori seni trio dewasa
+        if ($d_trio > 0 && $d_trio <= 3) { // trio pra usia dini
+            $byd_trio = 700000;
+        } elseif ($d_trio > 3 && $d_trio <= 6) { // trioo usia dini
+            $byd_trio = 1400000;
+        } elseif ($d_trio > 6 && $d_trio <= 9) { // trioo pra remaja
+            $byd_trio = 2100000;
+        } elseif ($d_trio > 9 && $d_trio <= 12) { // trioo remaja
+            $byd_trio = 2800000;
+        } elseif ($d_trio > 12 && $d_trio <= 15) { // trioo dewasa
+            $byd_trio = 3500000;
+        } elseif ($d_trio > 15 && $d_trio <= 18) { // trioo master
+            $byd_trio = 4200000;
+        }
 
         // biaya per kategori dan golongan
         $biaya = [
@@ -100,27 +130,27 @@ class DownloadBerkasController extends Controller
             'by_r_tanding' => $r_tanding * $by_tanding,
             'by_r_tunggal' => $r_tunggal * $by_tunggal,
             'by_r_ganda' => $r_ganda * $by_ganda,
-            'by_r_trio' => $r_trio * $by_trio,
+            'by_r_trio' => $byr_trio,
             // dewasa
             'by_d_tanding' => $d_tanding * $by_tanding,
             'by_d_tunggal' => $d_tunggal * $by_tunggal,
             'by_d_ganda' => $d_ganda * $by_ganda,
-            'by_d_trio' => $d_trio * $by_trio,
+            'by_d_trio' => $byd_trio,
 
-            // jumlah biaya per golongan
-            // jumlah pra usia dini
+            // total biaya per golongan
+            // total pra usia dini
             'jml_pud' => $pud_tunggal * $by_tunggal,
-            // jumlah usia dini
+            // total usia dini
             'jml_ud' => ($ud_tanding * $by_tanding) + ($ud_tunggal * $by_tunggal),
-            // jumlah pra remaja
+            // total pra remaja
             'jml_pr' => ($pr_tanding * $by_tanding) + ($pr_tunggal * $by_tunggal) + ($pr_ganda * $by_ganda),
-            // jumlah remaja
-            'jml_r' => ($r_tanding * $by_tanding) + ($r_tunggal * $by_tunggal) + ($r_ganda * $by_ganda) + ($r_trio * $by_trio),
-            // jumlah dewasa
-            'jml_d' => ($d_tanding * $by_tanding) + ($d_tunggal * $by_tunggal) + ($d_ganda * $by_ganda) + ($d_trio * $by_trio),
+            // total remaja
+            'jml_r' => ($r_tanding * $by_tanding) + ($r_tunggal * $by_tunggal) + ($r_ganda * $by_ganda) + ($byr_trio),
+            // total dewasa
+            'jml_d' => ($d_tanding * $by_tanding) + ($d_tunggal * $by_tunggal) + ($d_ganda * $by_ganda) + ($byd_trio),
 
         ];
-        
+
         // total biaya keseluruhan
         $total = $biaya['jml_pud'] + $biaya['jml_ud'] + $biaya['jml_pr'] + $biaya['jml_r'] + $biaya['jml_d'];
 

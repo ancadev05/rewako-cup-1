@@ -25,7 +25,7 @@ class AdminKejurnasController extends Controller
 
     public function atlet()
     {
-        $atlet = Atlet::orderBy('id','asc')->paginate();
+        $atlet = Atlet::orderBy('id','asc')->get();
         return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
     }
     
