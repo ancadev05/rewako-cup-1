@@ -37,7 +37,7 @@
                 <div class="d-flex flex-column ">
                     <div style="font-size: 28px; line-height:1;" class="m-0 p-0 fw-bold">INVOICE</div>
                     <div style="line-height: 1" class="m-0 p-0 border-1 border-bottom">No.
-                        {{ $invoice->id_username_official }}</div>
+                        {{ strtoupper($invoice->id_username_official) }}</div>
                 </div>
             </div> {{-- /kop --}}
 
@@ -72,7 +72,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kategori</th>
-                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-center">Jumlah Atlet (PA/PI)</th>
                                 <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
@@ -99,7 +99,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kategori</th>
-                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-center">Jumlah Atlet (PA/PI)</th>
                                 <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
@@ -132,7 +132,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kategori</th>
-                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-center">Jumlah Atlet (PA/PI)</th>
                                 <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
@@ -172,7 +172,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kategori</th>
-                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-center">Jumlah Atlet (PA/PI)</th>
                                 <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>
@@ -219,7 +219,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kategori</th>
-                                <th class="text-center">Jumlah Atlet</th>
+                                <th class="text-center">Jumlah Atlet (PA/PI)</th>
                                 <th class="text-end">SWP</th>
                                 <th class="text-end">Total</th>
                             </tr>

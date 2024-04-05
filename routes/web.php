@@ -52,6 +52,8 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // halaman official
     Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
+    Route::get('/official/setting/{username}', [UserController::class, 'setting'])->middleware('userAkses:official');
+    Route::post('/official/setting/{username}', [UserController::class, 'update'])->middleware('userAkses:official');
     // Route::get('/official/', [OfficialController::class, 'atlet'])->middleware('userAkses:official');
     Route::get('/official/download', [OfficialController::class, 'download'])->middleware('userAkses:official');
     Route::get('/official/download/invoice', [DownloadBerkasController::class, 'invoice'])->middleware('userAkses:official');

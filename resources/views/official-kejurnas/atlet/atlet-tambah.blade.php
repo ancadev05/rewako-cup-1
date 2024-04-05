@@ -169,7 +169,7 @@
                 </table>
             </div>
 
-            <div class="alert alert-warning border-0 border-start border-5 border-warning shadow">
+            <div class="alert alert-info border-0 border-start border-5 border-info shadow">
                 <ul>
                     <li>Pastikan data atlet diisi dengan benar dan sesaui dengan berkas aslinya sebelum klik tombol tambah
                         dibawah...</li>

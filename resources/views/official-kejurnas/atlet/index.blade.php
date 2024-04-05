@@ -29,7 +29,7 @@
         </div>
 
         {{-- pemberitahuan --}}
-        <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
+        <div class="alert alert-info border-0 border-start border-5 border-info shadow" role="alert">
             <ul class="">
                 <li>Fitur Tambah, Edit dan Hapus Atlet akan hilang setalah melakukan pembayaran</li>
                 <li>Jadi pastikan data Atlet sudah fix sebelum melakukan pembayaran</li>
