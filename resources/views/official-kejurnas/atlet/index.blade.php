@@ -49,7 +49,7 @@
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover">
+            <table class="table table-sm table-striped table-hover" id="atlet">
                 <thead class="text-center ">
                     <tr>
                         <th>No</th>
@@ -129,4 +129,47 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('datatables')
+    <script>
+        $(document).ready(function() {
+            $('#atlet').DataTable();
+        });
+
+        $('#atlet').DataTable({
+            select: true
+        });
+
+        new DataTable('#atlet', {
+            layout: {
+                topStart: {
+                    buttons: [{
+                        extend: 'excel',
+                        text: 'Save current page',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    }]
+                }
+            }
+        });
+
+        new DataTable('#atlet', {
+            layout: {
+                topStart: 'buttons'
+            },
+            buttons: [{
+                    extend: 'copy',
+                    className: 'copyButton'
+                },
+                {
+                    extend: 'excel',
+                    className: 'excelButton'
+                }
+            ]
+        });
+    </script>
 @endsection

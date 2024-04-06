@@ -25,6 +25,8 @@
     <link href="{{ asset('assets/costum-style/css-costum.css') }}" rel="stylesheet" />
     {{-- SweetAlert --}}
     <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
+    {{-- datatables --}}
+    <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.css') }}">
 
 </head>
 
@@ -75,6 +77,11 @@
 
     {{-- Script Costum --}}
     <script src="{{ asset('assets/template-js/script-costum.js') }}"></script>
+
+    {{-- datatables --}}
+    <script src="{{ asset('assets/datatables/datatables.js') }}"></script>
+    @yield('datatables')
+
 
 </body>
 
