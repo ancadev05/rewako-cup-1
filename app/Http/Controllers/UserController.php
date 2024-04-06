@@ -22,11 +22,6 @@ class UserController extends Controller
             ->with('kontingen', $kontingen);
     }
 
-    public function tambah()
-    {
-        return view('admin-kejurnas.user-tambah');
-    }
-
     // membuat akun user
     public function store(Request $request)
     {
@@ -69,6 +64,12 @@ class UserController extends Controller
         Invoice::create($invoice);
 
         return redirect()->to('admin-kejurnas/user')->with('success', 'Data berhasil ditambahkan');
+    }
+
+    // edit akun user
+    public function editUser(string $id){
+        $user = User::find($id);
+
     }
 
     // menampilkan halaman setting user di bagian official

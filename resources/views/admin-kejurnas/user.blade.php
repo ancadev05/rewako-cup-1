@@ -30,7 +30,7 @@
                 </thead>
 
                 <tbody>
-                    <?php $i = 1;?>
+                    <?php $i = 1; ?>
                     @foreach ($user as $item)
                         <tr>
                             <td>{{ $i }}</td>
@@ -39,22 +39,22 @@
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->no_wa }}</td>
                             <td class="text-center">
-                                <button class="btn btn-warning"
-                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                        class="fas fa-edit"></i></button>
+                                <a href="{{ url('/admin-kejurnas/user/' . $item->id) }}" class="btn btn-warning"
+                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"
+                                    data-bs-toggle="modal" data-bs-target="#editUser"><i class="fas fa-edit"></i></a>
                                 <button class="btn btn-danger"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                         class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
-                        <?php $i++;?>
+                        <?php $i++; ?>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal tambah user -->
     <div class="modal fade" id="tambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -98,4 +98,51 @@
             </div>
         </div>
     </div>
+    <!-- /Modal tambah user -->
+
+    {{-- modal edit user --}}
+    <div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        @csrf
+                        <div class="mb-3 row">
+                            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" name="name" value="">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="no_wa" class="col-sm-2 col-form-label">No WhatsApp</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="no_wa" name="no_wa">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="kontingen" class="col-sm-2 col-form-label">Kontingen</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="kontingen" name="kontingen">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="alamat" name="alamat">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- /modal edit user --}}
 @endsection {{-- /konten --}}

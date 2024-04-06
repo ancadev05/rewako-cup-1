@@ -140,36 +140,5 @@
         $('#atlet').DataTable({
             select: true
         });
-
-        new DataTable('#atlet', {
-            layout: {
-                topStart: {
-                    buttons: [{
-                        extend: 'excel',
-                        text: 'Save current page',
-                        exportOptions: {
-                            modifier: {
-                                page: 'current'
-                            }
-                        }
-                    }]
-                }
-            }
-        });
-
-        new DataTable('#atlet', {
-            layout: {
-                topStart: 'buttons'
-            },
-            buttons: [{
-                    extend: 'copy',
-                    className: 'copyButton'
-                },
-                {
-                    extend: 'excel',
-                    className: 'excelButton'
-                }
-            ]
-        });
     </script>
 @endsection

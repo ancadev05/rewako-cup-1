@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('official-kejurnas/atlet', AtletController::class);
 
 // #############################
-Route::get('/', function(){
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -47,15 +47,9 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // halaman official
     Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
-    Route::get('/official/setting/{username}', [UserController::class, 'setting'])->middleware('userAkses:official');
-    Route::post('/official/setting/{username}', [UserController::class, 'update'])->middleware('userAkses:official');
-    // Route::get('/official/', [OfficialController::class, 'atlet'])->middleware('userAkses:official');
     Route::get('/official/download', [OfficialController::class, 'download'])->middleware('userAkses:official');
     Route::get('/official/download/invoice', [DownloadBerkasController::class, 'invoice'])->middleware('userAkses:official');
     Route::get('/official/download/kwitansi', [DownloadBerkasController::class, 'kwitansi'])->middleware('userAkses:official');
-    // Route::get('/official/atlet-tambah', [AtletController::class, 'create'])->middleware('userAkses:official');
-    // Route::post('/official/atlet', [AtletController::class, 'store'])->middleware('userAkses:official');
-    // Route::get('/official/atlet-edit', [AtletController::class, 'edit'])->middleware('userAkses:official');
     Route::resource('/official/atlet', AtletController::class)->middleware('userAkses:official');
 
 
@@ -69,7 +63,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
 
+    // halaman bisa akses semua
+    Route::get('/setting/{username}', [UserController::class, 'setting']);
+    Route::post('/setting/{username}', [UserController::class, 'update']);
+
     // ketika user logout
     Route::get('/logout', [SesiController::class, 'logout']);
 });
-
