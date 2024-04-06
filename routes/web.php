@@ -41,11 +41,6 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login', [SesiController::class, 'index'])->name('login');
     Route::post('/login', [SesiController::class, 'login']);
 });
-// route jika ada yang sudah login namun coba mengakses halaman login
-// Route::get('/home', function(){
-
-//     return redirect('/admin');
-// });
 
 
 // halaman yang bisa diakses setelah login
@@ -78,37 +73,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [SesiController::class, 'logout']);
 });
 
-
-
-
-// ##############################################
-// fitur coba
-// Route::get('fitur', [Coba::class, 'index']);
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
-// Route::get('/rewako-cup', function () {
-//     return view('official-kejurnas.login');
-// });
-
-// Route::get('/atlet/atlet-tambah', function () {
-//     return view('official-kejurnas.atlet.atlet-tambah');
-// });
-
-// Route::get('/atlet/kategori', function () {
-//     return view('official-kejurnas.atlet.kategori');
-// });
-
-// Download berkas
-// Route::get('download/berkas', [DownloadBerkasController::class, 'index']);
-// // Group route download berkas
-// Route::controller(DownloadBerkasController::class)->group(function () {
-//     Route::get('download/berkas', 'index');
-//     Route::get('download/kwitansi', 'kwitansi');
-//     Route::get('download/idcard', 'idcard');
-//     Route::get('download/a-1', 'a1');
-// });

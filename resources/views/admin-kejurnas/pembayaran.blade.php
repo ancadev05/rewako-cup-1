@@ -13,7 +13,7 @@
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
             <table class="table table-sm table-striped table-hover">
-                <thead class="text-center ">
+                <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Official</th>
@@ -25,18 +25,19 @@
                 </thead>
 
                 <tbody>
+                    <?php $i = 1; ?>
                     @foreach ($invoice as $item)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $i }}</td>
                             <td>{{ $item->nama_official }}</td>
                             <td>{{ $item->id_kontingen }}</td>
-                            <td>{{ $item->id_username_official }}</td>
-                            <td class="text-center">
+                            <td>{{ strtoupper($item->id_username_official) }}</td>
+                            <td>
                                 @if ($item->pembayaran == 0)
                                     <form action="{{ url('/admin-kejurnas/pembayaran/' . $item->id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-sm btn-outline-danger">
-                                            <i class="fas fa-toggle-off" style="font-size: 20px"></i>
+                                            <i class="fas fa-toggle-off " style="font-size: 20px"></i>
                                         </button>
                                     </form>
                                 @else
@@ -56,6 +57,7 @@
                                 @endif
                             </td>
                         </tr>
+                        <?php $i++; ?>
                     @endforeach
                 </tbody>
             </table>

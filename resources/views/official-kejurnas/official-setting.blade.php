@@ -12,8 +12,11 @@
     <div class="table-responsive">
         <table class="table">
             <tr>
-                <td rowspan="5"><img src="{{ asset('storage/foto-official/' . $official->foto_official) }}" alt="foto"
-                        srcset="" width="100px"></td>
+                <td rowspan="5">
+                    <a href="{{ asset('storage/foto-official/' . $official->foto_official) }}" target="_blank">
+                        <img src="{{ asset('storage/foto-official/' . $official->foto_official) }}" alt="foto"
+                            srcset="" width="100px"></a>
+                </td>
                 <td>Username</td>
                 <td>: {{ $official->username }}</td>
             </tr>
@@ -89,7 +92,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

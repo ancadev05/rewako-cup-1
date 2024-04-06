@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\Kontingen;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -43,7 +44,7 @@ class UserController extends Controller
             'no_wa' => $request->no_wa,
             'level' => 'official',
             'username' => $userpass,
-            'password' => $userpass,
+            'password' => $userpass
         ];
 
         $kontingen = [
@@ -58,6 +59,10 @@ class UserController extends Controller
             'id_kontingen' => $request->kontingen,
             'pembayaran' => 0
         ];
+
+        if ($user && $kontingen && $invoice) {
+            return redirect()->to('admin-kejurnas/user');
+        }
 
         User::create($user);
         Kontingen::create($kontingen);
@@ -102,6 +107,10 @@ class UserController extends Controller
             'kontingen' => $request->kontingen
         ];
 
+        $invoice = [
+            'id_kontingen' => $request->kontingen
+        ];
+
         // Jika user upload foto
         if ($request->hasFile('foto_official')) {
             // Validasi gambar
@@ -121,6 +130,7 @@ class UserController extends Controller
         User::where('username', $username)->update($user);
         Kontingen::where('id_username_official', $username)->update($kontingen);
         Atlet::where('id_username_official', $username)->update($atlet);
+        Invoice::where('id_username_official', $username)->update($invoice);
 
         $official = User::where('username', $username)->get()->first();
         $kontingen = Kontingen::where('id_username_official', $username)->get()->first();

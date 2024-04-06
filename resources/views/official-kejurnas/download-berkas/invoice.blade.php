@@ -82,7 +82,7 @@
                                 <td>1</td>
                                 <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['pud_tunggal'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_pud_tunggal']) }}</td>
                             </tr>
                             <tr>
@@ -109,14 +109,14 @@
                                 <td>1</td>
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['ud_tanding'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_ud_tanding']) }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['ud_tunggal'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_ud_tunggal']) }}</td>
                             </tr>
                             <tr>
@@ -142,21 +142,21 @@
                                 <td>1</td>
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['pr_tanding'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_pr_tanding']) }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['pr_tunggal'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_pr_tunggal']) }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Seni Ganda (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['pr_ganda'] }}</td>
-                                <td class="text-end">Rp450.000,00</td>
+                                <td class="text-end">Rp450.000,00 / grup</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_pr_ganda']) }}</td>
                             </tr>
                             <tr>
@@ -182,28 +182,28 @@
                                 <td>1</td>
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['r_tanding'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_r_tanding']) }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['r_tunggal'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_r_tunggal']) }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Seni Ganda (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['r_ganda'] }}</td>
-                                <td class="text-end">Rp450.000,00</td>
+                                <td class="text-end">Rp450.000,00 / grup</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_r_ganda']) }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>Seni Trio (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['r_trio'] }}</td>
-                                <td class="text-end">Rp700.000,00</td>
+                                <td class="text-end">Rp700.000,00 / grup</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_r_trio']) }}</td>
                             </tr>
                             <tr>
@@ -229,28 +229,28 @@
                                 <td>1</td>
                                 <td>Tanding</td>
                                 <td class="text-center">{{ $kategori['d_tanding'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_d_tanding']) }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Seni Tunggal (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['d_tunggal'] }}</td>
-                                <td class="text-end">Rp250.000,00</td>
+                                <td class="text-end">Rp250.000,00 / atlet</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_d_tunggal']) }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Seni Ganda (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['d_ganda'] }}</td>
-                                <td class="text-end">Rp450.000,00</td>
+                                <td class="text-end">Rp450.000,00 / grup</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_d_ganda']) }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>Seni Trio (Tangan Kosong - Bersenjata)</td>
                                 <td class="text-center">{{ $kategori['d_trio'] }}</td>
-                                <td class="text-end">Rp700.000,00</td>
+                                <td class="text-end">Rp700.000,00 / grup</td>
                                 <td class="text-end">Rp{{ format_uang($biaya['by_d_trio']) }}</td>
                             </tr>
                             <tr>

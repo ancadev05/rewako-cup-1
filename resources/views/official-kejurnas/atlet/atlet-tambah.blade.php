@@ -163,7 +163,10 @@
                                 <small class="invalid-feedback"> {{ $message }}
                                 </small>
                             @enderror
-                            <span style="font-size: 11px; color:red;">Ukuran fto Max 2MB</span>
+                            <ul style="font-size: 11px; color:red;">
+                                <li>Ukuran fto Max 2MB</li>
+                                <li>Latar Biru ukuran 3 x 4 cm</li>
+                            </ul>
                         </td>
                     </tr>
                 </table>

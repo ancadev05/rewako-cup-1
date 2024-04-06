@@ -6,3 +6,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+
+@if (Session::has('errors'))
+    <div
+        class="pesan alert-dismissible fade show alert alert-danger rounded-0 border-0 border-start border-3 border-danger d-inline-block position-absolute end-0 top-0">
+        {{ Session::get('errors') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+

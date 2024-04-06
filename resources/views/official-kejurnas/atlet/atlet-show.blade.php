@@ -8,7 +8,7 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="border-bottom border-2 mb-3">{{ $atlet->nama_atlet }}</h3>
+    <h3 class="border-bottom border-2 mb-3">Data Atlet</h3>
 
     <div class="rounded shadow p-2 border">
 
@@ -29,12 +29,17 @@
                     <td>: {{ tanggalIndonesia($atlet->tgl_lahir) }}</td>
                 </tr>
                 <tr>
+                    <?php $atlet->jk == 'PA' ? ($jk = 'Laki-Laki') : ($jk = 'Perempuan'); ?>
+                    <td>Jenis Kelamin</td>
+                    <td>: {{ $jk }}</td>
+                </tr>
+                <tr>
                     <td>Golongan</td>
                     <td>: {{ $atlet->golongan }}</td>
                 </tr>
                 <tr>
-                    <td>Jenis Kelamin</td>
-                    <td>: {{ $atlet->jk }}</td>
+                    <td>Kontingen</td>
+                    <td>: {{ $atlet->kontingen }}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="border-bottom border-1"><b>Kategori Tanding :</b></td>

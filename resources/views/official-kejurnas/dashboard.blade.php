@@ -33,7 +33,7 @@
             <div class="card text-bg-primary shadow">
                 <div class="card-body">
                     <h5 class="card-title">Jumlah Atlet Terdaftar</h5>
-                    <h1>{{ $atlet }} pesilat</h1>
+                    <h1>{{ $atlet }} atlet</h1>
                 </div>
             </div>
         </div>

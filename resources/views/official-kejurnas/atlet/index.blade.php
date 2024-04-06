@@ -59,11 +59,7 @@
                         <th>Kelas Tanding</th>
                         <th>Seni</th>
                         <th>Foto</th>
-                        @if (Auth::user()->level == 'official')
-                            @if ($invoice->pembayaran == 0)
-                                <th>Aksi</th>
-                            @endif
-                        @endif
+                        <th>Aksi</th>
                     </tr>
                 </thead>
 
@@ -86,13 +82,26 @@
                                     <i class="fas fa-exclamation-circle text-warning"></i>
                                 @endif
                             </td>
-                            @if (Auth::user()->level == 'official')
-                                @if ($invoice->pembayaran == 0)
-                                    <td class="text-center">
-                                        <a href="{{ url('/official/atlet/' . $item->id) }}"
-                                            class="btn btn-secondary"
+                            <td class="text-center">
+                                <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
+                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                        class="fas fa-eye"></i></a>
+                                @if (Auth::user()->level == 'admin-kejurnas')
+                                    <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}" class="btn btn-warning"
+                                        style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                            class="fas fa-edit"></i></a>
+                                    <form action="{{ url('/official/atlet/' . $item->id) }}" method="POST"
+                                        class="d-inline" onsubmit="return confirm('Anda yakin ingin hapus data?')">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger"
                                             style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                                class="fas fa-eye"></i></a>
+                                                class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                @endif
+                                {{-- aksi untuk official sebelum membayar --}}
+                                @if (Auth::user()->level == 'official')
+                                    @if ($invoice->pembayaran == 0)
                                         <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}"
                                             class="btn btn-warning"
                                             style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
@@ -105,9 +114,9 @@
                                                 style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                                     class="fas fa-trash-alt"></i></button>
                                         </form>
-                                    </td>
+                                    @endif
                                 @endif
-                            @endif
+                            </td>{{-- /aksi untuk official sebelum membayar --}}
                         </tr>
                         <?php $i++; ?>
                     @empty

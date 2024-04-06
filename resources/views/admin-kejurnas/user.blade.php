@@ -30,9 +30,10 @@
                 </thead>
 
                 <tbody>
+                    <?php $i = 1;?>
                     @foreach ($user as $item)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $i }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->username }}</td>
@@ -46,6 +47,7 @@
                                         class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
+                        <?php $i++;?>
                     @endforeach
                 </tbody>
             </table>

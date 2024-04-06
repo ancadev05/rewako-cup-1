@@ -11,7 +11,7 @@
     <h3 class="border-bottom border-2 mb-3">Download Berkas</h3>
 
     {{-- pemberitahuan --}}
-    <div class="alert alert-warning border-0 border-start border-5 border-warning shadow" role="alert">
+    <div class="alert alert-info border-0 border-start border-5 border-info shadow" role="alert">
         <span>Berkas berikut didownload dan dicetak, kemudian diisi dan disetor saat registrasi ulang</span>
     </div>
 
@@ -44,6 +44,12 @@
                         <td>3</td>
                         <td>Surat Permohonan Perizinan</td>
                         <td><a href="{{ asset('storage/download-file/permohonan-perizinan.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Proposal</td>
+                        <td><a href="{{ asset('storage/download-file/proposal.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
                         </td>
                     </tr>
                 </tbody>
