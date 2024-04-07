@@ -26,6 +26,7 @@ class UserController extends Controller
     // membuat akun user
     public function store(Request $request)
     {
+        // dd('ok');
         $request->validate(
             [
                 'name' => 'required',
@@ -56,7 +57,7 @@ class UserController extends Controller
             'pembayaran' => 0
         ];
 
-        if ($user && $kontingen && $invoice) {
+        if ($user && $kontingen && $invoice == null) {
             return redirect()->to('admin-kejurnas/user');
         }
 
