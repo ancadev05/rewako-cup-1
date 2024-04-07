@@ -15,21 +15,15 @@ class DummyInvoicesSeeder extends Seeder
     {
         $invoice = [
             [
-                'id_username_official'=>'RWK-402012634',
-                'nama_official'=>'Hamzah',
+                'id_username_official'=>'OFF1',
+                'nama_official'=>'Official 1',
                 'id_kontingen'=>'MA Bontorita',
                 'pembayaran'=>0
             ],
             [
-                'id_username_official'=>'RWK-402024220',
-                'nama_official'=>'Anca',
+                'id_username_official'=>'OFF1',
+                'nama_official'=>'Official 2',
                 'id_kontingen'=>'MTs Bontoreya',
-                'pembayaran'=>0
-            ],
-            [
-                'id_username_official'=>'RWK-402032727',
-                'nama_official'=>'Kono',
-                'id_kontingen'=>'SMK 1 Galesong',
                 'pembayaran'=>0
             ]
             ];

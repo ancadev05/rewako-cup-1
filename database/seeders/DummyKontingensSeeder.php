@@ -17,17 +17,12 @@ class DummyKontingensSeeder extends Seeder
             [
                 'nama_kontingen' => 'MA Bontorita',
                 'alamat' => 'Bontorita',
-                'id_username_official' => 'rwk-402012634'
+                'id_username_official' => 'off1'
             ], 
             [
                 'nama_kontingen' => 'MTs Bontoreya',
                 'alamat' => 'Bontoreya',
-                'id_username_official' => 'rwk-402024220'
-            ],
-            [
-                'nama_kontingen' => 'SMK 1 Galesong',
-                'alamat' => 'Burane',
-                'id_username_official' => 'rwk-402032727'
+                'id_username_official' => 'off2'
             ]
         ];
 
