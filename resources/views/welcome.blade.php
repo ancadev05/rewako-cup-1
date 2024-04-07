@@ -42,7 +42,7 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="{{ asset('storage/img-web/ts.png') }}" alt="">
+                <img src="{{ asset('storage/img-web/ts-gowa.png') }}" alt="">
                 <span style="color: white; font-weight: bold; font-size: ">TAPAK SUCI 177 GOWA</span>
             </a>
             <nav id="navbar" class="navbar">
@@ -50,10 +50,8 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#videos">Videos</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#team">Team</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li class="dropdown"><a href="#"><span>Drop Down</span> <i
+                    {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i
                                 class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li><a href="#">Drop Down 1</a></li>
@@ -71,7 +69,7 @@
                             <li><a href="#">Drop Down 3</a></li>
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav><!-- .navbar -->
 
@@ -81,6 +79,22 @@
         </div>
     </header><!-- End Header -->
     <!-- End Header -->
+
+    {{-- menu yang muncul di smart phone --}}
+    <nav class=" text-bg-light ">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/news') }}">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </nav>
+    {{-- /menu yang muncul di smart phone --}}
 
     <!-- ======= Hero Section ======= -->
     {{-- <section id="hero" class="hero"> --}}
@@ -93,10 +107,12 @@
                         <img src="{{ asset('storage/img-web/kejurda.png') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ asset('storage/img-web/penataran-wasit.png') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('storage/img-web/penataran-wasit.png') }}" class="d-block w-100"
+                            alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ asset('storage/img-web/ukts-bissoloro.png') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('storage/img-web/ukts-bissoloro.png') }}" class="d-block w-100"
+                            alt="...">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
                         <img src="{{ asset('storage/img-web/ukt-limbung.png') }}" class="d-block w-100" alt="...">
@@ -132,10 +148,10 @@
             {{-- registrasi --}}
             <div style="background-color: #ff6a00;" data-aos="fade-up" class="mt-5">
                 <div class="container">
-                        <a href="https://wa.wizard.id/08f913" target="_blank" class="d-block bg-primary ">
-                            <img src="{{ asset('storage/img-web/regis.png') }}" class="" alt="..."
+                    <a href="https://wa.wizard.id/08f913" target="_blank" class="d-block bg-primary ">
+                        <img src="{{ asset('storage/img-web/regis.png') }}" class="" alt="..."
                             width="100%">
-                        </a>
+                    </a>
                 </div>
             </div>
 
@@ -530,67 +546,6 @@
 
     <div id="preloader"></div>
 
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button> -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="tambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $item)
-                                    <li>{{ $item }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <form action="{{ url('/') }}" method="post">
-                        @csrf
-                        <div class="mb-3 row">
-                            <label for="name" class="col-sm-2 col-form-label">Nama</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" name="name">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="no_wa" class="col-sm-2 col-form-label">No WhatsApp</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="no_wa" name="no_wa">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="alamat" name="alamat">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="kontingen" class="col-sm-2 col-form-label">Kontingen</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="kontingen" name="kontingen">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
-                        </div>
-                    </form>
-                    <button class="btn btn-warning" id="coba" onclick="kirim()">coba</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- /end moodal --}}
-
     <!-- Vendor JS Files -->
     <script src="{{ asset('tema-landing-page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('tema-landing-page/assets/vendor/aos/aos.js') }}"></script>
@@ -602,14 +557,6 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('tema-landing-page/assets/js/main.js') }}"></script>
-
-    <script>
-        function kirim() {
-            let nama = document.getElementById('name').value;
-            console.log(nama)
-            alert('ok' + nama);
-        }
-    </script>
 
 </body>
 
