@@ -27,10 +27,6 @@
         <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
         {{-- datatables --}}
         <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
-        {{-- <link href="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/datatables.min.css" rel="stylesheet"> --}}
-        <link href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.3/af-2.7.0/b-3.0.1/b-colvis-3.0.1/b-html5-3.0.1/b-print-3.0.1/date-1.5.2/sl-2.0.0/datatables.min.css" rel="stylesheet">
-        
     </head>
     
 <body class="sb-nav-fixed">
@@ -83,6 +79,7 @@
 
     {{-- datatables --}}
     <script src="{{ asset('assets/datatables/datatables.js') }}"></script>
+
     @yield('datatables')
     @yield('sweetalert')
 

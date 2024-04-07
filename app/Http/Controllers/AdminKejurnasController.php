@@ -28,6 +28,13 @@ class AdminKejurnasController extends Controller
         $atlet = Atlet::orderBy('id','asc')->get();
         return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
     }
+
+    // melihat detail atlet dari admin
+    public function atletDetail(string $id){
+        $atlet = Atlet::where('id', $id)->first();
+
+        return view('official-kejurnas.atlet.atlet-show')->with('atlet', $atlet);
+    }
     
     public function kontingen()
     {

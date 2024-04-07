@@ -51,12 +51,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/official/download/invoice', [DownloadBerkasController::class, 'invoice'])->middleware('userAkses:official');
     Route::get('/official/download/kwitansi', [DownloadBerkasController::class, 'kwitansi'])->middleware('userAkses:official');
     Route::resource('/official/atlet', AtletController::class)->middleware('userAkses:official');
-
-
+    
+    
     // halaman admin kejurnas
     Route::get('/admin-kejurnas', [AdminKejurnasController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/kontingen', [AdminKejurnasController::class, 'kontingen'])->middleware('userAkses:admin-kejurnas');
-    Route::get('/admin-kejurnas/atlet', [AdminKejurnasController::class, 'atlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/atlet', [AdminKejurnasController::class, 'atlet'])->middleware('userAkses:admin-kejurnas'); // menampilkan keseluruhan atlet
+    Route::get('/admin-kejurnas/atlet/{id}', [AdminKejurnasController::class, 'atletDetail'])->middleware('userAkses:admin-kejurnas'); // melihat detail user dari admin
     Route::get('/admin-kejurnas/kontingen', [AdminKejurnasController::class, 'kontingen'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/pembayaran', [AdminKejurnasController::class, 'pembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/pembayaran/{id}', [AdminKejurnasController::class, 'verifikasiPembayaran'])->middleware('userAkses:admin-kejurnas');
