@@ -137,6 +137,7 @@
         //     $('#atlet').DataTable();
         // });
 
+<<<<<<< HEAD
         // $('#atlet').DataTable({
         //     select: true
         //     buttons: [{
@@ -225,6 +226,10 @@
                     buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
                 }
             }
+=======
+        $('#atlet').DataTable({
+            select: true
+>>>>>>> admin-kejurnas
         });
     </script>
 @endsection

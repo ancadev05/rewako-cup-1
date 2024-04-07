@@ -87,7 +87,7 @@
                             <label for="foto_official" class="col-sm-2 col-form-label">Foto</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control form-control-sm" id="foto_official"
-                                    name="foto_official" value="{{ $kontingen->alamat }}">
+                                    name="foto_official">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -101,3 +101,27 @@
     </div>
 @endsection
 {{-- /konten --}}
+@section('sweetalert')
+    <script>
+        const hapus = document.getElementById('hapus')
+        hapus.addEventListener('click', function() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
+            })
+        })
+    </script>
+@endsection
