@@ -70,3 +70,9 @@ Route::middleware(['auth'])->group(function () {
     // ketika user logout
     Route::get('/logout', [SesiController::class, 'logout']);
 });
+
+
+// halaman umum
+Route::get('/news', function(){
+    return view('pages.news');
+});
