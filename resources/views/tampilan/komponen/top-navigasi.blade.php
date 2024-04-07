@@ -1,5 +1,6 @@
 <!-- top navigation -->
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav
+    class="sb-topnav navbar navbar-expand navbar-dark {{ Auth::user()->level == 'admin-kejurnas' ? 'bg-success' : 'bg-dark' }} ">
     <!-- Navbar Brand-->
 
     <a class="navbar-brand ps-3" href="{{ url('/kejurnas') }}">
@@ -23,8 +24,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li>
-                    <a class="dropdown-item"
-                        href="{{ url('/setting/' . Auth::user()->username) }}">Settings</a>
+                    <a class="dropdown-item" href="{{ url('/setting/' . Auth::user()->username) }}">Settings</a>
                 </li>
             </ul>
         </li>

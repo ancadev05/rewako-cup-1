@@ -80,7 +80,9 @@
 
     {{-- datatables --}}
     <script src="{{ asset('assets/datatables/datatables.js') }}"></script>
+    
     @yield('datatables')
+    @yield('sweetalert')
 
 
 </body>

@@ -62,6 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin-kejurnas/pembayaran/{id}', [AdminKejurnasController::class, 'verifikasiPembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
+    Route::delete('/admin-kejurnas/user/{username}', [UserController::class, 'deleteUser'])->middleware('userAkses:admin-kejurnas');
 
     // halaman bisa akses semua
     Route::get('/setting/{username}', [UserController::class, 'setting']);

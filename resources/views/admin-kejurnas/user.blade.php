@@ -8,7 +8,11 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="mb-3">User</h3>
+    <h3 class="border-bottom border-2 mb-3">User</h3>
+    <div class="alert alert-info border-0 border-start border-5 border-info shadow">
+        <span>Menghapus atau mengubah user akan membuat data atele yang berhubungan dengan user tersebut bermasalah bahkan
+            hilang</span>
+    </div>
 
     <div class="mb-2 d-flex justify-content-end">
         <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah User <i
@@ -39,12 +43,16 @@
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->no_wa }}</td>
                             <td class="text-center">
-                                <a href="{{ url('/admin-kejurnas/user/' . $item->id) }}" class="btn btn-warning"
+                                {{-- <a href="{{ url('/setting/' . $item->username) }}" class="btn btn-warning"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"
-                                    data-bs-toggle="modal" data-bs-target="#editUser"><i class="fas fa-edit"></i></a>
-                                <button class="btn btn-danger"
-                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                        class="fas fa-trash-alt"></i></button>
+                                    ><i class="fas fa-edit"></i></a> --}}
+                                <form action="{{ url('admin-kejurnas/user/' . $item->username) }}" method="post" onsubmit="return confirm('Yakin ingin hapus User?')" id="hapus">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger"
+                                        style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                            class="fas fa-trash-alt"></i></button>
+                                </form>
                             </td>
                         </tr>
                         <?php $i++; ?>

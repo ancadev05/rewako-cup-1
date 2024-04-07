@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\Kontingen;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -67,17 +68,24 @@ class UserController extends Controller
     }
 
     // edit akun user
-    public function editUser(string $id){
+    public function editUser(string $id)
+    {
         $user = User::find($id);
-
     }
 
     // menampilkan halaman setting user di bagian official
     public function setting($username)
     {
+        $user = User::where('username', $username)->get()->first();
         $official = User::where('username', $username)->get()->first();
         $kontingen = Kontingen::where('id_username_official', $username)->get()->first();
-        return view('official-kejurnas.official-setting')
+
+        if ($user->level == 'admin-kejurnas') {
+            return view('admin-kejurnas.admin-setting')
+                ->with('user', $user);
+        }
+
+        return view('admin-kejurnas.user-setting')
             ->with('official', $official)
             ->with('kontingen', $kontingen);
     }
@@ -139,9 +147,19 @@ class UserController extends Controller
 
 
         // return view('official-kejurnas.official-setting')
-        return redirect()->to('/official/setting/' . $username)
+        return redirect()->to('/setting/' . $username)
             ->with('official', $official)
             ->with('kontingen', $kontingen)
             ->with('success', 'Data berhasil diubah');
+    }
+
+    // delete user
+    public function deleteUser(string $username)
+    {
+        User::where('username', $username)->delete();
+        Kontingen::where('id_username_official', $username);
+        Atlet::where('id_username_official', $username);
+
+        return back()->with('success', 'Data berhasil dihapus');
     }
 }
