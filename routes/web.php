@@ -42,7 +42,6 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [SesiController::class, 'login']);
 });
 
-
 // halaman yang bisa diakses setelah login
 Route::middleware(['auth'])->group(function () {
     // halaman official
@@ -77,4 +76,7 @@ Route::middleware(['auth'])->group(function () {
 // halaman umum
 Route::get('/news', function(){
     return view('pages.news');
+});
+Route::get('/home', function(){
+    return view('welcome');
 });

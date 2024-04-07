@@ -158,8 +158,9 @@ class UserController extends Controller
     public function deleteUser(string $username)
     {
         User::where('username', $username)->delete();
-        Kontingen::where('id_username_official', $username);
-        Atlet::where('id_username_official', $username);
+        Invoice::where('id_username_official', $username)->delete();
+        Kontingen::where('id_username_official', $username)->delete();
+        Atlet::where('id_username_official', $username)->delete();
 
         return back()->with('success', 'Data berhasil dihapus');
     }

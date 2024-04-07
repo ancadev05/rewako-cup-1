@@ -60,3 +60,5 @@ R-GB = remaja ganda bersenjata
 D-GTKB = dewasa ganda tangan koosong dan bersenjata
 M-TRI = master 
 
+7/4/2024
+- masi harus landing page
