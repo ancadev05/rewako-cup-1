@@ -21,19 +21,20 @@ class DummyUsersSeeder extends Seeder
                 'password' => 'admin;',
                 'level' => 'admin-kejurnas',
                 'foto_official' => 'admin.png'
-            ], [
-                'name' => 'Official 1',
-                'username' => 'off1',
-                'no_wa' => '11111',
-                'password' => '123',
-                'level' => 'official'
-            ], [
-                'name' => 'Official 2',
-                'username' => 'off2',
-                'no_wa' => '22222',
-                'password' => '123',
-                'level' => 'official'
-            ]
+            ], 
+            // [
+            //     'name' => 'Official 1',
+            //     'username' => 'off1',
+            //     'no_wa' => '11111',
+            //     'password' => '123',
+            //     'level' => 'official'
+            // ], [
+            //     'name' => 'Official 2',
+            //     'username' => 'off2',
+            //     'no_wa' => '22222',
+            //     'password' => '123',
+            //     'level' => 'official'
+            // ]
         ];
 
         foreach($users as $key => $value){

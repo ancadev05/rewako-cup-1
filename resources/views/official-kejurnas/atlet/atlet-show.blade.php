@@ -58,8 +58,19 @@
             </table>
         </div>
 
-        <div class="mt-4 mb-3 d-flex justify-content-end">
-            <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
-        </div>
+        @if (Auth::user()->level == 'official')
+            {{-- tombol official --}}
+            <div class="mt-4 mb-3 d-flex justify-content-end">
+                <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
+            </div>
+            {{-- /tombol official --}}
+        @else
+            {{-- tombol admin --}}
+            <div class="mt-4 mb-3 d-flex justify-content-end">
+                <a href="{{ url('/admin-kejurnas/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
+            </div>
+            {{-- /tombol admin --}}
+        @endif
+
     </div>
 @endsection

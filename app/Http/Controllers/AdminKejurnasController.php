@@ -26,7 +26,8 @@ class AdminKejurnasController extends Controller
     public function atlet()
     {
         $atlet = Atlet::orderBy('id','asc')->get();
-        return view('official-kejurnas.atlet.index')->with('atlet', $atlet);
+
+        return view('admin-kejurnas.atlet')->with('atlet', $atlet);
     }
 
     // melihat detail atlet dari admin

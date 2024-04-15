@@ -25,10 +25,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // DummyGolongansSeeder::class,
             // DummyKelasTandingsSeeder::class,
-            DummyKontingensSeeder::class,
+            // DummyKontingensSeeder::class,
             // DummySenisSeeder::class,
             DummyUsersSeeder::class,
-            DummyInvoicesSeeder::class
+            // DummyInvoicesSeeder::class
         ]);
 
         // Atlet::factory(20)->create();
