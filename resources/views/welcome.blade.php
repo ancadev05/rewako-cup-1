@@ -9,9 +9,11 @@
     {{-- downlad proposal --}}
     <section class="services sections-bg">
         <div class="container">
-            <h5 class="text-center">Download Proposal</h5>
+            <h5 class="text-center">Download Berkas Kegiatan</h5>
             <a href="{{ asset('storage/download-file/proposal.pdf') }}" target="_blank"
-                class="btn btn-warning d-block "><i class="bi bi-file-earmark-pdf"></i> Proposal PDF</a>
+                class="btn btn-warning d-block mb-1"><i class="bi bi-file-earmark-pdf"></i> Proposal PDF</a>
+            <a href="{{ asset('storage/download-file/undangan-rewako-cup.pdf') }}" target="_blank"
+                class="btn btn-warning d-block mb-1"><i class="bi bi-file-earmark-pdf"></i> Undangan PDF</a>
         </div>
     </section>
 
