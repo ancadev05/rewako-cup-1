@@ -122,6 +122,7 @@
                                 <option value="K" {{ $kelas == 'K' ? 'selected' : '' }}>K</option>
                                 <option value="L" {{ $kelas == 'L' ? 'selected' : '' }}>L</option>
                                 <option value="M" {{ $kelas == 'M' ? 'selected' : '' }}>M</option>
+                                <option value="M" {{ $kelas == 'BEBAS' ? 'selected' : '' }}>BEBAS</option>
                             </select>
                             @error('kelas_tanding')
                                 <small class="invalid-feedback"> {{ $message }}
@@ -183,6 +184,11 @@
                                 <small class="invalid-feedback"> {{ $message }}
                                 </small>
                             @enderror
+                            <ul style="font-size: 11px; color:red;">
+                                <li>Ukuran foto Max 2MB</li>
+                                <li>Latar Biru ukuran 3 x 4 cm</li>
+                            </ul>
+                        </td>
                         </td>
                     </tr>
                 </table>

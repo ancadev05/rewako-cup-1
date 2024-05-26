@@ -24,7 +24,7 @@
 
                 <tbody>
                     <span class="text-white">
-                        <?php $i = $kontingen->firstItem(); ?>
+                        <?php $i = 1; ?>
                     </span>
                     @forelse ($kontingen as $item)
                         <tr>

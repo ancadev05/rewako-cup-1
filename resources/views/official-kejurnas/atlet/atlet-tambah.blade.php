@@ -111,6 +111,7 @@
                                 <option value="K">K</option>
                                 <option value="L">L</option>
                                 <option value="M">M</option>
+                                <option value="BEBAS">BEBAS</option>
                             </select>
                             @error('kelas_tanding')
                                 <small class="invalid-feedback"> {{ $message }}
@@ -164,7 +165,7 @@
                                 </small>
                             @enderror
                             <ul style="font-size: 11px; color:red;">
-                                <li>Ukuran fto Max 2MB</li>
+                                <li>Ukuran foto Max 2MB</li>
                                 <li>Latar Biru ukuran 3 x 4 cm</li>
                             </ul>
                         </td>

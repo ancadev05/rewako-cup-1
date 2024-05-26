@@ -39,7 +39,7 @@ class AdminKejurnasController extends Controller
     
     public function kontingen()
     {
-        $kontingen = Kontingen::orderBy('id', 'asc')->paginate();
+        $kontingen = Kontingen::orderBy('id', 'asc')->get();
         // dd($kontingen);
         return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
     }
