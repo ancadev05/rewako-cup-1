@@ -27,7 +27,7 @@ class AtletController extends Controller
         $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
 
         // menampilkan daftar atlet sesuai kontingen/username
-        $atlet = Atlet::where('id_username_official', $username)->orderBy('seni', 'asc')->paginate();
+        $atlet = Atlet::where('id_username_official', $username)->orderBy('seni', 'asc')->get();
 
         // status pembayaran invoice
         $invoice = Invoice::where('id_username_official', $username)->get()->first();

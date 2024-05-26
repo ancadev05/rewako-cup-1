@@ -40,6 +40,13 @@
                         </div>
                         Pembayaran
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-atlet') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/verifikasi-atlet') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        Verifikasi Atlet
+                    </a>
                 @endif
                 {{-- /admin kejurnas --}}
 

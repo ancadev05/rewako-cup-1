@@ -83,4 +83,10 @@ class AdminKejurnasController extends Controller
 
         return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'Status pembayaran telah diubah');
     }
+
+    // verifikasi atlet
+    public function verifikasiAtlet()
+    {
+        return view('admin-kejurnas.registrasi-ulang.verifikasi-atlet');
+    }
 }

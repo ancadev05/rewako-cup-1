@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-kejurnas/kontingen', [AdminKejurnasController::class, 'kontingen'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/pembayaran', [AdminKejurnasController::class, 'pembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/pembayaran/{id}', [AdminKejurnasController::class, 'verifikasiPembayaran'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/verifikasi-atlet', [AdminKejurnasController::class, 'verifikasiAtlet'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
     Route::delete('/admin-kejurnas/user/{username}', [UserController::class, 'deleteUser'])->middleware('userAkses:admin-kejurnas');
