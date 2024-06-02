@@ -21,7 +21,7 @@
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover">
+            <table class="table table-sm table-striped table-hover" id="tbl">
                 <thead class="text-center ">
                     <tr>
                         <th>No</th>
@@ -154,3 +154,11 @@
     </div> --}}
     {{-- /modal edit user --}}
 @endsection {{-- /konten --}}
+
+@section('datatables')
+    <script>
+        $(document).ready(function() {
+            $('#tbl').DataTable();
+        });
+    </script>
+@endsection

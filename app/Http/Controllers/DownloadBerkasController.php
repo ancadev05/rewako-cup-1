@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Atlet;
 use App\Models\Invoice;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -164,5 +165,54 @@ class DownloadBerkasController extends Controller
             ->with('biaya', $biaya)
             ->with('totalBiaya', $total)
             ->with('invoice', $invoice);
+    }
+
+    // download data atlet per kontingen
+    public function dataAtlet(Request $request)
+    {
+        // menentukan username
+        $username = Auth::user()->username;
+
+        // akun user
+        $user = User::where('username', $username)->get()->first();
+
+        // menentukan nama kontingen
+        $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
+
+        // menampilkan daftar atlet sesuai kontingen/username (golongan)
+        $atlet_pud = Atlet::where('id_username_official', $username)->where('golongan', 'Pra Usia Dini')->orderBy('bantu', 'asc')->get();
+        $atlet_ud = Atlet::where('id_username_official', $username)->where('golongan', 'Usia Dini')->orderBy('bantu', 'asc')->get();
+        $atlet_pr = Atlet::where('id_username_official', $username)->where('golongan', 'Pra Remaja')->orderBy('bantu', 'asc')->get();
+        $atlet_r = Atlet::where('id_username_official', $username)->where('golongan', 'Remaja')->orderBy('bantu', 'asc')->get();
+        $atlet_d = Atlet::where('id_username_official', $username)->where('golongan', 'Dewasa')->orderBy('bantu', 'asc')->get();
+        $atlet_m = Atlet::where('id_username_official', $username)->where('golongan', 'Master')->orderBy('bantu', 'asc')->get();
+
+        // generate pdf
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('official-kejurnas.atlet.pdf.atlet',
+                [
+                    'official' => $user,
+                    'kontingen' => $kontingen,
+                    'atlet_pud' => $atlet_pud,
+                    'atlet_ud' => $atlet_ud,
+                    'atlet_pr' => $atlet_pr,
+                    'atlet_r' => $atlet_r,
+                    'atlet_d' => $atlet_d,
+                    'atlet_m' => $atlet_m
+                ] 
+            );
+
+            return $pdf->download('data-atlet.pdf');
+        }
+
+        return view('official-kejurnas.atlet.atlet-download-data')
+            ->with('official', $user)
+            ->with('kontingen', $kontingen)
+            ->with('atlet_pud', $atlet_pud)
+            ->with('atlet_ud', $atlet_ud)
+            ->with('atlet_pr', $atlet_pr)
+            ->with('atlet_r', $atlet_r)
+            ->with('atlet_d', $atlet_d)
+            ->with('atlet_m', $atlet_m);
     }
 }

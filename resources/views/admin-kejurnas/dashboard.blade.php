@@ -48,5 +48,26 @@
             </div>
         </div>
     </div>
+
+    {{-- pesilat berdasar golongan --}}
+    <h6>Pesilat Berdasarkan Golongan</h6>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 mb-4">
+        <div class="col">
+            <div class="card text-bg-primary shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Usia Dini</h5>
+                    <h1>{{ $jk }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-danger shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Perempuan</h5>
+                    <h1>{{ $atlet - $jk }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 {{-- /konten --}}

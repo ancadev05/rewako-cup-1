@@ -12,7 +12,7 @@
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover">
+            <table class="table table-sm table-striped table-hover" id="tbl">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -64,3 +64,11 @@
         </div>
     </div>
 @endsection {{-- /konten --}}
+
+@section('datatables')
+    <script>
+        $(document).ready(function() {
+            $('#tbl').DataTable();
+        });
+    </script>
+@endsection
