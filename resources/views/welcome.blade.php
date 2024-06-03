@@ -5,26 +5,32 @@
 @endsection
 
 @section('page')
-
     {{-- downlad proposal --}}
     <section class="services sections-bg">
         <div class="container">
             <h5 class="text-center">Download Berkas Kegiatan</h5>
-            <a href="{{ asset('storage/download-file/proposal.pdf') }}" target="_blank"
-                class="btn btn-warning d-block mb-1"><i class="bi bi-file-earmark-pdf"></i> Proposal PDF</a>
+            <a href="{{ asset('storage/download-file/proposal.pdf') }}" target="_blank" class="btn btn-warning d-block mb-1"><i
+                    class="bi bi-file-earmark-pdf"></i> Proposal PDF</a>
             <a href="{{ asset('storage/download-file/undangan-rewako-cup.pdf') }}" target="_blank"
                 class="btn btn-warning d-block mb-1"><i class="bi bi-file-earmark-pdf"></i> Undangan PDF</a>
         </div>
     </section>
 
     {{-- registrasi --}}
-    <div style="background-color: #ff6a00;" data-aos="fade-up" class="mt-5">
-        <div class="container">
-            <a href="https://wa.wizard.id/08f913" target="_blank" class="d-block bg-primary ">
-                <img src="{{ asset('storage/img-web/regis.png') }}" class="" alt="..." width="100%">
-            </a>
+    {{-- penutupan sementara --}}
+    @php
+        $status = 0;
+    @endphp
+    @if ($status == 1)
+        <div style="background-color: #ff6a00;" data-aos="fade-up" class="mt-5">
+            <div class="container">
+                <a href="https://wa.wizard.id/08f913" target="_blank" class="d-block bg-primary ">
+                    <img src="{{ asset('storage/img-web/regis.png') }}" class="" alt="..." width="100%">
+                </a>
+            </div>
         </div>
-    </div>
+    @endif
+    {{-- /penutupan sementara --}}
 
     {{-- halaman login bagi yang sudah punya akun --}}
     <section class="services sections-bg">

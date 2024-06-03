@@ -39,13 +39,21 @@
 
     <div class="mb-2 d-flex justify-content-between">
         {{-- download data atlet --}}
-        <a href="{{ url('/official/download/data-atlet') }}" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i> Lihat</a>
+        <a href="{{ url('/official/download/data-atlet') }}" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i>
+            Lihat</a>
         {{-- <a href="{{ url('/official/download/data-atlet') }}?export=pdf" class="btn btn-success btn-sm">Download</a> --}}
         {{-- pembeda antara tampilan admin dan official --}}
         @if (Auth::user()->level == 'official')
             @if ($invoice->pembayaran == 0)
-                <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
-                    class="fa fa-plus ms-2"></i> Tambah Atlet</a>
+                {{-- penutupan sementara --}}
+                @php
+                    $status = 0;
+                @endphp
+                @if ($status == 1)
+                    <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
+                            class="fa fa-plus ms-2"></i> Tambah Atlet</a>
+                @endif
+                {{-- /penutupan sementara --}}
             @endif
         @endif
     </div>

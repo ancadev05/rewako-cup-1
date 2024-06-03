@@ -44,6 +44,8 @@
         <div class="p-2 alert alert-success">
             <div class="d-flex bg-danger-subtle justify-content-around align-items-center">
                 <div>
+                    <h1>Atlet Anda resmi menjadi peserta Rewako CUP I</h1>
+                    <hr>
                     <h1>Status Pembayaran : LUNAS</h1>
                 </div>
                 <div>
