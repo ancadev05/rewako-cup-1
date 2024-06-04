@@ -283,7 +283,7 @@
                             </tr>
                             <tr>
                                 <td>No. Rekening</td>
-                                <td>: 174-00-0304723-0</td>
+                                <td>: 1740007305485</td>
                             </tr>
                         </table>
                     </div>
