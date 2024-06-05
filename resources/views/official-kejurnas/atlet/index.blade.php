@@ -48,10 +48,15 @@
                 {{-- penutupan sementara --}}
                 @php
                     $status = 0;
+                    $user = Auth::user()->username == 'rwk-605011333';
                 @endphp
                 @if ($status == 1)
                     <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
                             class="fa fa-plus ms-2"></i> Tambah Atlet</a>
+                            {{-- mengizinkan user tertentu untuk tambah atlet --}}
+                @elseif ($user)
+                    <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
+                        class="fa fa-plus ms-2"></i> Tambah Atlet</a>  
                 @endif
                 {{-- /penutupan sementara --}}
             @endif
