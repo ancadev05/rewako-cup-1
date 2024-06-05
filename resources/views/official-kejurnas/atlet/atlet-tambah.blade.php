@@ -208,9 +208,9 @@
             // dikonfersi menjadi hari
             const usiaHari = Math.round(selisih / (1000 * 3600 * 24))
 
-            // kategori berdasarkan minimal usia hari
-            const pud = 2920 // 8th - pra usia dini
-            const ud = 3651 // 10th 1hr - usia dini
+            // kategori berdasarkan minimal usia hari per (tglSekarang)
+            const pud = 2923 // 8th - pra usia dini
+            const ud = 3654 // 10th 1hr - usia dini
             const pr = 4381 // 12th 1hr - pra remaja
             const r = 5111 // 14th 1hr - remaja
             const d = 6206 // 17th 1hr - dewasa

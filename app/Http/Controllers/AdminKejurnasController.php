@@ -16,11 +16,23 @@ class AdminKejurnasController extends Controller
         $atlet = Atlet::get()->count();
         $kontingen = Kontingen::get()->count();
         $jkpa = DB::table('atlets')->where('jk', 'PA')->get()->count();
+        $pud = DB::table('atlets')->where('golongan', 'Pra Usia Dini')->get()->count();
+        $ud = DB::table('atlets')->where('golongan', 'Usia Dini')->get()->count();
+        $pr = DB::table('atlets')->where('golongan', 'Pra Remaja')->get()->count();
+        $r = DB::table('atlets')->where('golongan', 'remaja')->get()->count();
+        $d = DB::table('atlets')->where('golongan', 'Dewasa')->get()->count();
+        $m = DB::table('atlets')->where('golongan', 'Master')->get()->count();
 
         return view('admin-kejurnas.dashboard')
             ->with('atlet', $atlet)
             ->with('kontingen', $kontingen)
-            ->with('jk', $jkpa);
+            ->with('jk', $jkpa)
+            ->with('pud', $pud)
+            ->with('ud', $ud)
+            ->with('pr', $pr)
+            ->with('r', $r)
+            ->with('d', $d)
+            ->with('m', $m);
     }
 
     public function atlet()

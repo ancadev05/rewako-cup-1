@@ -47,7 +47,7 @@
             @if ($invoice->pembayaran == 0)
                 {{-- penutupan sementara --}}
                 @php
-                    $status = 0;
+                    $status = 1;
                     $user = Auth::user()->username == 'rwk-605011333';
                 @endphp
                 @if ($status == 1)
