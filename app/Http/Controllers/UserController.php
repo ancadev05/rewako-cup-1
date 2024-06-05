@@ -118,6 +118,7 @@ class UserController extends Controller
         ];
 
         $invoice = [
+            'nama_official' => $request->name,
             'id_kontingen' => $request->kontingen
         ];
 
