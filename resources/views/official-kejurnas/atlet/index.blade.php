@@ -53,10 +53,10 @@
                 @if ($status == 1)
                     <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
                             class="fa fa-plus ms-2"></i> Tambah Atlet</a>
-                            {{-- mengizinkan user tertentu untuk tambah atlet --}}
+                    {{-- mengizinkan user tertentu untuk tambah atlet --}}
                 @elseif ($user)
                     <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
-                        class="fa fa-plus ms-2"></i> Tambah Atlet</a>  
+                            class="fa fa-plus ms-2"></i> Tambah Atlet</a>
                 @endif
                 {{-- /penutupan sementara --}}
             @endif
@@ -102,13 +102,18 @@
                                 <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                         class="fas fa-eye"></i></a>
+                                {{-- jika ada perbaikan data --}}
+                                @php
+                                    $perbaikan = 1;
+                                @endphp
+                                @if ($pebkaikan = 1)
+                                    <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}" class="btn btn-warning"
+                                        style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
+                                            class="fas fa-edit"></i></a>
+                                @endif
                                 {{-- aksi untuk official sebelum membayar --}}
                                 @if (Auth::user()->level == 'official')
                                     @if ($invoice->pembayaran == 0)
-                                        <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}"
-                                            class="btn btn-warning"
-                                            style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                                class="fas fa-edit"></i></a>
                                         <form action="{{ url('/official/atlet/' . $item->id) }}" method="POST"
                                             class="d-inline" onsubmit="return confirm('Anda yakin ingin hapus data?')">
                                             @csrf
