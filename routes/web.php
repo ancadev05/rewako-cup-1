@@ -65,6 +65,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
     Route::delete('/admin-kejurnas/user/{username}', [UserController::class, 'deleteUser'])->middleware('userAkses:admin-kejurnas');
+    
+    // peserta fix
+    Route::get('/admin-kejurnas/pserta-suda-bayar', [AdminKejurnasController::class, 'sudaBayar'])->middleware('userAkses:admin-kejurnas');
+
 
     // halaman bisa akses semua
     Route::get('/setting/{username}', [UserController::class, 'setting']);
