@@ -199,23 +199,38 @@
             const coba = document.getElementById('coba')
 
             // tanggal kejuaraan
-            const tglSekarang = new Date('2024/06/30')
+            const tglSekarang = new Date('2024/06/27')
             // const tglSekarang = new Date()
 
             // usia berdasar waktu
             const selisih = tglSekarang.getTime() - tglLahir.getTime()
 
             // dikonfersi menjadi hari
-            const usiaHari = Math.round(selisih / (1000 * 3600 * 24))
+            const usiaHari = Math.floor(selisih / (1000 * 3600 * 24))
+            // const usiaHari = selisih / (1000 * 3600 * 24)
 
             // kategori berdasarkan minimal usia hari per (tglSekarang)
-            const pud = 2923 // 8th - pra usia dini
-            const ud = 3654 // 10th 1hr - usia dini
-            const pr = 4381 // 12th 1hr - pra remaja
-            const r = 5111 // 14th 1hr - remaja
-            const d = 6206 // 17th 1hr - dewasa
-            const m = 12776 // 30th 1hr - master
-            const max = 16425 // 45th
+            const pud = 2922 // 8th - pra usia dini
+            const ud = 3652 // 10th - usia dini
+            const pr = 4384 // 12th 1hr - pra remaja
+            const r = 5114 // 14th 1hr - remaja
+            const d = 6210 // 17th 1hr - dewasa
+            const m = 12785 // 35th 1hr - master
+            const max = 16436 // 45th
+
+            // minimal tanggal kelahiran
+            // pra usia dini
+            // 26 juni 2016
+            // usia dini
+            // 27 juni 2014
+            // pra remaja
+            // 25 juni 2012
+            // remaja
+            // 26 juni 2010
+            // dewasa
+            // 26 juni 2007
+            // master
+            // 25 juni 1989
 
             // agar halaman tidak reload saat menjalankan fungsi
             event.preventDefault()
@@ -232,38 +247,42 @@
                 let isiKategori = 'Pra Usia Dini'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             } else if (usiaHari >= ud && usiaHari < pr) {
                 let isiKategori = 'Usia Dini'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             } else if (usiaHari >= pr && usiaHari < r) {
                 let isiKategori = 'Pra Remaja'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             } else if (usiaHari >= r && usiaHari < d) {
                 let isiKategori = 'Remaja'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             } else if (usiaHari >= d && usiaHari < m) {
                 let isiKategori = 'Dewasa'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             } else if (usiaHari >= m && usiaHari <= max) {
                 let isiKategori = 'Master'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             } else {
                 let isiKategori = 'Anda tidak termasuk kategori'
                 kategori.value = isiKategori
                 hitung.innerHTML =
-                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 30 Juni 2024)`
+                    `usia Anda ${Math.floor(years)} tahun, ${Math.floor(month % 12)} bulan, ${Math.floor(days % 30.4375)} hari (per 27 Juni 2024)`
             }
+
+            // console.log(tglLahir)
+            // console.log(tglSekarang)
+            // console.log(usiaHari)
         }
     </script>
 @endsection
