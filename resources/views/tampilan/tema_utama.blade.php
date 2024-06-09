@@ -27,6 +27,14 @@
         <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
         {{-- datatables --}}
         <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.bootstrap5.css') }}">
+
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> --}}
+    {{-- <link
+        href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.8/af-2.7.0/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/datatables.min.css"
+        rel="stylesheet" /> --}}
+
     </head>
     
 <body class="sb-nav-fixed">
@@ -79,6 +87,21 @@
 
     {{-- datatables --}}
     <script src="{{ asset('assets/datatables/datatables.js') }}"></script>
+    <script src="{{ asset('assets/datatables/datatables-button.js') }}"></script>
+    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/dataTables.buttons.js') }}"></script>
+    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.bootstrap5.js') }}"></script>
+    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/Buttons-2.4.2/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/JSZip-3.10.1/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/pdfmake-0.2.7/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/pdfmake-0.2.7/vfs_fonts.js') }}"></script>
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> --}}
+{{-- <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.8/af-2.7.0/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/datatables.min.js"></script> --}}
 
     @yield('datatables')
     @yield('sweetalert')

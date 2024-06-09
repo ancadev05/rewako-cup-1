@@ -79,11 +79,15 @@
 
 @section('datatables')
     <script>
-        $(document).ready(function() {
-            $('#atlet').DataTable();
-        });
-        $('#atlet').DataTable({
-            select: true
-        });
+        // $(document).ready(function() {
+            $("#atlet").DataTable({
+                layout: {
+                    top: {
+                        buttons: ["excel", "pdf", "print"],
+                        // buttons: ["copy", "excel", "pdf", "colvis", "print"],
+                    },
+                }
+            });
+        // });
     </script>
 @endsection

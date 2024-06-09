@@ -2,7 +2,7 @@
 
 {{-- title --}}
 @section('title')
-    Official | Invoice
+    Invoice | {{ strtoupper($invoice->id_username_official) }}
 @endsection
 {{-- /title --}}
 
