@@ -123,6 +123,11 @@ class AdminKejurnasController extends Controller
         $invoice = Invoice::where('pembayaran', 1)->get();
         // $kontingen = Kontingen::
 
+        $pelatihAtletCounts = DB::table('atlets')
+                                ->select('id_username_official', DB::raw('COUNT(*) as jumlah_atlet'))
+                                ->groupBy('id_username_official')
+                                ->get();
+
         return view('admin-kejurnas.sudah-bayar')->with('invoice', $invoice);
     }
 

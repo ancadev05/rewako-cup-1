@@ -28,6 +28,8 @@
         </div>
     </div>
 
+    <hr>
+
     {{-- pesilat berdasar jenis kelamin --}}
     <h4>Pesilat Berdasarkan Jenis Kelamin</h4>
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 mb-4">
@@ -48,6 +50,8 @@
             </div>
         </div>
     </div>
+
+    <hr>
 
     {{-- pesilat berdasar golongan --}}
     <h4>Pesilat Berdasarkan Golongan</h4>
@@ -108,6 +112,8 @@
         </div>
     </div>
 
+    <hr>
+
     {{-- pesilat berdasar kategori --}}
     <h4>Pesilat Berdasarkan Kategori</h4>
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 mb-4">
@@ -124,6 +130,31 @@
                 <div class="card-body">
                     <h5 class="card-title">Seni</h5>
                     <h1>{{ $ks }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    {{-- pesilat berdasar kategori --}}
+    <h4>Pesilat Pemassalan dan Prestasi</h4>
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 mb-4">
+        <div class="col">
+            <div class="card text-bg-secondary shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Pemassalan</h5>
+                    <h1>{{ $pud + $ud + $pr }}</h1>
+                    <h5>PA : {{ $pud_pa + $ud_pa + $pr_pa }} / PI : {{ ($pud + $ud + $pr) - ($pud_pa + $ud_pa + $pr_pa) }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-success shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Prestasi</h5>
+                    <h1>{{ $r + $d + $m }}</h1>
+                    <h5>PA : {{ $r_pa + $d_pa + $m_pa }} / PI : {{ ($r + $d + $m) - ($r_pa + $d_pa + $m_pa)}}</h5>
                 </div>
             </div>
         </div>
