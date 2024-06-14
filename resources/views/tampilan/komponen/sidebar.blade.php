@@ -12,6 +12,13 @@
                         </div>
                         Beranda
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/detail-peserta') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/detail-peserta') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        Detail Peserta
+                    </a>
                     <a class="nav-link {{ Request::is('admin-kejurnas/user') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/user') }}">
                         <div class="sb-nav-link-icon">

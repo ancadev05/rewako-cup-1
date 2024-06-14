@@ -72,8 +72,15 @@ class AdminKejurnasController extends Controller
     
     public function kontingen()
     {
-        $kontingen = Kontingen::orderBy('id', 'asc')->get();
-        // dd($kontingen);
+        // $kontingen = Kontingen::orderBy('id', 'asc')->get();
+
+        // menghitung jumlah atlet per kontingen
+        $kontingen = DB::table('atlets')
+                        ->select('id_username_official', DB::raw('COUNT(*) as jumlah_atlet'))
+                        ->groupBy('id_username_official')
+                        ->get();
+
+                        dd($kontingen);
         return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
     }
 
@@ -135,5 +142,75 @@ class AdminKejurnasController extends Controller
     public function verifikasiAtlet()
     {
         return view('admin-kejurnas.registrasi-ulang.verifikasi-atlet');
+    }
+
+    // detail peserta
+    public function detailPeserta()
+    {
+        // jumlah atlet
+        $atlet = Atlet::get()->count();
+        // jumlah kontingen
+        $kontingen = Kontingen::get()->count();
+        // jenis kelamin
+        $jkpa = DB::table('atlets')->where('jk', 'PA')->get()->count();
+        // golongan
+        
+        // remaja
+        $r_t_a = DB::table('atlets')->where('bantu', 'R/PA/T.0/A.-')->get()->count();
+        $r_t_b = DB::table('atlets')->where('bantu', 'R/PA/T.0/B.-')->get()->count();
+        $r_t_c = DB::table('atlets')->where('bantu', 'R/PA/T.0/C.-')->get()->count();
+        $r_t_d = DB::table('atlets')->where('bantu', 'R/PA/T.0/D.-')->get()->count();
+        $r_t_e = DB::table('atlets')->where('bantu', 'R/PA/T.0/E.-')->get()->count();
+        $r_t_f = DB::table('atlets')->where('bantu', 'R/PA/T.0/F.-')->get()->count();
+        $r_t_g = DB::table('atlets')->where('bantu', 'R/PA/T.0/G.-')->get()->count();
+        $r_t_h = DB::table('atlets')->where('bantu', 'R/PA/T.0/H.-')->get()->count();
+        $r_t_i = DB::table('atlets')->where('bantu', 'R/PA/T.0/I.-')->get()->count();
+        $r_t_j = DB::table('atlets')->where('bantu', 'R/PA/T.0/J.-')->get()->count();
+        $r_t_a_pi = DB::table('atlets')->where('bantu', 'R/PI/T.0/A.-')->get()->count();
+        $r_t_b_pi = DB::table('atlets')->where('bantu', 'R/PI/T.0/B.-')->get()->count();
+        $r_t_c_pi = DB::table('atlets')->where('bantu', 'R/PI/T.0/C.-')->get()->count();
+        $r_t_d_pi = DB::table('atlets')->where('bantu', 'R/PI/T.0/D.-')->get()->count();
+        $r_t_e_pi = DB::table('atlets')->where('bantu', 'R/PI/T.0/E.-')->get()->count();
+        $r_t_f_pi = DB::table('atlets')->where('bantu', 'R/PI/T.0/F.-')->get()->count();
+
+        // dewasa
+        $d_t_a = DB::table('atlets')->where('bantu', 'D/PA/T.0/A.-')->get()->count();
+        $d_t_b = DB::table('atlets')->where('bantu', 'D/PA/T.0/B.-')->get()->count();
+        $d_t_c = DB::table('atlets')->where('bantu', 'D/PA/T.0/C.-')->get()->count();
+        $d_t_d = DB::table('atlets')->where('bantu', 'D/PA/T.0/D.-')->get()->count();
+        $d_t_e = DB::table('atlets')->where('bantu', 'D/PA/T.0/E.-')->get()->count();
+        $d_t_f = DB::table('atlets')->where('bantu', 'D/PA/T.0/F.-')->get()->count();
+        $d_t_g = DB::table('atlets')->where('bantu', 'D/PA/T.0/G.-')->get()->count();
+        $d_t_h = DB::table('atlets')->where('bantu', 'D/PA/T.0/H.-')->get()->count();
+        $d_t_i = DB::table('atlets')->where('bantu', 'D/PA/T.0/I.-')->get()->count();
+        $d_t_j = DB::table('atlets')->where('bantu', 'D/PA/T.0/J.-')->get()->count();
+        $d_t_a_pi = DB::table('atlets')->where('bantu', 'D/PI/T.0/A.-')->get()->count();
+        $d_t_b_pi = DB::table('atlets')->where('bantu', 'D/PI/T.0/B.-')->get()->count();
+        $d_t_c_pi = DB::table('atlets')->where('bantu', 'D/PI/T.0/C.-')->get()->count();
+        $d_t_d_pi = DB::table('atlets')->where('bantu', 'D/PI/T.0/D.-')->get()->count();
+        $d_t_e_pi = DB::table('atlets')->where('bantu', 'D/PI/T.0/E.-')->get()->count();
+        $d_t_f_pi = DB::table('atlets')->where('bantu', 'D/PI/T.0/F.-')->get()->count();
+        
+
+        return view('admin-kejurnas.detail-peserta')
+            ->with('atlet', $atlet)
+            ->with('kontingen', $kontingen)
+            ->with('jk', $jkpa)
+            ->with('r_t_a', $r_t_a)
+            ->with('r_t_b', $r_t_b)
+            ->with('r_t_c', $r_t_c)
+            ->with('r_t_d', $r_t_d)
+            ->with('r_t_e', $r_t_e)
+            ->with('r_t_f', $r_t_f)
+            ->with('r_t_g', $r_t_g)
+            ->with('r_t_h', $r_t_h)
+            ->with('r_t_i', $r_t_i)
+            ->with('r_t_j', $r_t_j)
+            ->with('r_t_a_pi', $r_t_a_pi)
+            ->with('r_t_b_pi', $r_t_b_pi)
+            ->with('r_t_c_pi', $r_t_c_pi)
+            ->with('r_t_d_pi', $r_t_d_pi)
+            ->with('r_t_e_pi', $r_t_e_pi)
+            ->with('r_t_f_pi', $r_t_f_pi);
     }
 }

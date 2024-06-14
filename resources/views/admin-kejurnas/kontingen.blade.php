@@ -18,6 +18,7 @@
                         <th>No</th>
                         <th>Nama Kontingen</th>
                         <th>Alamat</th>
+                        <th>Jumlah Atlet</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -29,7 +30,8 @@
                     @forelse ($kontingen as $item)
                         <tr>
                             <td class="text-center">{{ $i }}</td>
-                            <td>{{ $item->nama_kontingen }}</td>
+                            <td>{{ $item->kontingen }}</td>
+                            <td>{{ $item->jumlah_atlet }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td class="text-center">
                                 <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
