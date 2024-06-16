@@ -61,6 +61,13 @@
                         </div>
                         Verifikasi Atlet
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-atlet') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/verifikasi-atlet') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        Id Card
+                    </a>
                 @endif
                 {{-- /admin kejurnas --}}
 

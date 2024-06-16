@@ -15,10 +15,14 @@
         <div class="table-responsive mb-3">
             <table class="table table-borderless">
                 <tr>
+                    <td width="25%">Id Atlet</td>
+                    <td>: {{ $atlet->id }}</td>
+                    <td rowspan="11"><img src="{{ asset('storage/foto-atlet/' . $atlet->foto_atlet) }}" alt=""
+                            width="200px"></td>
+                </tr>
+                <tr>
                     <td width="25%">Nama Atlet</td>
                     <td>: {{ $atlet->nama_atlet }}</td>
-                    <td rowspan="10"><img src="{{ asset('storage/foto-atlet/' . $atlet->foto_atlet) }}" alt=""
-                            width="200px"></td>
                 </tr>
                 <tr>
                     <td>Tempat Lahir</td>
