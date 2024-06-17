@@ -27,7 +27,27 @@ class AtletController extends Controller
         $kontingen = DB::table('kontingens')->where('id_username_official', $username)->get()[0];
 
         // menampilkan daftar atlet sesuai kontingen/username
-        $atlet = Atlet::where('id_username_official', $username)->orderBy('seni', 'asc')->get();
+        $atlet = Atlet::where('id_username_official', $username)->orderBy('golongan', 'asc')->get();
+
+        // untuk mengecek kelas yang di isi oleh dua orang
+        $duplikat_kelas = DB::table('atlets')
+        ->select('id_username_official', 'golongan', 'kelas_tanding', 'jk', DB::raw('COUNT(*) as jumlah'))
+        ->where('id_username_official', $username)
+        ->groupBy('id_username_official', 'golongan', 'kelas_tanding', 'jk')
+        ->havingRaw('COUNT(*) > 1')
+        ->get();
+
+        // manampilkan data yang duplikat
+        $duplikat_detail = DB::table('atlets')
+        ->where('id_username_official', $username)
+        ->whereIn('kelas_tanding', function($query) use ($username) {
+            $query->select('kelas_tanding')
+            ->from('atlets')
+            ->where('id_username_official', $username)
+            ->groupBy('id_username_official', 'golongan', 'kelas_tanding', 'jk')
+            ->havingRaw('COUNT(*) > 1');
+        })
+        ->get();
 
         // status pembayaran invoice
         $invoice = Invoice::where('id_username_official', $username)->get()->first();
@@ -35,6 +55,8 @@ class AtletController extends Controller
         return view('official-kejurnas.atlet.index')
             ->with('user', $user)
             ->with('atlet', $atlet)
+            ->with('duplikat_kelas', $duplikat_kelas)
+            ->with('duplikat_detail', $duplikat_detail)
             ->with('kontingen', $kontingen)
             ->with('invoice', $invoice);
     }

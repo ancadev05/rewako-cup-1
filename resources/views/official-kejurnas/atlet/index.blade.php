@@ -40,7 +40,7 @@
     <div class="mb-2 d-flex justify-content-between">
         {{-- download data atlet --}}
         <a href="{{ url('/official/download/data-atlet') }}" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i>
-            Lihat</a>
+            Lihat Atlet</a>
         {{-- <a href="{{ url('/official/download/data-atlet') }}?export=pdf" class="btn btn-success btn-sm">Download</a> --}}
         {{-- pembeda antara tampilan admin dan official --}}
         @if (Auth::user()->level == 'official')
@@ -48,7 +48,7 @@
                 {{-- penutupan sementara --}}
                 @php
                     $status = 1;
-                    $user = Auth::user()->username == 'rwk-605011333';
+                    // $user = Auth::user()->username == 'rwk-605011333';
                 @endphp
                 @if ($status == 1)
                     <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
@@ -62,6 +62,53 @@
             @endif
         @endif
     </div>
+
+    @if (count($duplikat_kelas) > 0)
+        <div class="mb-2">
+            <div class="alert alert-danger border-0 border-start border-5 border-danger shadow">
+                @foreach ($duplikat_kelas as $item)
+                    <ul>
+                        <li>
+                            <i class="fas fa-exclamation-triangle text-warning"></i> Maaf, Anda memiliki pesilat yang
+                            memiliki golongan dan kategori yang sama pada golongan
+                            <b>{{ $item->golongan }}</b> kategori tanding/seni <b>{{ $item->kelas_tanding }}</b>. </br>
+                        </li>
+                    </ul>
+                @endforeach
+                Silahkan hapus salah
+                satunya atau daftarkan di kontingen lain
+            </div>
+        </div>
+    @endif
+
+
+    {{-- @if ($duplikat_detail)
+    <div class="mb-2">
+            <div class="alert alert-danger border-0 border-start border-5 border-danger shadow">
+                <i class="fas fa-exclamation-triangle text-warning"></i> Maaf, Anda memiliki pesilat yang memiliki golongan
+                dan kategori yang sama
+                <table class=" text-danger fw-bold ">
+                    <tr>
+                        <td>Nama Atlet</td>
+                        <td>JK</td>
+                        <td>Golongan</td>
+                        <td>Kelas</td>
+                    </tr>
+                    @foreach ($duplikat_detail as $item)
+                        <tr>
+                            <td class="pe-5">{{ $item->nama_atlet }}</td>
+                            <td class="pe-5">{{ $item->jk }}</td>
+                            <td class="pe-5">{{ $item->golongan }}</td>
+                            <td class="pe-5">{{ $item->kelas_tanding }}</td>
+                        </tr>
+                    @endforeach
+                </table>
+                Silahkan hapus salah
+                satunya atau daftarkan di kontingen lain
+            </div>
+        </div>
+        @endif --}}
+
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
@@ -80,6 +127,7 @@
                 </thead>
 
                 <tbody>
+
                     <span class="text-white">
                         <?php $i = 1; ?>
                     </span>
@@ -132,6 +180,7 @@
                             Belum ada atlet yang terdaftar.
                         </div>
                     @endforelse
+
 
                 </tbody>
             </table>

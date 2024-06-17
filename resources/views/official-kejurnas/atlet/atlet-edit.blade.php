@@ -194,7 +194,7 @@
                 </table>
             </div>
 
-            <div class="mt-4 mb-3 d-flex justify-content-end">
+            <div class="mb-3 d-flex justify-content-end">
                 <button type="submit" class="btn btn-sm btn-primary me-2">Ubah</button>
                 <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Batal</a>
             </div>
