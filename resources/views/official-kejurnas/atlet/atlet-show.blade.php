@@ -65,16 +65,26 @@
         @if (Auth::user()->level == 'official')
             {{-- tombol official --}}
             <div class="mt-4 mb-3 d-flex justify-content-end">
-                <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
+                {{-- <a href="{{ url('/official/atlet') }}" class="btn btn-sm btn-danger">Kembali</a> --}}
+                <buttton class="btn btn-sm btn-danger mt-3" onclick="back()">Kembali</buttton>
             </div>
             {{-- /tombol official --}}
         @else
             {{-- tombol admin --}}
             <div class="mt-4 mb-3 d-flex justify-content-end">
-                <a href="{{ url('/admin-kejurnas/atlet') }}" class="btn btn-sm btn-danger">Kembali</a>
+                {{-- <a href="{{ url('/admin-kejurnas/atlet') }}" class="btn btn-sm btn-danger">Kembali</a> --}}
+                <buttton class="btn btn-sm btn-danger mt-3" onclick="back()">Kembali</buttton>
             </div>
             {{-- /tombol admin --}}
         @endif
 
     </div>
+@endsection
+
+@section('script')
+    <script>
+        function back() {
+            window.history.back()
+        }
+    </script>
 @endsection

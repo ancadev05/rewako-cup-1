@@ -2,13 +2,31 @@
 
 {{-- title --}}
 @section('title')
-    Atlet
+    Admin | Atlet
 @endsection
 {{-- /title --}}
 
 {{-- konten --}}
 @section('konten')
     <h3 class="border-bottom border-2 mb-3">Daftar Atlet Keseluruhan</h3>
+
+    @if (count($duplikat_kelas) > 0)
+        <div class="mb-2">
+            <div class="alert alert-danger border-0 border-start border-5 border-danger shadow">
+                @foreach ($duplikat_kelas as $item)
+                    <ul>
+                        <li>
+                            <i class="fas fa-exclamation-triangle text-warning"></i> Maaf, Anda memiliki pesilat yang
+                            memiliki golongan dan kategori yang sama di kontingen <b>{{ $item->kontingen }}</b> pada golongan
+                            <b>{{ $item->golongan }}</b> kategori tanding/seni <b>{{ $item->kelas_tanding }}</b>. </br>
+                        </li>
+                    </ul>
+                @endforeach
+                Silahkan hapus salah
+                satunya atau daftarkan di kontingen lain
+            </div>
+        </div>
+    @endif
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Atlet;
 use App\Models\Invoice;
 use App\Models\Kontingen;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -59,8 +60,20 @@ class AdminKejurnasController extends Controller
     public function atlet()
     {
         $atlet = Atlet::orderBy('id','asc')->get();
+        // $kontingen = Kontingen::get();
 
-        return view('admin-kejurnas.atlet')->with('atlet', $atlet);
+        // untuk mengecek kelas yang di isi oleh dua orang
+        $duplikat_kelas = DB::table('atlets')
+        ->select('kontingen', 'golongan', 'kelas_tanding', 'jk', DB::raw('COUNT(*) as jumlah'))
+        // ->where('id_username_official', $username)
+        ->groupBy('kontingen', 'golongan', 'kelas_tanding', 'jk')
+        ->havingRaw('COUNT(*) > 1')
+        ->get();
+
+        return view('admin-kejurnas.atlet')
+        // ->with('kontingen', $kontingen)
+        ->with('duplikat_kelas', $duplikat_kelas)
+        ->with('atlet', $atlet);
     }
 
     // melihat detail atlet dari admin
@@ -101,7 +114,6 @@ class AdminKejurnasController extends Controller
 
         $pembayaran = Invoice::where('id', $id)->first();
         $status = $pembayaran->pembayaran;
-        // dd($pembayaran->pembayaran);
 
         if ($status == 1) {
             $invoice = [
@@ -114,12 +126,6 @@ class AdminKejurnasController extends Controller
             ];
             Invoice::where('id', $id)->update($invoice);
         }
-
-        // $invoice = [
-        //     'pembayaran' => 1
-        // ];
-
-        // Invoice::where('id', $id)->update($invoice);
 
         return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'Status pembayaran telah diubah');
     }
@@ -138,10 +144,25 @@ class AdminKejurnasController extends Controller
         return view('admin-kejurnas.sudah-bayar')->with('invoice', $invoice);
     }
 
-    // verifikasi atlet
-    public function verifikasiAtlet()
+    // verifikasi berkas
+    public function verifikasiBerkas()
     {
-        return view('admin-kejurnas.registrasi-ulang.verifikasi-atlet');
+        $user = User::get();
+        $kontingen = Kontingen::get();
+        
+        return view('admin-kejurnas.registrasi-ulang.verifikasi-berkas')
+        ->with('kontingen', $kontingen);
+    }
+    // verifikasi atlet
+    public function verifikasiAtlet(string $username)
+    {
+        // dd($username);
+        $kontingen = Kontingen::where('id_username_official', $username)->get();
+        $atlet = Atlet::where('id_username_official', $username)->get();
+
+        return view('admin-kejurnas.registrasi-ulang.verifikasi-atlet')
+        ->with('kontingen', $kontingen)
+        ->with('atlet', $atlet);
     }
 
     // detail peserta

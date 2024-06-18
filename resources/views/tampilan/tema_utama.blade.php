@@ -105,6 +105,7 @@
 
     @yield('datatables')
     @yield('sweetalert')
+    @yield('script')
 
 
 </body>

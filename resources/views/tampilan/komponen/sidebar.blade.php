@@ -54,12 +54,12 @@
                         </div>
                         Suda Bayar
                     </a>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-atlet') ? 'active' : '' }}"
-                        href="{{ url('admin-kejurnas/verifikasi-atlet') }}">
+                    <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-berkas') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/verifikasi-berkas') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-user-check"></i>
                         </div>
-                        Verifikasi Atlet
+                        Verifikasi Berkas
                     </a>
                     <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-atlet') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/verifikasi-atlet') }}">

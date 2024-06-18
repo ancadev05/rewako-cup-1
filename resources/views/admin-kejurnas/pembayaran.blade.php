@@ -29,7 +29,7 @@
                     @foreach ($invoice as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $item->nama_official }}</td>
+                            <td>{{ $item->user->name }}</td>
                             <td>{{ $item->id_kontingen }}</td>
                             <td>{{ strtoupper($item->id_username_official) }}</td>
                             <td>
