@@ -33,6 +33,7 @@ class AtletController extends Controller
         $duplikat_kelas = DB::table('atlets')
         ->select('id_username_official', 'golongan', 'kelas_tanding', 'jk', DB::raw('COUNT(*) as jumlah'))
         ->where('id_username_official', $username)
+        ->where('kelas_tanding', '!=', '-')
         ->groupBy('id_username_official', 'golongan', 'kelas_tanding', 'jk')
         ->havingRaw('COUNT(*) > 1')
         ->get();
