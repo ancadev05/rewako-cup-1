@@ -19,7 +19,7 @@
     {{-- registrasi --}}
     {{-- penutupan sementara --}}
     @php
-        $status = 1;
+        $status = 0;
     @endphp
     @if ($status == 1)
         <div style="background-color: #ff6a00;" data-aos="fade-up" class="mt-5">
