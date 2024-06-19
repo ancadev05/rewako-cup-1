@@ -10,4 +10,9 @@ class Invoice extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'username', 'id_username_official');
+    }
 }

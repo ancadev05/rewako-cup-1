@@ -44,5 +44,9 @@ class OfficialController extends Controller
         return view('official-kejurnas.download-berkas.index')->with('invoice', $invoice);
     }
 
+    public function peraturanOlahraga()
+    {
+        return view('official-kejurnas.download-berkas.peraturan-olahraga');
+    }
     
 }

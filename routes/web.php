@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     // halaman official
     Route::get('/official', [OfficialController::class, 'index'])->middleware('userAkses:official');
     Route::get('/official/download', [OfficialController::class, 'download'])->middleware('userAkses:official');
+    Route::get('/official/peraturan-olahraga', [OfficialController::class, 'peraturanOlahraga'])->middleware('userAkses:official');
     Route::get('/official/download/invoice', [DownloadBerkasController::class, 'invoice'])->middleware('userAkses:official');
     Route::get('/official/download/kwitansi', [DownloadBerkasController::class, 'kwitansi'])->middleware('userAkses:official');
     Route::get('/official/download/data-atlet', [DownloadBerkasController::class, 'dataAtlet'])->middleware('userAkses:official');
@@ -61,7 +62,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-kejurnas/kontingen', [AdminKejurnasController::class, 'kontingen'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/pembayaran', [AdminKejurnasController::class, 'pembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/pembayaran/{id}', [AdminKejurnasController::class, 'verifikasiPembayaran'])->middleware('userAkses:admin-kejurnas');
-    Route::get('/admin-kejurnas/verifikasi-atlet', [AdminKejurnasController::class, 'verifikasiAtlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/verifikasi-berkas', [AdminKejurnasController::class, 'verifikasiBerkas'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/verifikasi-atlet/{username}', [AdminKejurnasController::class, 'verifikasiAtlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/id-card/{username}', [AdminKejurnasController::class, 'cetakIdCard'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/detail-peserta', [AdminKejurnasController::class, 'detailPeserta'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');

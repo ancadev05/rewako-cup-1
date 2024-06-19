@@ -52,6 +52,12 @@
                         <td><a href="{{ asset('storage/download-file/proposal.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Peraturan Olahraga Tapak Suci</td>
+                        <td><a href="{{ url('official/peraturan-olahraga') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

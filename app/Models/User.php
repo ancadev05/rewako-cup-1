@@ -44,4 +44,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class, 'id_username_official', 'username');
+    }
+
+    public function kontingen()
+    {
+        return $this->hasOne(Kontingen::class, 'id_username_official', 'username');
+    }
 }

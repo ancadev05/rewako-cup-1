@@ -11,6 +11,11 @@ class Atlet extends Model
 
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'username', 'id_username_official');
+    }
+
     public function golongan()
     {
         return $this->belongsTo(Golongan::class, 'id_golongan', 'id');

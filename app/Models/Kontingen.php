@@ -10,13 +10,8 @@ class Kontingen extends Model
     use HasFactory;
     protected $guarded = [];
 
-    // public function official()
-    // {
-    //     return $this->belongsTo(Official::class);
-    // }
-
-    // public function atlet()
-    // {
-    //     return $this->hasMany(Atlet::class);
-    // }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'username', 'id_username_official');
+    }
 }

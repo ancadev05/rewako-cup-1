@@ -21,7 +21,7 @@
         <link href="{{ asset('assets/template-css/styles.css') }}" rel="stylesheet" />
         {{-- Font Awesome --}}
         <link href="{{ asset('assets/fontawesome/css/all.css') }}" rel="stylesheet" />
-        {{-- Alert animasi --}}
+        {{-- costum css - Alert animasi --}}
         <link href="{{ asset('assets/costum-style/css-costum.css') }}" rel="stylesheet" />
         {{-- SweetAlert --}}
         <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
@@ -29,11 +29,6 @@
         <link rel="stylesheet" href="{{ asset('assets/datatables/datatables.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.dataTables.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/datatables/Buttons-2.4.2/css/buttons.bootstrap5.css') }}">
-
-        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> --}}
-    {{-- <link
-        href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.8/af-2.7.0/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/datatables.min.css"
-        rel="stylesheet" /> --}}
 
     </head>
     
@@ -105,6 +100,7 @@
 
     @yield('datatables')
     @yield('sweetalert')
+    @yield('script')
 
 
 </body>
