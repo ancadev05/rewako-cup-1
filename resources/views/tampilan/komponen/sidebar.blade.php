@@ -68,6 +68,13 @@
                         </div>
                         Id Card
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/file') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/file') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        File
+                    </a>
                 @endif
                 {{-- /admin kejurnas --}}
 

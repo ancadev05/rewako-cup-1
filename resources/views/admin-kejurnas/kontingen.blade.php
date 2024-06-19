@@ -27,14 +27,15 @@
                     <span class="text-white">
                         <?php $i = 1; ?>
                     </span>
-                    @forelse ($kontingen as $item)
+                    @forelse ($jml_atlet_kontingen as $item)
+                    {{-- @forelse ($kontingen as $item) --}}
                         <tr>
                             <td class="text-center">{{ $i }}</td>
+                            <td>{{ $item->id_username_official }}</td>
                             <td>{{ $item->kontingen }}</td>
                             <td>{{ $item->jumlah_atlet }}</td>
-                            <td>{{ $item->alamat }}</td>
                             <td class="text-center">
-                                <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
+                                {{-- <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                         class="fas fa-eye"></i></a>
                                 <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}" class="btn btn-warning"
@@ -47,7 +48,7 @@
                                     <button type="submit" class="btn btn-danger"
                                         style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                             class="fas fa-trash-alt"></i></button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                         <?php $i++; ?>

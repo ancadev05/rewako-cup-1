@@ -36,7 +36,7 @@
                     <td>: {{ $kontingen->user->no_wa }}</td>
                 </tr>
                 <tr>
-                    <td>Jumlah Kontingen</td>
+                    <td>Jumlah Atlet</td>
                     <td>: {{ $jml_atlet }}</td>
                 </tr>
             </table>

@@ -86,16 +86,17 @@ class AdminKejurnasController extends Controller
     
     public function kontingen()
     {
-        // $kontingen = Kontingen::orderBy('id', 'asc')->get();
+        $kontingen = Kontingen::orderBy('id', 'asc')->get();
 
         // menghitung jumlah atlet per kontingen
-        $kontingen = DB::table('atlets')
-                        ->select('id_username_official', DB::raw('COUNT(*) as jumlah_atlet'))
-                        ->groupBy('id_username_official')
+        $jml_atlet_kontingen = DB::table('atlets')
+                        ->select('id_username_official','kontingen', DB::raw('COUNT(*) as jumlah_atlet'))
+                        ->groupBy('id_username_official','kontingen')
                         ->get();
 
-                        dd($kontingen);
-        return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
+                        // dd($jml_atlet_kontingen);
+        return view('admin-kejurnas.kontingen')->with('jml_atlet_kontingen', $jml_atlet_kontingen);
+        // return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
     }
 
     // pengelola invoice
@@ -493,4 +494,10 @@ class AdminKejurnasController extends Controller
             ->with('d_s_gtkb_pi', $d_s_gtkb_pi)
             ->with('d_s_t_pi', $d_s_t_pi);
     }
+
+    // cek file
+    // public function file()
+    // {
+    //     return 
+    // }
 }
