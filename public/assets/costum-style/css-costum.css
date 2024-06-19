@@ -51,9 +51,19 @@
 }
 
 /* Format Id Card */
-.id-card{
-    width: 8cm;
-    margin: 5px ;
+#id-card{
+    width: 95mm;
+    height: 126mm;
+    margin: 5px;
+    background-color: yellow;
+    /* color: aqua; */
+    
+}
+
+#foto-atlet{
+    width: 3cm;
+    height: 3cm;
+    font-size-adjust: inherit;
 }
 
 /* Print Berkas */

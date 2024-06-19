@@ -6,6 +6,7 @@ use App\Models\Atlet;
 use App\Models\Invoice;
 use App\Models\Kontingen;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -157,12 +158,30 @@ class AdminKejurnasController extends Controller
     public function verifikasiAtlet(string $username)
     {
         // dd($username);
-        $kontingen = Kontingen::where('id_username_official', $username)->get();
+        $kontingen = Kontingen::where('id_username_official', $username)->first();
         $atlet = Atlet::where('id_username_official', $username)->get();
+        $jml_atlet = Atlet::where('id_username_official', $username)->count();
 
         return view('admin-kejurnas.registrasi-ulang.verifikasi-atlet')
         ->with('kontingen', $kontingen)
+        ->with('jml_atlet', $jml_atlet)
         ->with('atlet', $atlet);
+    }
+
+    // cetak id card
+    public function cetakIdCard(Request $request, string $username)
+    {
+        $atlet_fix = Atlet::where('id_username_official', $username)->get();
+
+         // generate pdf
+         if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('admin-kejurnas.registrasi-ulang.cetak-id-card', ['atlet_fix' => $atlet_fix]);
+
+            return $pdf->download('data-atlet.pdf');
+        }
+      
+        return view('admin-kejurnas.registrasi-ulang.cetak-id-card')
+        ->with('atlet_fix', $atlet_fix);
     }
 
     // detail peserta

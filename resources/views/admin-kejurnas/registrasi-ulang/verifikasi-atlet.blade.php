@@ -14,32 +14,36 @@
     <div class="shadow p-2 border rounded mb-3">
         <div class="table-responsive">
             <table class="table table-sm">
-                @foreach ($kontingen as $item)
                 <tr>
-                    <td rowspan="5"><img src="{{ asset('storage/foto-official/' . $item->foto_official) }}" alt="img" srcset="" width="100px"></td>
+                    <td rowspan="6"><img src="{{ asset('storage/foto-official/' . $kontingen->user->foto_official) }}" alt="img" srcset="" width="100px"></td>
                     <td>Username</td>
-                    <td>: {{ $item->user->username }}</td>
+                    <td>: {{ $kontingen->user->username }}</td>
                 </tr>
                 <tr>
                     <td>Nama Official</td>
-                    <td>: {{ $item->user->name }}</td>
+                    <td>: {{ $kontingen->user->name }}</td>
                 </tr>
                 <tr>
                     <td>Kontingen</td>
-                    <td>: {{ $item->nama_kontingen }}</td>
+                    <td>: {{ $kontingen->nama_kontingen }}</td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td>: {{ $item->alamat }}</td>
+                    <td>: {{ $kontingen->alamat }}</td>
                 </tr>
                 <tr>
                     <td>No WA</td>
-                    <td>: {{ $item->user->no_wa }}</td>
+                    <td>: {{ $kontingen->user->no_wa }}</td>
                 </tr>
-                @endforeach
+                <tr>
+                    <td>Jumlah Kontingen</td>
+                    <td>: {{ $jml_atlet }}</td>
+                </tr>
             </table>
         </div>
     </div>
+
+    
 
     {{-- data atlet --}}
     <div class="shadow p-2 border rounded">
@@ -47,7 +51,7 @@
             <table class="table table-sm table-striped table-hover" id="atlet">
                 <thead class="text-center ">
                     <tr>
-                        <th>No</th>
+                        <th>#id</th>
                         <th>Foto</th>
                         <th>Nama Atlet</th>
                         <th>JK</th>
@@ -69,7 +73,7 @@
                     @endphp
                     @foreach ($atlet as $item)
                         <tr>
-                            <td>{{ $i }}</td>
+                            <td>{{ $item->id }}</td>
                             <td>
                                 <img src="{{ asset('storage/foto-atlet/' . $item->foto_atlet) }}" alt="img"
                                     srcset="" width="60px">
@@ -94,7 +98,10 @@
         </div>
     </div>
 
-    <buttton class="btn btn-sm btn-danger mt-3" onclick="back()">Kembali</buttton>
+    <div class="d-flex justify-content-end mt-3">
+        <buttton class="btn btn-sm btn-danger me-2" onclick="back()">Kembali</buttton>
+        <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }} ?export=pdf">Cetak Id Card</a>
+    </div>
 @endsection
 
 @section('datatables')

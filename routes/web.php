@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin-kejurnas/pembayaran/{id}', [AdminKejurnasController::class, 'verifikasiPembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/verifikasi-berkas', [AdminKejurnasController::class, 'verifikasiBerkas'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/verifikasi-atlet/{username}', [AdminKejurnasController::class, 'verifikasiAtlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/id-card/{username}', [AdminKejurnasController::class, 'cetakIdCard'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/detail-peserta', [AdminKejurnasController::class, 'detailPeserta'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
