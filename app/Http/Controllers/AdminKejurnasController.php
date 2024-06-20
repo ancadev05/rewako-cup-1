@@ -66,7 +66,7 @@ class AdminKejurnasController extends Controller
         // untuk mengecek kelas yang di isi oleh dua orang
         $duplikat_kelas = DB::table('atlets')
         ->select('kontingen', 'golongan', 'kelas_tanding', 'jk', DB::raw('COUNT(*) as jumlah'))
-        // ->where('id_username_official', $username)
+        ->where('kelas_tanding', '!=', '-')
         ->groupBy('kontingen', 'golongan', 'kelas_tanding', 'jk')
         ->havingRaw('COUNT(*) > 1')
         ->get();
@@ -95,7 +95,9 @@ class AdminKejurnasController extends Controller
                         ->get();
 
                         // dd($jml_atlet_kontingen);
-        return view('admin-kejurnas.kontingen')->with('jml_atlet_kontingen', $jml_atlet_kontingen);
+        return view('admin-kejurnas.kontingen')
+        ->with('kontingen', $kontingen)
+        ->with('jml_atlet_kontingen', $jml_atlet_kontingen);
         // return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
     }
 

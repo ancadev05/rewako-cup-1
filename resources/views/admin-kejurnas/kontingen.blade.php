@@ -12,7 +12,32 @@
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover">
+            <table class="table table-sm table-striped table-hover" id="tbl1">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Official</th>
+                        <th>Nama Kontingen</th>
+                        <th>Alamat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($kontingen as $item)
+                        <tr>
+                            <td></td>
+                            <td>{{ $item->user->name }}</td>
+                            <td>{{ $item->nama_kontingen }}</td>
+                            <td>{{ $item->user->alamat }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="shadow p-2 border rounded">
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover" id="tbl">
                 <thead class="text-center ">
                     <tr>
                         <th>No</th>
@@ -63,3 +88,12 @@
         </div>
     </div>
 @endsection {{-- /konten --}}
+
+@section('datatables')
+    <script>
+        $(document).ready(function() {
+            $('#tbl1').DataTable();
+            $('#tbl').DataTable();
+        });
+    </script>
+@endsection
