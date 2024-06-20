@@ -10,9 +10,9 @@
 @section('konten')
     <h3 class="border-bottom border-2 mb-3">Daftar Kontingen</h3>
 
-    <div class="shadow p-2 border rounded">
+    <div class="shadow p-2 border rounded mb-3">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover" id="tbl1">
+            <table class="table table-sm table-striped table-hover w-100" id="tbl1">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -24,10 +24,10 @@
                 <tbody>
                     @foreach ($kontingen as $item)
                         <tr>
-                            <td></td>
+                            <td>{{ $item->user->username }}</td>
                             <td>{{ $item->user->name }}</td>
                             <td>{{ $item->nama_kontingen }}</td>
-                            <td>{{ $item->user->alamat }}</td>
+                            <td>{{ $item->alamat }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -35,14 +35,15 @@
         </div>
     </div>
 
+    <h3 class="border-bottom border-2 mb-3">Jumlah Atlet Per Kontingen</h3>
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover" id="tbl">
+            <table class="table table-sm table-striped table-hover w-100" id="tbl">
                 <thead class="text-center ">
                     <tr>
                         <th>No</th>
-                        <th>Nama Kontingen</th>
-                        <th>Alamat</th>
+                        <th>Username</th>
+                        <th>Kontingen</th>
                         <th>Jumlah Atlet</th>
                         <th>Aksi</th>
                     </tr>
