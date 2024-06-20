@@ -18,7 +18,7 @@
                         <li>
                             <i class="fas fa-exclamation-triangle text-warning"></i> Maaf, Anda memiliki pesilat yang
                             memiliki golongan dan kategori yang sama di kontingen <b>{{ $item->kontingen }}</b> pada golongan
-                            <b>{{ $item->golongan }}</b> kategori tanding/seni <b>{{ $item->kelas_tanding }}</b>. </br>
+                            <b>{{ $item->golongan }}</b> kategori tanding/seni <b>{{ $item->kelas_tanding }}</b><b>/{{ $item->jk }}</b>. </br>
                         </li>
                     </ul>
                 @endforeach
