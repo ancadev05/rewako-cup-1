@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <h3 class="border-bottom border-2 mb-3">Jumlah Atlet Per Kontingen</h3>
+    <h3 class="border-bottom border-2 mb-3">Jumlah Atlet Per Kontingen (yg mengisi atlet)</h3>
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
             <table class="table table-sm table-striped table-hover w-100" id="tbl">
@@ -47,7 +47,7 @@
                         <th>Jumlah Atlet</th>
                         <th>Aksi</th>
                     </tr>
-                </thead>
+                </thead>dff
 
                 <tbody>
                     <span class="text-white">

@@ -36,13 +36,13 @@
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Surat Pernyataan Atlet</td>
+                        <td>Surat Izin & Pernyataan Atlet</td>
                         <td><a href="{{ asset('storage/download-file/surat-pernyataan-atlet.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Surat Permohonan Perizinan</td>
+                        <td>Surat Izin (<i class="text-danger">bagi official atau atlet yang membutuhkan surat izin di instansi masing-masing</i>)</td>
                         <td><a href="{{ asset('storage/download-file/permohonan-perizinan.pdf') }}" target="_blank" class="btn btn-sm btn-secondary m-auto"><i class="fas fa-eye"></i> Lihat</a>
                         </td>
                     </tr>

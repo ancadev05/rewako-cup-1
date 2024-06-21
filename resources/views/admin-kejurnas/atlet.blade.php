@@ -39,7 +39,7 @@
                         <th>Golongan</th>
                         <th>Kelas Tanding</th>
                         <th>Seni</th>
-                        <th>Foto</th>
+                        <th>Kontingen</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -57,13 +57,7 @@
                             <td>{{ $item->golongan }}</td>
                             <td class="text-center">{{ $item->kelas_tanding }}</td>
                             <td>{{ $item->seni }}</td>
-                            <td class="text-center">
-                                @if ($item->foto_atlet)
-                                    <i class="fas fa-check-circle text-success"></i>
-                                @else
-                                    <i class="fas fa-exclamation-circle text-warning"></i>
-                                @endif
-                            </td>
+                            <td>{{ $item->kontingen }}</td>
                             <td class="text-center">
                                 <a href="{{ url('/admin-kejurnas/atlet/' . $item->id) }}" class="btn btn-secondary"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
