@@ -8,8 +8,12 @@
 
 {{-- konten --}}
 @section('konten')
-<button class="btn btn-sm btn-secondary mb-3">Cetak</button>
-    <div class="row row-cols-2 g-1 me-1">
+{{-- tombol --}}
+<div class="mb-3">
+    <buttton class="btn btn-sm btn-danger me-2" onclick="window.history.back()">Kembali</buttton>
+    <button class="btn btn-sm btn-secondary " onclick="window.print()">Cetak</button>
+</div>
+    <div class="row row-cols-2 g-1 me-1" id="tombol">
         @foreach ($atlet_fix as $item)
             <div class="col">
                 <div class="border p-2" id="id-card">
@@ -25,7 +29,7 @@
                     background-size: cover;
                     background-repeat: no-repeat;">
                         </div>
-                        <div class="fw-bold w-100">
+                        <div class="fw-bold w-100" style="font-size: 11px">
                             <div class="bg-white rounded-2 p-1 mb-1">{{ $item->id }}</div>
                             <div class="bg-white rounded-2 p-1 mb-1">{{ $item->nama_atlet }}</div>
                             <div class="bg-white rounded-2 p-1 mb-1">{{ $item->jk }}</div>
@@ -33,6 +37,7 @@
                                 {{ $item->kontingen }}</div>
                             <div class="bg-white rounded-2 p-1 mb-1">{{ $item->golongan }}</div>
                             <div class="bg-white rounded-2 p-1 mb-1">{{ $item->kelas_tanding }}</div>
+                            <div class="bg-white rounded-2 p-1 mb-1">{{ $item->seni }}</div>
                         </div>
                         <table>
 

@@ -157,19 +157,6 @@ class AdminKejurnasController extends Controller
         return view('admin-kejurnas.registrasi-ulang.verifikasi-berkas')
         ->with('kontingen', $kontingen);
     }
-    // verifikasi atlet
-    public function verifikasiAtlet(string $username)
-    {
-        // dd($username);
-        $kontingen = Kontingen::where('id_username_official', $username)->first();
-        $atlet = Atlet::where('id_username_official', $username)->get();
-        $jml_atlet = Atlet::where('id_username_official', $username)->count();
-
-        return view('admin-kejurnas.registrasi-ulang.verifikasi-atlet')
-        ->with('kontingen', $kontingen)
-        ->with('jml_atlet', $jml_atlet)
-        ->with('atlet', $atlet);
-    }
 
     // cetak id card
     public function cetakIdCard(Request $request, string $username)
@@ -183,7 +170,7 @@ class AdminKejurnasController extends Controller
             return $pdf->download('data-atlet.pdf');
         }
       
-        return view('admin-kejurnas.registrasi-ulang.cetak-id-card')
+        return view('admin-kejurnas.registrasi-ulang.id-card')
         ->with('atlet_fix', $atlet_fix);
     }
 

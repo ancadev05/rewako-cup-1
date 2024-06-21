@@ -7,6 +7,7 @@ use App\Http\Controllers\DownloadBerkasController;
 use App\Http\Controllers\OfficialController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerifikasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,13 +64,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-kejurnas/pembayaran', [AdminKejurnasController::class, 'pembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/pembayaran/{id}', [AdminKejurnasController::class, 'verifikasiPembayaran'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/verifikasi-berkas', [AdminKejurnasController::class, 'verifikasiBerkas'])->middleware('userAkses:admin-kejurnas');
-    Route::get('/admin-kejurnas/verifikasi-atlet/{username}', [AdminKejurnasController::class, 'verifikasiAtlet'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/id-card/{username}', [AdminKejurnasController::class, 'cetakIdCard'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/detail-peserta', [AdminKejurnasController::class, 'detailPeserta'])->middleware('userAkses:admin-kejurnas');
     Route::get('/admin-kejurnas/user', [UserController::class, 'index'])->middleware('userAkses:admin-kejurnas');
     Route::post('/admin-kejurnas/user', [UserController::class, 'store'])->middleware('userAkses:admin-kejurnas');
     Route::delete('/admin-kejurnas/user/{username}', [UserController::class, 'deleteUser'])->middleware('userAkses:admin-kejurnas');
     
+    Route::get('/admin-kejurnas/verifikasi-atlet/{username}', [VerifikasiController::class, 'verifikasiAtlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/verifikasi-per-atlet/{id}', [VerifikasiController::class, 'verifikasiPerAtlet'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/verifikasi-fix', [VerifikasiController::class, 'verifikasiFix'])->middleware('userAkses:admin-kejurnas');
+
     // peserta fix
     Route::get('/admin-kejurnas/pserta-suda-bayar', [AdminKejurnasController::class, 'sudaBayar'])->middleware('userAkses:admin-kejurnas');
 

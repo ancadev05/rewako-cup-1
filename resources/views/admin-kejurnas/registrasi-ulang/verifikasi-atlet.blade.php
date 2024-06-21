@@ -15,7 +15,8 @@
         <div class="table-responsive">
             <table class="table table-sm">
                 <tr>
-                    <td rowspan="6"><img src="{{ asset('storage/foto-official/' . $kontingen->user->foto_official) }}" alt="img" srcset="" width="100px"></td>
+                    <td rowspan="6"><img src="{{ asset('storage/foto-official/' . $kontingen->user->foto_official) }}"
+                            alt="img" srcset="" width="100px"></td>
                     <td>Username</td>
                     <td>: {{ $kontingen->user->username }}</td>
                 </tr>
@@ -43,12 +44,37 @@
         </div>
     </div>
 
-    
+    <div class="shadow p-2 border rounded mb-3">
+        <h3>Total Pembayaran</h3>
+        <h3>Rp{{ format_uang($total_biaya) }},-</h3>
+    </div>
+
+    {{-- melihat data duplikat perkontingen --}}
+    @if (count($duplikat_kelas) > 0)
+        <div class="mb-2">
+            <div class="alert alert-danger border-0 border-start border-5 border-danger shadow">
+                @foreach ($duplikat_kelas as $item)
+                    <ul>
+                        <li>
+                            <i class="fas fa-exclamation-triangle text-warning"></i> Maaf, Anda memiliki pesilat yang
+                            memiliki golongan dan kategori yang sama di kontingen <b>{{ $item->kontingen }}</b> pada
+                            golongan
+                            <b>{{ $item->golongan }}</b> kategori tanding/seni
+                            <b>{{ $item->kelas_tanding }}</b><b>/{{ $item->jk }}</b>. </br>
+                        </li>
+                    </ul>
+                @endforeach
+                Silahkan hapus salah
+                satunya atau daftarkan di kontingen lain
+            </div>
+        </div>
+    @endif
+    {{-- melihat data duplikat perkontingen --}}
 
     {{-- data atlet --}}
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover" id="atlet">
+            <table class="table table-sm table-striped table-hover w-100" id="atlet">
                 <thead class="text-center ">
                     <tr>
                         <th>#id</th>
@@ -88,7 +114,9 @@
                             <td><input type="checkbox" name="" id="" class="form-check-input"></td>
                             <td><input type="checkbox" name="" id="" class="form-check-input"></td>
                             <td><input type="checkbox" name="" id="" class="form-check-input"></td>
-                            <td>submit</td>
+                            <td>
+                                <a href="{{ url('/admin-kejurnas/verifikasi-per-atlet/' . $item->id) }}">Verifikasi</a>
+                            </td>
                         </tr>
                     @endforeach
 
@@ -100,7 +128,10 @@
 
     <div class="d-flex justify-content-end mt-3">
         <buttton class="btn btn-sm btn-danger me-2" onclick="back()">Kembali</buttton>
-        <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }} ?export=pdf">Cetak Id Card</a>
+        {{-- jika mau ekspor pdf --}}
+        {{-- <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }} ?export=pdf">Cetak Id Card</a> --}}
+        <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }}">Cetak
+            Id Card</a>
     </div>
 @endsection
 
