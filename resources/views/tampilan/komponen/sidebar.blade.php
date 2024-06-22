@@ -61,19 +61,21 @@
                         </div>
                         Verifikasi Berkas
                     </a>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-atlet') ? 'active' : '' }}"
+                    {{-- <a class="nav-link {{ Request::is('admin-kejurnas/verifikasi-atlet') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/verifikasi-atlet') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-user-check"></i>
                         </div>
                         Id Card
-                    </a>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/file') ? 'active' : '' }}"
-                        href="{{ url('admin-kejurnas/file') }}">
+                    </a> --}}
+                    <hr>
+                    <span>Data Fix</span>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/tarik-data') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/tarik-data') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-user-check"></i>
                         </div>
-                        File
+                        Tarik Data Atlet
                     </a>
                 @endif
                 {{-- /admin kejurnas --}}
