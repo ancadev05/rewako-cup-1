@@ -489,4 +489,50 @@ class AdminKejurnasController extends Controller
     // {
     //     return 
     // }
+
+    // dp
+    public function dp(Request $request, string $id)
+    {
+        $status_dp = Invoice::where('id', $id)->first();
+
+        // dd($status_dp->dp);
+        // dd($request->dp);
+
+        if($request->dp == null) {
+            return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'tidak ada DP');
+        }
+
+        $dp = [
+            'dp' => $request->dp
+        ];
+
+        // dd($dp);
+
+        Invoice::where('id', $id)->update($dp);
+
+        // if ($status == 1) {
+        //     $invoice = [
+        //         'pembayaran' => 0
+        //     ];
+        //     Invoice::where('id', $id)->update($invoice);
+        // } else {
+        //     $invoice = [
+        //         'pembayaran' => 1
+        //     ];
+        //     Invoice::where('id', $id)->update($invoice);
+        // }
+
+        return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'Sudah DP');
+    }
+
+    // tarik data
+    public function tarikData()
+    {
+        $invoice = Invoice::get();
+        $user_fix = $invoice->username;
+
+        dd($user_fix);
+
+        $atlet_fix = Invoice::where('id_username_official',0 );
+    }
 }

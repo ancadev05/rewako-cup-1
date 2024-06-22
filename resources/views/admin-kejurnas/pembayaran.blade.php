@@ -12,14 +12,17 @@
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover" id="tbl">
+            <table class="table table-sm table-striped table-hover w-100" id="tbl">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Official</th>
                         <th>Kontingen</th>
                         <th>No. Invoice</th>
-                        <th>Aksi</th>
+                        <th>DP</th>
+                        <th>DP Masuk</th>
+                        <th>Total Bayar</th>
+                        <th>Lunas</th>
                         <th>Ket.</th>
                     </tr>
                 </thead>
@@ -32,6 +35,15 @@
                             <td>{{ $item->user->name }}</td>
                             <td>{{ $item->id_kontingen }}</td>
                             <td>{{ strtoupper($item->id_username_official) }}</td>
+                            <td>
+                                <form action="{{ url('/admin-kejurnas/dp/' . $item->id) }}" method="POST">
+                                    @csrf
+                                    <input type="number" name="dp" id="dp">
+                                    <button>dp</button>
+                                </form>
+                            </td>
+                            <td>{{ $item->dp }}</td>
+                            <td>.</td>
                             <td>
                                 @if ($item->pembayaran == 0)
                                     <form action="{{ url('/admin-kejurnas/pembayaran/' . $item->id) }}" method="post">
@@ -51,7 +63,8 @@
                             </td>
                             <td>
                                 @if ($item->pembayaran == 0)
-                                    <span class="text-danger fw-bold"> <i class="fas fa-exclamation-circle"></i> Pending...</span>
+                                    <span class="text-danger fw-bold"> <i class="fas fa-exclamation-circle"></i>
+                                        Pending...</span>
                                 @else
                                     <span class="text-success fw-bold"><i class="fas fa-check-circle"></i> Lunas</span>
                                 @endif
