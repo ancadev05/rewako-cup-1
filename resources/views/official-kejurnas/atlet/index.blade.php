@@ -47,8 +47,9 @@
             @if ($invoice->pembayaran == 0)
                 {{-- penutupan sementara --}}
                 @php
-                    $status = 1;
+                    $status = 0;
                     // $user = Auth::user()->username == 'rwk-605011333';
+                    $user = false;
                 @endphp
                 @if ($status == 1)
                     <a href="{{ url('/official/atlet/create') }}" class="btn btn-sm btn-primary"><i
