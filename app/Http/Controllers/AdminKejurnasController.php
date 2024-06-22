@@ -528,11 +528,30 @@ class AdminKejurnasController extends Controller
     // tarik data
     public function tarikData()
     {
-        $invoice = Invoice::get();
-        $user_fix = $invoice->username;
+        $dp = 0;
+        // $invoice = DB::table('invoices')->where('pembayaran', 1)->where('dp', '>', 0 )->get();
+        // $invoice = DB::table('invoices')->where('pembayaran', 1)->get();
+        // $invoice = DB::table('invoices')->where('dp','>', 0)->get();
+        // $invoice = DB::table('invoices')->where('dp','>', 0)->where('pembayaran', 1)->get();
+        $atlet_fix = Invoice::where('pembayaran', 1)->get();
+        // $invoice = DB::table('invoices')
+        // $invoice = DB::table('invoices')->where('pembayaran', 1)->where('dp', '>', '0')->get();
+        // $user_fix = $invoice->username;
 
-        dd($user_fix);
+        // $invoice = DB::table('invoices')
+        //     ->where('status', 'active')
+        //     ->where('dp', 'admin')
+        //     ->orWhere(function($query) {
+        //         $query->where('dp', 'editor')
+        //               ->where('is_active', true);
+        //     })
+        //     ->get();
 
-        $atlet_fix = Invoice::where('id_username_official',0 );
+        // dd($invoice);
+
+        // $atlet_fix = Invoice::where('id_username_official',0 );
+
+        return view('admin-kejurnas.registrasi-ulang.tarik-data')
+        ->with('atlet_fix', $atlet_fix );
     }
 }

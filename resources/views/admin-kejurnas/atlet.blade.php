@@ -34,6 +34,7 @@
                 <thead class="text-center ">
                     <tr>
                         <th>#id</th>
+                        <th>username</th>
                         <th>Nama Atlet</th>
                         <th>JK</th>
                         <th>Golongan</th>
@@ -52,6 +53,7 @@
                         <tr>
                             {{-- <td class="text-center">{{ $i }}</td> --}}
                             <td>{{ $item->id }}</td>
+                            <td>{{ $item->id_username_official }}</td>
                             <td>{{ $item->nama_atlet }}</td>
                             <td class="text-center">{{ $item->jk }}</td>
                             <td>{{ $item->golongan }}</td>

@@ -15,4 +15,9 @@ class Invoice extends Model
     {
         return $this->hasOne(User::class, 'username', 'id_username_official');
     }
+
+    public function atlets()
+    {
+        return $this->hasMany(Atlet::class, 'id_username_official', 'id_username_official');
+    }
 }

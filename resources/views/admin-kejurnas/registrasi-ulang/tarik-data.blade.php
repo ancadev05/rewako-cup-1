@@ -24,36 +24,12 @@
                 </thead>
 
                 <tbody>
-                    @forelse ($atlet as $item)
+                    @forelse ($atlet_fix as $item)
                         <tr>
                             {{-- <td class="text-center">{{ $i }}</td> --}}
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->nama_atlet }}</td>
-                            <td class="text-center">{{ $item->jk }}</td>
-                            <td>{{ $item->golongan }}</td>
-                            <td class="text-center">{{ $item->kelas_tanding }}</td>
-                            <td>{{ $item->seni }}</td>
-                            <td>{{ $item->kontingen }}</td>
-                            <td class="text-center">
-                                <a href="{{ url('/admin-kejurnas/atlet/' . $item->id) }}" class="btn btn-secondary"
-                                    style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                        class="fas fa-eye"></i></a>
-                                {{-- admin kejurnas tidak boleh menghapus dan mengedit data atlet --}}
-                                {{-- <a href="{{ url('/admin-kejurnas/atlet/' . $item->id . '/edit') }}"
-                                            class="btn btn-warning"
-                                            style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                                class="fas fa-edit"></i></a>
-                                        <form action="{{ url('/admin-kejurnas/atlet/' . $item->id) }}" method="POST"
-                                            class="d-inline" onsubmit="return confirm('Anda yakin ingin hapus data?')">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger"
-                                                style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </form> --}}
-                            </td>
+                            <td>{{ $item->pembayaran }}</td>
+                            {{-- <td>{{ $item->user->id }}</td> --}}
                         </tr>
-                        <?php $i++; ?>
                     @empty
                         <div class="alert alert-danger">
                             Belum ada atlet yang terdaftar.

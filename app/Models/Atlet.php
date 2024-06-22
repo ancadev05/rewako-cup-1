@@ -35,4 +35,9 @@ class Atlet extends Model
     {
         return $this->belongsTo(Seni::class,'id_seni', 'id');
     }
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class,'id_username_official', 'id_username_official');
+    }
 }
