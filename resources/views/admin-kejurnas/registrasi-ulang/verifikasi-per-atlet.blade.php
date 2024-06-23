@@ -89,12 +89,8 @@
                 </tr>
             </table>
 
-            <buttton class="btn btn-sm btn-danger" onclick="back()">Kembali</buttton>
-            <buttton class="btn btn-sm btn-primary" type="submit">Submit</buttton>
-        </form>
-
-        <form action="" method="post">
-            <button>ook</button>
+            <span class="btn btn-sm btn-danger" onclick="back()">Kembali</span>
+            <button class="btn btn-sm btn-primary">Submit</button>
         </form>
 
     </div>
