@@ -84,11 +84,6 @@
                         <th>Golongan</th>
                         <th>Kelas Tanding</th>
                         <th>Seni</th>
-                        <th>S. Rekom</th>
-                        <th>Akte/Ijazah</th>
-                        <th>S. Izin</th>
-                        <th>S. Sehat</th>
-                        <th>S. Pernyataan</th>
                         <th>Ket</th>
                     </tr>
                 </thead>
@@ -109,11 +104,6 @@
                             <td>{{ $item->golongan }}</td>
                             <td>{{ $item->kelas_tanding }}</td>
                             <td>{{ $item->seni }}</td>
-                            <td><input type="checkbox" name="" id="" class="form-check-input"></td>
-                            <td><input type="checkbox" name="" id="" class="form-check-input"></td>
-                            <td><input type="checkbox" name="" id="" class="form-check-input"></td>
-                            <td><input type="checkbox" name="" id="" class="form-check-input"></td>
-                            <td><input type="checkbox" name="" id="" class="form-check-input"></td>
                             <td>
                                 <a href="{{ url('/admin-kejurnas/verifikasi-per-atlet/' . $item->id) }}">Verifikasi</a>
                             </td>
