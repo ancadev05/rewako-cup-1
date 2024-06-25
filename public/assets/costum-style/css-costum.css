@@ -51,11 +51,16 @@
 }
 
 /* Format Id Card */
+.cetak {
+    display: flex;
+    flex: auto;
+}
 #id-card{
-    width: 100mm;
-    height: 150mm;
-    /* margin: 5px; */
-    background-color: yellow;
+    width: 50mm;
+    height: 130mm;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    background-color: red;
     /* color: aqua; */
     
 }

@@ -12,45 +12,49 @@
 
     {{-- filter --}}
     <div class="mb-3">
-        <form action="{{ url('/admin-kejurnas/data-fix') }}" method="post">
+        <form action="{{ url('/admin-kejurnas/atlet-cari') }}" method="get">
             @csrf
             <input type="hidden" name="filter" value="1">
             <div class="row row-cols-5 g-3">
                 <div class="col">
+                    <label for="">Kelas</label>
                     <select name="kelas_tanding" class="form-select" aria-label="size 3 select example">
-                        <option value="" selected>== Kelas ==</option>
+                        <option value=""><option>
                         @foreach ($kelas_tanding as $item)
                             <option value="{{ $item->nama_kelas }}">{{ $item->nama_kelas }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col">
+                    <label for="">Kontingen</label>
                     <select name="kontingen" class="form-select" aria-label="size 3 select example">
-                        <option value="" selected>== Kontingen ==</option>
+                        <option value=""><option>
                         @foreach ($kontingen as $item)
                             <option value="{{ $item->id_kontingen }}">{{ $item->id_kontingen }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col">
+                    <label for="">Seni</label>
                     <select name="seni" class="form-select" aria-label="size 3 select example">
-                        <option value="" selected>== Seni ==</option>
+                        <option value=""><option>
                         @foreach ($seni as $item)
                             <option value="{{ $item->kategori_seni }}">{{ $item->kategori_seni }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col">
+                    <label for="">Golongan</label>
                     <select name="golongan" class="form-select" aria-label="size 3 select example">
-                        <option value="" selected>== Golongan ==</option>
+                        <option value=""><option>
                         @foreach ($golongan as $item)
                             <option value="{{ $item->nama_golongan }}">{{ $item->nama_golongan }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col">
+                    <label for="">Jenis Kelamin</label>
                     <select name="jk" class="form-select" aria-label="size 3 select example">
-                        <option value="" selected>== Jenis Kelamin ==</option>
                         <option value="PA">PA</option>
                         <option value="PI">PI</option>
                     </select>

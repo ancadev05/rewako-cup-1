@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            // DummyGolongansSeeder::class,
-            // DummyKelasTandingsSeeder::class,
+            DummyGolongansSeeder::class,
+            DummyKelasTandingsSeeder::class,
             // DummyKontingensSeeder::class,
-            // DummySenisSeeder::class,
-            DummyUsersSeeder::class,
+            DummySenisSeeder::class,
+            // DummyUsersSeeder::class,
             // DummyInvoicesSeeder::class
         ]);
 

@@ -22,7 +22,8 @@
 </head>
 <body>
     {{-- official --}}
-    <div class="row row-cols-2 g-5 me-1">
+    {{-- <div class="row row-cols-2 me-1"> --}}
+    <div class="cetak">
         @foreach ($atlet_fix as $item)
             <div class="col">
                 <div class="border p-2" id="id-card">

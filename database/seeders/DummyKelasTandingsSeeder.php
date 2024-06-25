@@ -52,6 +52,9 @@ class DummyKelasTandingsSeeder extends Seeder
             ],
             [
                 'nama_kelas' => 'M'
+            ],
+            [
+                'nama_kelas' => 'BEBAS'
             ]
         ];
 

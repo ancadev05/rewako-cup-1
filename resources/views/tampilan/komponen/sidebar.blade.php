@@ -77,6 +77,13 @@
                         </div>
                         Data Atlet Fix
                     </a>
+                    <a class="nav-link {{ Request::is('admin-kejurnas/atlet-cari') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/atlet-cari') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        Cari Atlet
+                    </a>
                 @endif
                 {{-- /admin kejurnas --}}
 

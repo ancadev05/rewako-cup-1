@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Atlet;
 use App\Models\AtletFix;
+use App\Models\Golongan;
 use App\Models\Invoice;
+use App\Models\KelasTanding;
 use App\Models\Kontingen;
+use App\Models\Seni;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,44 +66,45 @@ class AdminKejurnasController extends Controller
 
     public function atlet()
     {
-        $atlet = Atlet::orderBy('id','asc')->get();
+        $atlet = Atlet::orderBy('id', 'asc')->get();
         // $kontingen = Kontingen::get();
 
         // untuk mengecek kelas yang di isi oleh dua orang
         $duplikat_kelas = DB::table('atlets')
-        ->select('kontingen', 'golongan', 'kelas_tanding', 'jk', DB::raw('COUNT(*) as jumlah'))
-        ->where('kelas_tanding', '!=', '-')
-        ->groupBy('kontingen', 'golongan', 'kelas_tanding', 'jk')
-        ->havingRaw('COUNT(*) > 1')
-        ->get();
+            ->select('kontingen', 'golongan', 'kelas_tanding', 'jk', DB::raw('COUNT(*) as jumlah'))
+            ->where('kelas_tanding', '!=', '-')
+            ->groupBy('kontingen', 'golongan', 'kelas_tanding', 'jk')
+            ->havingRaw('COUNT(*) > 1')
+            ->get();
 
         return view('admin-kejurnas.atlet')
-        // ->with('kontingen', $kontingen)
-        ->with('duplikat_kelas', $duplikat_kelas)
-        ->with('atlet', $atlet);
+            // ->with('kontingen', $kontingen)
+            ->with('duplikat_kelas', $duplikat_kelas)
+            ->with('atlet', $atlet);
     }
 
     // melihat detail atlet dari admin
-    public function atletDetail(string $id){
+    public function atletDetail(string $id)
+    {
         $atlet = Atlet::where('id', $id)->first();
 
         return view('official-kejurnas.atlet.atlet-show')->with('atlet', $atlet);
     }
-    
+
     public function kontingen()
     {
         $kontingen = Kontingen::orderBy('id', 'asc')->get();
 
         // menghitung jumlah atlet per kontingen
         $jml_atlet_kontingen = DB::table('atlets')
-                        ->select('id_username_official','kontingen', DB::raw('COUNT(*) as jumlah_atlet'))
-                        ->groupBy('id_username_official','kontingen')
-                        ->get();
+            ->select('id_username_official', 'kontingen', DB::raw('COUNT(*) as jumlah_atlet'))
+            ->groupBy('id_username_official', 'kontingen')
+            ->get();
 
-                        // dd($jml_atlet_kontingen);
+        // dd($jml_atlet_kontingen);
         return view('admin-kejurnas.kontingen')
-        ->with('kontingen', $kontingen)
-        ->with('jml_atlet_kontingen', $jml_atlet_kontingen);
+            ->with('kontingen', $kontingen)
+            ->with('jml_atlet_kontingen', $jml_atlet_kontingen);
         // return view('admin-kejurnas.kontingen')->with('kontingen', $kontingen);
     }
 
@@ -152,9 +158,9 @@ class AdminKejurnasController extends Controller
         // $kontingen = Kontingen::
 
         $pelatihAtletCounts = DB::table('atlets')
-                                ->select('id_username_official', DB::raw('COUNT(*) as jumlah_atlet'))
-                                ->groupBy('id_username_official')
-                                ->get();
+            ->select('id_username_official', DB::raw('COUNT(*) as jumlah_atlet'))
+            ->groupBy('id_username_official')
+            ->get();
 
         return view('admin-kejurnas.sudah-bayar')->with('invoice', $invoice);
     }
@@ -164,9 +170,9 @@ class AdminKejurnasController extends Controller
     {
         $user = User::get();
         $kontingen = Kontingen::get();
-        
+
         return view('admin-kejurnas.registrasi-ulang.verifikasi-berkas')
-        ->with('kontingen', $kontingen);
+            ->with('kontingen', $kontingen);
     }
 
     // cetak id card
@@ -174,15 +180,38 @@ class AdminKejurnasController extends Controller
     {
         $atlet_fix = Atlet::where('id_username_official', $username)->get();
 
-         // generate pdf
-         if ($request->get('export') == 'pdf') {
+        // generate pdf
+        if ($request->get('export') == 'pdf') {
+            // $options = new Options();
+            // $options->set('isHtml5ParserEnabled', true);
+            // $options->set('isPhpEnabled', true); // Aktifkan PHP di dalam template
+
+            // // Konfigurasi untuk ukuran kertas dan margin
+            // $options->setPaper('A4', 'portrait'); // 'portrait' untuk orientasi potret, 'landscape' untuk orientasi lanskap
+            // $options->setDebugLayoutPaddingBox('margin-top', 20); // Atur margin atas
+            // $options->setOption('margin-right', 20); // Atur margin kanan
+            // $options->setOption('margin-bottom', 40); // Atur margin bawah
+            // $options->setOption('margin-left', 40); // Atur margin kiri
+    
+            // // Instansiasi DOMPDF dengan opsi yang sudah dikonfigurasi
+            // $dompdf = new Dompdf($options);
+
+            // // Render view ke dalam PDF
+            // $dompdf->loadHtml(view('admin-kejurnas.registrasi-ulang.cetak-id-card', ['atlet_fix' => $atlet_fix])->render());
+            
+            // // Render PDF (output)
+            // $dompdf->render();
+            
+            // // Stream PDF ke browser
+            // return $dompdf->stream('data-atlet.pdf');
+
             $pdf = Pdf::loadView('admin-kejurnas.registrasi-ulang.cetak-id-card', ['atlet_fix' => $atlet_fix]);
 
             return $pdf->stream('data-atlet.pdf');
         }
-      
+
         return view('admin-kejurnas.registrasi-ulang.id-card')
-        ->with('atlet_fix', $atlet_fix);
+            ->with('atlet_fix', $atlet_fix);
     }
 
     // detail peserta
@@ -196,7 +225,7 @@ class AdminKejurnasController extends Controller
         $jkpa = DB::table('atlets')->where('jk', 'PA')->get()->count();
         // golongan
 
-        $atlets = DB::table('atlet_fixes');
+        $atlets = DB::table('atlet_fixes')->where('bayar', 1);
 
         // pra usia dini
         // seni
@@ -204,7 +233,7 @@ class AdminKejurnasController extends Controller
         $pud_s_tb     = DB::table($atlets)->where('golongan', 'Pra Usia Dini')->where('seni', 'Tunggal Bersenjata')->where('jk', 'PA')->get()->count();
         $pud_s_ttk_pi = DB::table($atlets)->where('golongan', 'Pra Usia Dini')->where('seni', 'Tunggal Tangan Kosong')->where('jk', 'PI')->get()->count();
         $pud_s_tb_pi  = DB::table($atlets)->where('golongan', 'Pra Usia Dini')->where('seni', 'Tunggal Bersenjata')->where('jk', 'PI')->get()->count();
-    
+
 
         // usia dini
         // tanding
@@ -282,40 +311,40 @@ class AdminKejurnasController extends Controller
         $pr_s_tb_pi  = DB::table($atlets)->where('golongan', 'Pra Remaja')->where('seni', 'Tunggal Bersenjata')->where('jk', 'PI')->get()->count();
         $pr_s_gtk_pi = DB::table($atlets)->where('golongan', 'Pra Remaja')->where('seni', 'Ganda Tangan Kosong')->where('jk', 'PI')->get()->count();
         $pr_s_gb_pi  = DB::table($atlets)->where('golongan', 'Pra Remaja')->where('seni', 'Ganda Bersenjata')->where('jk', 'PI')->get()->count();
-        $pr_s_gtkb_pi= DB::table($atlets)->where('golongan', 'Pra Remaja')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk', 'PI')->get()->count();
-        
-        
+        $pr_s_gtkb_pi = DB::table($atlets)->where('golongan', 'Pra Remaja')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk', 'PI')->get()->count();
+
+
         // remaja
         // tanding
-        $r_t_a = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'A')->where('jk','PA')->get()->count();
-        $r_t_b = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'B')->where('jk','PA')->get()->count();
-        $r_t_c = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'C')->where('jk','PA')->get()->count();
-        $r_t_d = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'D')->where('jk','PA')->get()->count();
-        $r_t_e = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'E')->where('jk','PA')->get()->count();
-        $r_t_f = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'F')->where('jk','PA')->get()->count();
-        $r_t_g = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'G')->where('jk','PA')->get()->count();
-        $r_t_h = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'H')->where('jk','PA')->get()->count();
-        $r_t_i = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'I')->where('jk','PA')->get()->count();
-        $r_t_j = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'J')->where('jk','PA')->get()->count();
-        $r_t_a_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'A')->where('jk','PI')->get()->count();
-        $r_t_b_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'B')->where('jk','PI')->get()->count();
-        $r_t_c_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'C')->where('jk','PI')->get()->count();
-        $r_t_d_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'D')->where('jk','PI')->get()->count();
-        $r_t_e_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'E')->where('jk','PI')->get()->count();
-        $r_t_f_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'F')->where('jk','PI')->get()->count();
+        $r_t_a = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'A')->where('jk', 'PA')->get()->count();
+        $r_t_b = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'B')->where('jk', 'PA')->get()->count();
+        $r_t_c = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'C')->where('jk', 'PA')->get()->count();
+        $r_t_d = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'D')->where('jk', 'PA')->get()->count();
+        $r_t_e = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'E')->where('jk', 'PA')->get()->count();
+        $r_t_f = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'F')->where('jk', 'PA')->get()->count();
+        $r_t_g = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'G')->where('jk', 'PA')->get()->count();
+        $r_t_h = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'H')->where('jk', 'PA')->get()->count();
+        $r_t_i = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'I')->where('jk', 'PA')->get()->count();
+        $r_t_j = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'J')->where('jk', 'PA')->get()->count();
+        $r_t_a_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'A')->where('jk', 'PI')->get()->count();
+        $r_t_b_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'B')->where('jk', 'PI')->get()->count();
+        $r_t_c_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'C')->where('jk', 'PI')->get()->count();
+        $r_t_d_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'D')->where('jk', 'PI')->get()->count();
+        $r_t_e_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'E')->where('jk', 'PI')->get()->count();
+        $r_t_f_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('kelas_tanding', 'F')->where('jk', 'PI')->get()->count();
         // seni
-        $r_s_ttk = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Tangan Kosong')->where('jk','PA')->get()->count();
-        $r_s_tb = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Bersenjata')->where('jk','PA')->get()->count();
-        $r_s_gtk = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong')->where('jk','PA')->get()->count();
-        $r_s_gb = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Bersenjata')->where('jk','PA')->get()->count();
-        $r_s_gtkb = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk','PA')->get()->count();
-        $r_s_t = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Trio')->where('jk','PA')->get()->count();
-        $r_s_ttk_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Tangan Kosong')->where('jk','PI')->get()->count();
-        $r_s_tb_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Bersenjata')->where('jk','PI')->get()->count();
-        $r_s_gtk_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong')->where('jk','PI')->get()->count();
-        $r_s_gb_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Bersenjata')->where('jk','PI')->get()->count();
-        $r_s_gtkb_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk','PI')->get()->count();
-        $r_s_t_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Trio')->where('jk','PI')->get()->count();
+        $r_s_ttk = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Tangan Kosong')->where('jk', 'PA')->get()->count();
+        $r_s_tb = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Bersenjata')->where('jk', 'PA')->get()->count();
+        $r_s_gtk = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong')->where('jk', 'PA')->get()->count();
+        $r_s_gb = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Bersenjata')->where('jk', 'PA')->get()->count();
+        $r_s_gtkb = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk', 'PA')->get()->count();
+        $r_s_t = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Trio')->where('jk', 'PA')->get()->count();
+        $r_s_ttk_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Tangan Kosong')->where('jk', 'PI')->get()->count();
+        $r_s_tb_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Tunggal Bersenjata')->where('jk', 'PI')->get()->count();
+        $r_s_gtk_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong')->where('jk', 'PI')->get()->count();
+        $r_s_gb_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Bersenjata')->where('jk', 'PI')->get()->count();
+        $r_s_gtkb_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk', 'PI')->get()->count();
+        $r_s_t_pi = DB::table($atlets)->where('golongan', 'Remaja')->where('seni', 'Trio')->where('jk', 'PI')->get()->count();
 
         // dewasa
         // tanding
@@ -346,7 +375,7 @@ class AdminKejurnasController extends Controller
         $d_s_tb_pi  = DB::table($atlets)->where('golongan', 'Dewasa')->where('seni', 'Tunggal Bersenjata')->where('jk', 'PI')->get()->count();
         $d_s_gtk_pi = DB::table($atlets)->where('golongan', 'Dewasa')->where('seni', 'Ganda Tangan Kosong')->where('jk', 'PI')->get()->count();
         $d_s_gb_pi  = DB::table($atlets)->where('golongan', 'Dewasa')->where('seni', 'Ganda Bersenjata')->where('jk', 'PI')->get()->count();
-        $d_s_gtkb_pi= DB::table($atlets)->where('golongan', 'Dewasa')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk', 'PI')->get()->count();
+        $d_s_gtkb_pi = DB::table($atlets)->where('golongan', 'Dewasa')->where('seni', 'Ganda Tangan Kosong dan Bersenjata')->where('jk', 'PI')->get()->count();
         $d_s_t_pi   = DB::table($atlets)->where('golongan', 'Dewasa')->where('seni', 'Trio')->where('jk', 'PI')->get()->count();
 
 
@@ -509,7 +538,7 @@ class AdminKejurnasController extends Controller
         // dd($status_dp->dp);
         // dd($request->dp);
 
-        if($request->dp == null) {
+        if ($request->dp == null) {
             return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'tidak ada DP');
         }
 
@@ -537,32 +566,134 @@ class AdminKejurnasController extends Controller
     }
 
     // tarik data
-    public function dataFix()
+    public function dataFix(Request $request)
     {
+        if ($request->filter == 1) {
+
+            // dd($request);
+
+            $filter = $request->filter;
+            $f_kelas_tanding = $request->kelas_tanding;
+            $f_kontingen = $request->kontingen;
+            $f_seni = $request->seni;
+            $f_golongan = $request->golongan;
+            $f_jk = $request->jk;
+
+            $dp = 0;
+
+            $kelas_tanding = KelasTanding::get();
+            $seni = Seni::get();
+            $golongan = Golongan::get();
+            $kontingen = Invoice::where('pembayaran', 1)->orderBy('id_kontingen', 'asc')->get();
+
+            // filter data atlet
+            $atlet_fix = AtletFix::where('kelas_tanding', $f_kelas_tanding)
+                ->orWhere('kontingen', $f_kontingen)
+                ->orWhere('seni', $f_seni)
+                ->orWhere('golongan', $f_golongan)
+                ->orWhere('jk', $f_jk)
+                ->orWhere('bayar', 1)
+                ->get();
+
+            return view('admin-kejurnas.registrasi-ulang.atlet-cari')
+                ->with('kelas_tanding', $kelas_tanding)
+                ->with('kontingen', $kontingen)
+                ->with('seni', $seni)
+                ->with('golongan', $golongan)
+                ->with('atlet_fix', $atlet_fix);
+        }
+
         $dp = 0;
-        // $invoice = DB::table('invoices')->where('pembayaran', 1)->where('dp', '>', 0 )->get();
-        // $invoice = DB::table('invoices')->where('pembayaran', 1)->get();
-        // $invoice = DB::table('invoices')->where('dp','>', 0)->get();
-        // $invoice = DB::table('invoices')->where('dp','>', 0)->where('pembayaran', 1)->get();
+
+        $kelas_tanding = KelasTanding::get();
+        $seni = Seni::get();
+        $golongan = Golongan::get();
+        $kontingen = Invoice::where('pembayaran', 1)->orderBy('id_kontingen', 'asc')->get();
         $atlet_fix = AtletFix::where('bayar', 1)->get();
-        // $invoice = DB::table('invoices')
-        // $invoice = DB::table('invoices')->where('pembayaran', 1)->where('dp', '>', '0')->get();
-        // $user_fix = $invoice->username;
 
-        // $invoice = DB::table('invoices')
-        //     ->where('status', 'active')
-        //     ->where('dp', 'admin')
-        //     ->orWhere(function($query) {
-        //         $query->where('dp', 'editor')
-        //               ->where('is_active', true);
-        //     })
-        //     ->get();
 
-        // dd($invoice);
-
-        // $atlet_fix = Invoice::where('id_username_official',0 );
 
         return view('admin-kejurnas.registrasi-ulang.atlet-fix')
-        ->with('atlet_fix', $atlet_fix );
+            ->with('kelas_tanding', $kelas_tanding)
+            ->with('kontingen', $kontingen)
+            ->with('seni', $seni)
+            ->with('golongan', $golongan)
+            ->with('atlet_fix', $atlet_fix);
+    }
+
+    // mencari pesilat dengan kriteria tertentu
+    public function atletCari(Request $request)
+    {
+        // dd($request);
+        if($request->filter == 1) {
+            
+            $f_kelas_tanding = $request->kelas_tanding;
+            $f_kontingen = $request->kontingen;
+            $f_seni = $request->seni;
+            $f_golongan = $request->golongan;
+            $f_jk = $request->jk;
+
+            $kelas_tanding = KelasTanding::get();
+            $seni = Seni::get();
+            $golongan = Golongan::get();
+            $kontingen = Invoice::where('pembayaran', 1)->orderBy('id_kontingen', 'asc')->get();
+
+            // filter data atlet
+            $atlet_fix = AtletFix::where('kelas_tanding', $f_kelas_tanding)
+                ->where('kontingen', $f_kontingen)
+                ->where('seni', $f_seni)
+                ->where('golongan', $f_golongan)
+                ->where('jk', $f_jk)
+                ->where('bayar', 1)
+                ->get();
+
+                dd($atlet_fix);
+
+            return view('admin-kejurnas.registrasi-ulang.atlet-cari')
+                ->with('kelas_tanding', $kelas_tanding)
+                ->with('kontingen', $kontingen)
+                ->with('seni', $seni)
+                ->with('golongan', $golongan)
+                ->with('atlet_fix', $atlet_fix);
+        } else {
+            $kelas_tanding = KelasTanding::get();
+            $seni = Seni::get();
+            $golongan = Golongan::get();
+            $kontingen = Invoice::where('pembayaran', 1)->orderBy('id_kontingen', 'asc')->get();
+            $atlet_fix = AtletFix::where('bayar', 1)->get();
+
+            return view('admin-kejurnas.registrasi-ulang.atlet-cari')
+                ->with('kelas_tanding', $kelas_tanding)
+                ->with('kontingen', $kontingen)
+                ->with('seni', $seni)
+                ->with('golongan', $golongan)
+                ->with('atlet_fix', $atlet_fix);
+        }
+        // $f_kelas_tanding = $request->kelas_tanding;
+        //     $f_kontingen = $request->kontingen;
+        //     $f_seni = $request->seni;
+        //     $f_golongan = $request->golongan;
+        //     $f_jk = $request->jk;
+
+        //     $kelas_tanding = KelasTanding::get();
+        //     $seni = Seni::get();
+        //     $golongan = Golongan::get();
+        //     $kontingen = Invoice::where('pembayaran', 1)->orderBy('id_kontingen', 'asc')->get();
+
+        //     // filter data atlet
+        //     $atlet_fix = AtletFix::where('kelas_tanding', $f_kelas_tanding)
+        //         ->orWhere('kontingen', $f_kontingen)
+        //         ->orWhere('seni', $f_seni)
+        //         ->orWhere('golongan', $f_golongan)
+        //         ->orWhere('jk', $f_jk)
+        //         ->orWhere('bayar', 1)
+        //         ->get();
+
+        //     return view('admin-kejurnas.registrasi-ulang.atlet-cari')
+        //         ->with('kelas_tanding', $kelas_tanding)
+        //         ->with('kontingen', $kontingen)
+        //         ->with('seni', $seni)
+        //         ->with('golongan', $golongan)
+        //         ->with('atlet_fix', $atlet_fix);
     }
 }
