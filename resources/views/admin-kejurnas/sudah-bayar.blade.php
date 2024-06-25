@@ -36,14 +36,15 @@
                             <td>{{ $item->nama_official }}</td>
                             <td>{{ $item->id_kontingen }}</td>
                             <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->alamat }}</td>
+                            <td>Rp{{ format_uang($item->dp) }}</td>
                             <td class="text-center">
-                                <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
+                                <a href="{{ url('/admin-kejurnas/invoice-kontingen/' . $item->id_username_official) }}">invoice</a>
+                                {{-- <a href="{{ url('/official/atlet/' . $item->id) }}" class="btn btn-secondary"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
                                         class="fas fa-eye"></i></a>
                                 <a href="{{ url('/official/atlet/' . $item->id . '/edit') }}" class="btn btn-warning"
                                     style="--bs-btn-padding-y:.25rem; --bs-btn-padding-x:.25rem;--bs-btn-font-size:.70rem;"><i
-                                        class="fas fa-edit"></i></a>
+                                        class="fas fa-edit"></i></a> --}}
                             </td>
                         </tr>
                         <?php $i++; ?>

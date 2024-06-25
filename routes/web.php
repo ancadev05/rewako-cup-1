@@ -82,6 +82,8 @@ Route::middleware(['auth'])->group(function () {
 
     // peserta fix
     Route::get('/admin-kejurnas/pserta-suda-bayar', [AdminKejurnasController::class, 'sudaBayar'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/invoice-kontingen/{username}', [DownloadBerkasController::class, 'invoiceKontingen'])->middleware('userAkses:admin-kejurnas');
+
 
 
     // halaman bisa akses semua

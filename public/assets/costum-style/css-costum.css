@@ -55,19 +55,31 @@
     display: flex;
     flex: auto;
 }
-#id-card{
-    width: 50mm;
-    height: 130mm;
-    margin-left: 2px;
-    margin-bottom: 2px;
-    background-color: red;
+.id-card{
+    /* width: 85mm;
+    height: 105mm; */
+    /* margin-left: 2px;
+    margin-bottom: 2px; */
+    margin: 2px;
+    /* background-color: red; */
     /* color: aqua; */
-    
+    width :321px; 
+    height:397px;
 }
 
-#foto-atlet{
+.template-id {
+    width :321px; 
+    height:397px;
+    margin: 2px;
+    /* display: relative; */
+}
+
+.foto-atlet{
+    /* position: absolute; */
     width: 28mm;
     height: 38mm;
+    margin-top: 140px;
+    margin-left: 15px;
     font-size-adjust: inherit;
 }
 
@@ -76,5 +88,6 @@
 @media print{
     nav, #tombol {
         display: none;
+
     }
 }
