@@ -314,14 +314,16 @@ class DownloadBerkasController extends Controller
         // for($i )
         Invoice::where('id_username_official', $username)->update($dp);
 
-        return view('admin-kejurnas.invoice-kontingen')
-            ->with('user', $user)
-            ->with('kategori', $kategori)
-            ->with('atlet', $atlet)
-            ->with('kontingen', $kontingen)
-            ->with('biaya', $biaya)
-            ->with('totalBiaya', $total)
-            ->with('invoice', $invoice);
+        return redirect()->to('admin-kejurnas/pserta-suda-bayar');
+
+        // return view('admin-kejurnas.invoice-kontingen')
+        //     ->with('user', $user)
+        //     ->with('kategori', $kategori)
+        //     ->with('atlet', $atlet)
+        //     ->with('kontingen', $kontingen)
+        //     ->with('biaya', $biaya)
+        //     ->with('totalBiaya', $total)
+        //     ->with('invoice', $invoice);
     }
 
     // download data atlet per kontingen
