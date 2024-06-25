@@ -8,7 +8,7 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="border-bottom border-2 mb-3">Verifikasi Berkas</h3>
+    <h3 class="border-bottom border-2 mb-3">Verifikasi Berkas Seluruh Kontingen</h3>
 
     <div class="shadow p-2 border rounded">
         <div class="table-responsive">

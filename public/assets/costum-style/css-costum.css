@@ -54,7 +54,7 @@
 #id-card{
     width: 100mm;
     height: 150mm;
-    margin: 5px;
+    /* margin: 5px; */
     background-color: yellow;
     /* color: aqua; */
     

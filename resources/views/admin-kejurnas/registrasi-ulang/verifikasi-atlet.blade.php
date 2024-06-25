@@ -8,7 +8,7 @@
 
 {{-- konten --}}
 @section('konten')
-    <h3 class="border-bottom border-2 mb-3">Verifikasi Berkas Atlet</h3>
+    <h3 class="border-bottom border-2 mb-3">Verifikasi Berkas Kontingen Atlet</h3>
 
     {{-- data kontingen --}}
     <div class="shadow p-2 border rounded mb-3">
@@ -119,9 +119,9 @@
     <div class="d-flex justify-content-end mt-3">
         <buttton class="btn btn-sm btn-danger me-2" onclick="back()">Kembali</buttton>
         {{-- jika mau ekspor pdf --}}
-        {{-- <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }} ?export=pdf">Cetak Id Card</a> --}}
-        <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }}">Cetak
-            Id Card</a>
+        <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }} ?export=pdf">Cetak Id Card</a>
+        {{-- <a class="btn btn-sm btn-warning" href="{{ url('/admin-kejurnas/id-card/' . $kontingen->user->username) }}">Cetak
+            Id Card</a> --}}
     </div>
 @endsection
 

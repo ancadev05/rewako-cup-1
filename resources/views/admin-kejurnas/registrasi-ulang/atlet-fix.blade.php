@@ -18,7 +18,9 @@
                         <th>#id</th>
                         <th>Nama Atlet</th>
                         <th>JK</th>
+                        <th>Golongan</th>
                         <th>Kelas Tanding</th>
+                        <th>Seni</th>
                         <th>Kontingen</th>
                     </tr>
                 </thead>
@@ -26,9 +28,13 @@
                 <tbody>
                     @forelse ($atlet_fix as $item)
                         <tr>
-                            {{-- <td class="text-center">{{ $i }}</td> --}}
-                            <td>{{ $item->pembayaran }}</td>
-                            {{-- <td>{{ $item->user->id }}</td> --}}
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->nama_atlet }}</td>
+                            <td>{{ $item->jk }}</td>
+                            <td>{{ $item->golongan }}</td>
+                            <td>{{ $item->kelas_tanding}}</td>
+                            <td>{{ $item->seni}}</td>
+                            <td>{{ $item->kontingen}}</td>
                         </tr>
                     @empty
                         <div class="alert alert-danger">

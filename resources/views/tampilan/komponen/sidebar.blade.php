@@ -70,12 +70,12 @@
                     </a> --}}
                     <hr>
                     <span>Data Fix</span>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/tarik-data') ? 'active' : '' }}"
-                        href="{{ url('admin-kejurnas/tarik-data') }}">
+                    <a class="nav-link {{ Request::is('admin-kejurnas/data-fix') ? 'active' : '' }}"
+                        href="{{ url('admin-kejurnas/data-fix') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-user-check"></i>
                         </div>
-                        Tarik Data Atlet
+                        Data Atlet Fix
                     </a>
                 @endif
                 {{-- /admin kejurnas --}}

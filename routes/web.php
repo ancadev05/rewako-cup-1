@@ -76,7 +76,7 @@ Route::middleware(['auth'])->group(function () {
     
     // kontingen aman dan tarik data
     Route::post('/admin-kejurnas/dp/{id}', [AdminKejurnasController::class, 'dp'])->middleware('userAkses:admin-kejurnas');
-    Route::get('/admin-kejurnas/tarik-data', [AdminKejurnasController::class, 'tarikData'])->middleware('userAkses:admin-kejurnas');
+    Route::get('/admin-kejurnas/data-fix', [AdminKejurnasController::class, 'dataFix'])->middleware('userAkses:admin-kejurnas');
 
     // peserta fix
     Route::get('/admin-kejurnas/pserta-suda-bayar', [AdminKejurnasController::class, 'sudaBayar'])->middleware('userAkses:admin-kejurnas');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atlet;
+use App\Models\AtletFix;
 use App\Models\Invoice;
 use App\Models\Kontingen;
 use App\Models\User;
@@ -118,17 +119,27 @@ class AdminKejurnasController extends Controller
 
         $pembayaran = Invoice::where('id', $id)->first();
         $status = $pembayaran->pembayaran;
+        $username = $pembayaran->id_username_official;
 
         if ($status == 1) {
             $invoice = [
                 'pembayaran' => 0
             ];
+            $bayar = [
+                'bayar' => 0
+            ];
+
             Invoice::where('id', $id)->update($invoice);
+            AtletFix::where('id_username_official', $username)->update($bayar);
         } else {
             $invoice = [
                 'pembayaran' => 1
             ];
+            $bayar = [
+                'bayar' => 1
+            ];
             Invoice::where('id', $id)->update($invoice);
+            AtletFix::where('id_username_official', $username)->update($bayar);
         }
 
         return redirect()->to('admin-kejurnas/pembayaran')->with('success', 'Status pembayaran telah diubah');
@@ -167,7 +178,7 @@ class AdminKejurnasController extends Controller
          if ($request->get('export') == 'pdf') {
             $pdf = Pdf::loadView('admin-kejurnas.registrasi-ulang.cetak-id-card', ['atlet_fix' => $atlet_fix]);
 
-            return $pdf->download('data-atlet.pdf');
+            return $pdf->stream('data-atlet.pdf');
         }
       
         return view('admin-kejurnas.registrasi-ulang.id-card')
@@ -178,14 +189,14 @@ class AdminKejurnasController extends Controller
     public function detailPeserta()
     {
         // jumlah atlet
-        $atlet = Atlet::get()->count();
+        $atlet = AtletFix::where('bayar', 1)->get()->count();
         // jumlah kontingen
-        $kontingen = Kontingen::get()->count();
+        $kontingen = Invoice::where('pembayaran', 1)->get()->count();
         // jenis kelamin
         $jkpa = DB::table('atlets')->where('jk', 'PA')->get()->count();
         // golongan
 
-        $atlets = DB::table('atlets');
+        $atlets = DB::table('atlet_fixes');
 
         // pra usia dini
         // seni
@@ -526,14 +537,14 @@ class AdminKejurnasController extends Controller
     }
 
     // tarik data
-    public function tarikData()
+    public function dataFix()
     {
         $dp = 0;
         // $invoice = DB::table('invoices')->where('pembayaran', 1)->where('dp', '>', 0 )->get();
         // $invoice = DB::table('invoices')->where('pembayaran', 1)->get();
         // $invoice = DB::table('invoices')->where('dp','>', 0)->get();
         // $invoice = DB::table('invoices')->where('dp','>', 0)->where('pembayaran', 1)->get();
-        $atlet_fix = Invoice::where('pembayaran', 1)->get();
+        $atlet_fix = AtletFix::where('bayar', 1)->get();
         // $invoice = DB::table('invoices')
         // $invoice = DB::table('invoices')->where('pembayaran', 1)->where('dp', '>', '0')->get();
         // $user_fix = $invoice->username;
@@ -551,7 +562,7 @@ class AdminKejurnasController extends Controller
 
         // $atlet_fix = Invoice::where('id_username_official',0 );
 
-        return view('admin-kejurnas.registrasi-ulang.tarik-data')
+        return view('admin-kejurnas.registrasi-ulang.atlet-fix')
         ->with('atlet_fix', $atlet_fix );
     }
 }
