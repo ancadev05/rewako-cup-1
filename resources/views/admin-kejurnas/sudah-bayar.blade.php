@@ -61,7 +61,7 @@
 @endsection {{-- /konten --}}
 
 @section('datatables')
-    <script>
+    {{-- <script>
         // $(document).ready(function() {
             $("#tbl").DataTable({
                 layout: {
@@ -72,5 +72,5 @@
                 }
             });
         // });
-    </script>
+    </script> --}}
 @endsection
