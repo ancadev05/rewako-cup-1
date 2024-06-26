@@ -40,13 +40,13 @@
                         </div>
                         Atlet
                     </a>
-                    <a class="nav-link {{ Request::is('admin-kejurnas/pembayaran') ? 'active' : '' }}"
+                    <!-- <a class="nav-link {{ Request::is('admin-kejurnas/pembayaran') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/pembayaran') }}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-file-alt"></i>
                         </div>
                         Pembayaran
-                    </a>
+                    </a> -->
                     <a class="nav-link {{ Request::is('admin-kejurnas/pserta-suda-bayar') ? 'active' : '' }}"
                         href="{{ url('admin-kejurnas/pserta-suda-bayar') }}">
                         <div class="sb-nav-link-icon">
