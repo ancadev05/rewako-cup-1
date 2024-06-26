@@ -178,6 +178,8 @@ class AdminKejurnasController extends Controller
     // cetak id card
     public function cetakIdCard(Request $request, string $username)
     {
+        $user = User::where('username', $username)->first();
+        $kontingen = Kontingen::where('id_username_official', $username)->first();
         $atlet_fix = Atlet::where('id_username_official', $username)->get();
 
         // generate pdf
@@ -205,12 +207,18 @@ class AdminKejurnasController extends Controller
             // // Stream PDF ke browser
             // return $dompdf->stream('data-atlet.pdf');
 
-            $pdf = Pdf::loadView('admin-kejurnas.registrasi-ulang.cetak-id-card', ['atlet_fix' => $atlet_fix]);
+            $pdf = Pdf::loadView('admin-kejurnas.registrasi-ulang.cetak-id-card', 
+            [
+                'atlet_fix' => $atlet_fix,
+                'kontingen' => $kontingen
+            ]);
 
             return $pdf->stream('data-atlet.pdf');
         }
 
         return view('admin-kejurnas.registrasi-ulang.id-card')
+            ->with('user', $user)
+            ->with('kontingen', $kontingen)
             ->with('atlet_fix', $atlet_fix);
     }
 

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Id Card</title>
+    <title>{{ $kontingen->nama_kontingen }}</title>
 
     {{-- Desain Template --}}
     <link href="{{ asset('assets/template-css/styles.css') }}" rel="stylesheet" />
@@ -13,17 +14,105 @@
     {{-- costum css - Alert animasi --}}
     <link href="{{ asset('assets/costum-style/css-costum.css') }}" rel="stylesheet" />
 
-    <style>
+    {{-- <style>
         @media print{
             
         }
-    </style>
+    </style> --}}
 
 </head>
+
 <body>
+
+    {{-- <div>.</div>
+    <div>.</div>
+    <div>.</div>
+    <div>.</div>
+    <div>.</div>
+
+    <div>.</div>
+    <div>.</div>
+    <div>.</div>
+    <div>.</div>
+    <div>.</div> --}}
+
+    <div class="ayo">
+    @foreach ($atlet_fix as $item)
+        <span class="id-card">
+                <h4 class="sebagai">PESERTA</h4>
+                {{-- <img src="{{ asset('storage/img-web/id-card.png') }}" alt="" srcset="" width="321px" class="template-id"> --}}
+                <div class="foto-atlet "
+                    style="
+            background-image: url('{{ asset('/storage/foto-atlet/' . $item->foto_atlet) }}');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            ">
+                </div>
+
+                <div class="biodata">
+                    <div>
+                        <label for="">Nama</label> <br>
+                        <input type="text" name="" id="" value="{{ $item->nama_atlet }}">
+                    </div>
+                    <div>
+                        <label for="">Golongan - JK</label> <br>
+                        <input type="text" name="" id=""
+                            value="{{ $item->golongan . '-' . $item->jk }}">
+                    </div>
+                    <div>
+                        <label for="">Kontingen</label> <br>
+                        <input type="text" name="" id="" value="{{ $item->kontingen }}">
+                    </div>
+                    <div>
+                        <label for="">Kelas Tanding</label> <br>
+                        <input type="text" name="" id="" value="{{ $item->kelas_tanding }}">
+                    </div>
+                    <div>
+                        <label for="">Seni</label> <br>
+                        <input type="text" name="" id="" value="{{ $item->seni }}">
+                    </div>
+                    <div class="no-id">
+                        <label for="">ID</label>
+                        <input type="text" name="" id="" value="{{ $item->id }}">
+                    </div>
+                    {{-- <div class="nama">{{ $item->nama_atlet }}</div>
+            <div class="golongan">{{ $item->golongan ."/". $item->jk}}</div>
+            <div class="kontingen">{{ $item->kontingen}}</div>
+            <div class="kelas">{{ $item->kelas_tanding}}</div>
+            <div class="seni">{{ $item->seni}}</div> --}}
+                </div>
+
+                {{-- <span class="no-id">{{ $item->id}}</span> --}}
+                {{-- <img src="{{ asset('storage/foto-atlet/' . $item->foto_atlet) }}" alt="" srcset="" width="321px" class="foto-atlet"> --}}
+        </span>
+        {{-- <hr> --}}
+    @endforeach
+</div>
+
+    <div class="id-card-official">
+        <div class="foto-official rounded"
+            style="
+            background-image: url('{{ asset('/storage/foto-official/' . $kontingen->user->foto_official) }}');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            ">
+        </div>
+        <div class="biodata-official">
+            <div class="nam-off">
+                {{ $kontingen->user->name }}
+            </div>
+            <div class="kon-off">
+                {{ $kontingen->nama_kontingen }}
+            </div>
+        </div>
+    </div>
+    <div>.</div>
+    <hr>
     {{-- official --}}
     {{-- <div class="row row-cols-2 me-1"> --}}
-    <div class="cetak">
+    {{-- <div class="cetak">
         @foreach ($atlet_fix as $item)
             <div class="col">
                 <div class="border p-2" id="id-card">
@@ -55,10 +144,10 @@
                 </div>
             </div>
         @endforeach
-    </div>
-    
+    </div> --}}
+
     {{-- atlet --}}
-    <div class="row row-cols-2 g-5 me-1">
+    {{-- <div class="row row-cols-2 g-5 me-1">
         @foreach ($atlet_fix as $item)
             <div class="col">
                 <div class="border p-2" id="id-card">
@@ -90,7 +179,7 @@
                 </div>
             </div>
         @endforeach
-    </div>
+    </div> --}}
 
     {{-- Jquery --}}
     <script src="{{ asset('assets/jquery/jquery-3.7.1.min.js') }}"></script>
@@ -109,5 +198,5 @@
     {{-- Script Costum --}}
     <script src="{{ asset('assets/template-js/script-costum.js') }}"></script>
 </body>
-</html>
 
+</html>
